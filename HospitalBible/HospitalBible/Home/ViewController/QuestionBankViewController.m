@@ -74,6 +74,7 @@
     
     [cell.historyRecordButton bk_addEventHandler:^(id  _Nonnull sender) {
         HistoryDetailViewController *historyVC = [[HistoryDetailViewController alloc] init];
+        historyVC.model = model;
         [self.navigationController pushViewController:historyVC animated:NO];
     
     } forControlEvents:(UIControlEventTouchUpInside)];

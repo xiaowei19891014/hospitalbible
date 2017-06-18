@@ -9,13 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "HospitalBible/Home/ViewModel/HomeViewModel.m"
-            timestampString = "519470722.105028"
+            filePath = "HospitalBible/Home/ViewController/HistoryDetailViewController.m"
+            timestampString = "519472534.895659"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "89"
-            endingLineNumber = "89"
-            landmarkName = "+requestDiseasequestionListWithClassId:successHandler:errorHandler:"
+            startingLineNumber = "46"
+            endingLineNumber = "46"
+            landmarkName = "-viewDidLoad"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -25,13 +25,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "HospitalBible/Home/ViewModel/HomeViewModel.m"
-            timestampString = "519470722.105028"
+            filePath = "HospitalBible/Home/ViewController/HistoryDetailViewController.m"
+            timestampString = "519472534.895659"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "90"
-            endingLineNumber = "90"
-            landmarkName = "+requestDiseasequestionListWithClassId:successHandler:errorHandler:"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
+            landmarkName = "-viewDidLoad"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
