@@ -17,10 +17,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    
     [IQKeyboardManager sharedManager].shouldResignOnTouchOutside =YES;
     [IQKeyboardManager sharedManager].keyboardDistanceFromTextField = 30.f;
     [IQKeyboardManager sharedManager].toolbarDoneBarButtonItemText = @"确定";
-
 }
 
 - (BOOL)canSwipBack
