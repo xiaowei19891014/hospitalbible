@@ -150,9 +150,17 @@
 {
     if (indexPath.row == 0) {
         CateGoryCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CateGoryCell" forIndexPath:indexPath];
+        [cell.cateGoryButton bk_addEventHandler:^(id  _Nonnull sender) {
+        } forControlEvents:(UIControlEventTouchUpInside)];
         [cell.feedbackButton bk_addEventHandler:^(id  _Nonnull sender) {
             FeedbackViewController *vc = [[FeedbackViewController alloc] initWithNibName:@"FeedbackViewController" bundle:nil];
             [self.navigationController pushViewController:vc animated:NO];
+        } forControlEvents:(UIControlEventTouchUpInside)];
+        [cell.contactUsButton bk_addEventHandler:^(id  _Nonnull sender) {
+            UIWebView * callWebview = [[UIWebView alloc]init];
+            [callWebview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"tel:10010"]]];
+            [[UIApplication sharedApplication].keyWindow addSubview:callWebview];
+
         } forControlEvents:(UIControlEventTouchUpInside)];
         return cell;
     }
