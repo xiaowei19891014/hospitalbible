@@ -6,8 +6,7 @@
 //  Copyright © 2017年 com.hao. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-
-@interface SickCallViewController : UIViewController
+#import "BaseViewController.h"
+@interface SickCallViewController : BaseViewController
 
 @end

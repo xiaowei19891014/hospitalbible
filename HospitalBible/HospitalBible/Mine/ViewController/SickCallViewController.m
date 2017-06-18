@@ -8,8 +8,8 @@
 
 #import "SickCallViewController.h"
 #import "SickCallTableViewCell.h"
-
-
+#import "UserInfoModel.h"
+#import "AddSickViewController.h"
 @interface SickCallHeadView : UIView
 @property (nonatomic,strong)UILabel *tipsLabel;
 @end
@@ -54,17 +54,43 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    self.automaticallyAdjustsScrollViewInsets = NO;
     self.navigationItem.title = @"就诊人列表";
     [self initTableView];
+    [self configRightItemWithType:@"添加就诊人"];
+    [self startRequestData];
+    
+}
+
+-(void)startRequestData{
+
+    NSDictionary *params = @{
+                             @"userId":[UserInfoShareClass sharedManager].userId
+                             };
+    [[ERHNetWorkTool sharedManager] requestDataWithUrl:PATIENT_LIST params:params success:^(NSDictionary *responseObject) {
+        
+//        [UserInfoModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
+
+    } failure:^(NSError *error) {
+    }];
+
+}
+
+-(void)rightAction:(UIButton *)sender{
+    
+    AddSickViewController* vc= [[AddSickViewController alloc] init];
+    
+    [self.navigationController pushViewController:vc animated:YES];
+
+
 }
 - (void)initTableView
 {
-    UITableView *tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - 64)];
+    UITableView *tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT - 64)];
     tableview.delegate = self;
     tableview.dataSource = self;
-    SickCallHeadView *headView = [[SickCallHeadView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 50)];
-    tableview.tableHeaderView = headView;
+//    SickCallHeadView *headView = [[SickCallHeadView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 50)];
+//    tableview.tableHeaderView = headView;
     tableview.tableFooterView = [[UIView alloc]init];
     [self.view addSubview:tableview];
     self.tableview = tableview;
@@ -91,6 +117,24 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
+}
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return YES;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return @"删除";
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    // 从数据源中删除
+//    [_data removeObjectAtIndex:indexPath.row];
+//    // 从列表中删除
+//    [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
 }
 
 - (void)didReceiveMemoryWarning {

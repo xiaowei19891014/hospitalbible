@@ -10,4 +10,16 @@
 
 @interface UserInfoSexCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UIButton *manBtn;
+
+@property (weak, nonatomic) IBOutlet UIButton *womanBtn;
+
+@property (weak, nonatomic) IBOutlet UIButton *otherBtn;
+
+
+- (IBAction)selectAction:(UIButton *)sender;
+
+@property(copy,nonatomic) void ( ^selectSexBlock)(NSInteger tag);
+
+
 @end

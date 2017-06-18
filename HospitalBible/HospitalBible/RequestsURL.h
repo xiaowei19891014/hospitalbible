@@ -25,10 +25,8 @@
 #define DISEASEQUEASETION_HISTORY_LIST [NSString stringWithFormat:@"%@%@",kURL,@"/api/chr/result/list"]
 
 //我的信息
-#define USER_INFO [NSString stringWithFormat:@"%@%@",kURL,@"/api/chr/user/userid"]
+#define USER_INFO [NSString stringWithFormat:@"%@%@",kURL,@"/api/chr/user/user/id"]
 
-//我的患者
-#define PATIENT_LIST  [NSString stringWithFormat:@"%@%@",kURL,@"/api/chr/patient/list"]
 //添加反馈
 #define FEEDBACK_SAVE  [NSString stringWithFormat:@"%@%@",kURL,@"/api/chr/feedback/save"]
 //查看所有反馈
