@@ -45,7 +45,7 @@
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oLH-qx-aRi">
-                    <rect key="frame" x="127" y="181" width="120" height="44"/>
+                    <rect key="frame" x="127" y="159" width="120" height="44"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="44" id="6Dh-Jm-pxI"/>
                         <constraint firstAttribute="width" constant="120" id="arc-Qu-qKN"/>
@@ -64,7 +64,7 @@
                 <constraint firstItem="KuR-G1-DW3" firstAttribute="leading" secondItem="fuV-OX-Ibg" secondAttribute="leading" constant="20" id="fkY-LK-bb2"/>
                 <constraint firstItem="oLH-qx-aRi" firstAttribute="centerX" secondItem="fuV-OX-Ibg" secondAttribute="centerX" id="qLU-V4-VW7"/>
                 <constraint firstItem="t6p-Qx-NXM" firstAttribute="leading" secondItem="fuV-OX-Ibg" secondAttribute="leading" constant="20" id="rwP-nP-0yC"/>
-                <constraint firstItem="oLH-qx-aRi" firstAttribute="top" secondItem="KuR-G1-DW3" secondAttribute="bottom" constant="42" id="xpW-9J-kO1"/>
+                <constraint firstItem="oLH-qx-aRi" firstAttribute="top" secondItem="KuR-G1-DW3" secondAttribute="bottom" constant="20" id="xpW-9J-kO1"/>
                 <constraint firstItem="KuR-G1-DW3" firstAttribute="top" secondItem="t6p-Qx-NXM" secondAttribute="bottom" constant="8" id="yMW-JP-nyB"/>
                 <constraint firstItem="t6p-Qx-NXM" firstAttribute="top" secondItem="fuV-OX-Ibg" secondAttribute="top" constant="10" id="yiV-0f-LQg"/>
             </constraints>

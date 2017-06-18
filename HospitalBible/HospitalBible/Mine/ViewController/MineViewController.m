@@ -280,9 +280,15 @@
                 return;
             }else if(indexPath.row == 6){
                 
-               NSString* str=[[NSMutableString alloc] initWithFormat:@"tel:%@",@"10010"];
-                // NSLog(@"str======%@",str);
-                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
+                UIWebView * callWebview = [[UIWebView alloc]init];
+                
+                [callWebview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"tel:10010"]]];
+                
+                [[UIApplication sharedApplication].keyWindow addSubview:callWebview];
+                
+//               NSString* str=[[NSMutableString alloc] initWithFormat:@"tel:%@",@"10010"];
+//                // NSLog(@"str======%@",str);
+//                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
             }
     }
 }

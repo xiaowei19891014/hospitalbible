@@ -50,9 +50,10 @@
         [self hideLoadingHUD];
         if ([responseObject[@"flag"] isEqualToString:@"false"]) {
             _isConllect = NO;
+            _collectImgView.image = [UIImage imageNamed:@"soucang_icon"];
         }else{
             _isConllect = YES;
-
+            _collectImgView.image = [UIImage imageNamed:@"yisoucang_icon"];
         }
         
     } failure:^(NSError *error) {
@@ -73,6 +74,7 @@
         if ([responseObject[@"code"] isEqualToString:@"YYT-007"]) {
             _isConllect = YES;
             [self showErrorMessage:@"收藏成功"];
+            _collectImgView.image = [UIImage imageNamed:@"yisoucang_icon"];
         }
         [self hideLoadingHUD];
     } failure:^(NSError *error) {
@@ -94,6 +96,7 @@
         if ([responseObject[@"code"] isEqualToString:@"YYT-006"]) {
             _isConllect = NO;
             [self showErrorMessage:@"取消收藏成功"];
+            _collectImgView.image = [UIImage imageNamed:@"soucang_icon"];
 
         }
         [self hideLoadingHUD];
