@@ -35,54 +35,6 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "HospitalBible/MircroClass/ViewController/MircoClassDetailViewController.m"
-            timestampString = "519458960.941176"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "33"
-            endingLineNumber = "33"
-            landmarkName = "-viewDidLoad"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "HospitalBible/MircroClass/ViewController/MircoClassDetailViewController.m"
-            timestampString = "519460364.73507"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "94"
-            endingLineNumber = "94"
-            landmarkName = "-canceCollectRequest"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "HospitalBible/MircroClass/ViewController/MircoClassDetailViewController.m"
-            timestampString = "519459071.185095"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "73"
-            endingLineNumber = "73"
-            landmarkName = "-collectRequest"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "HospitalBible/Mine/ViewController/AddSickViewController.m"
             timestampString = "519472796.61547"
             startingColumnNumber = "9223372036854775807"
@@ -100,7 +52,7 @@
                   moduleName = "HospitalBible"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/issuser/Documents/myProject/hospitalbible/HospitalBible/HospitalBible/Mine/ViewController/AddSickViewController.m"
-                  timestampString = "519472805.16247"
+                  timestampString = "519485460.842204"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "225"
@@ -115,7 +67,7 @@
                   moduleName = "HospitalBible"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/issuser/Documents/myProject/hospitalbible/HospitalBible/HospitalBible/Mine/ViewController/AddSickViewController.m"
-                  timestampString = "519472805.163985"
+                  timestampString = "519485460.843932"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "226"
