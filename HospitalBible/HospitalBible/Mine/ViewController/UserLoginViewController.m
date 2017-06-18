@@ -53,6 +53,7 @@
     [UserInfoViewModel  userLognWithUserName:_userNameTF.text password:_passWordTF.text successHandler:^(id result) {
         [self hideLoadingHUD];
         [CacheMethod userDefaultSetValue:result[@"userId"] forKey:@"userId"];
+        [UserInfoShareClass sharedManager].userId = result[@"userId"];
         [[NSNotificationCenter defaultCenter] postNotificationName:USERLOGING object:nil];
         if (self.loginSuccessBlock) {
             self.loginSuccessBlock();

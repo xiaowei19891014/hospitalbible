@@ -22,7 +22,7 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="15000410210" placeholder="用户名" textAlignment="natural" minimumFontSize="17" background="Textbox_bg" translatesAutoresizingMaskIntoConstraints="NO" id="eJJ-NQ-nvS">
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="用户名" textAlignment="natural" minimumFontSize="17" background="Textbox_bg" translatesAutoresizingMaskIntoConstraints="NO" id="eJJ-NQ-nvS">
                     <rect key="frame" x="37.5" y="237" width="300" height="42"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="300" id="1Gc-T1-hWy"/>

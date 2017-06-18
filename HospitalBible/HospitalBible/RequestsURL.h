@@ -22,7 +22,7 @@
 #define DISEASEQUEASETION_LIST [NSString stringWithFormat:@"%@%@",kURL,@"/api/chr/diseasequestion/list"]
 
 //我的信息
-#define USER_INFO [NSString stringWithFormat:@"%@%@",kURL,@"/api/chr/user/user/id"]
+#define USER_INFO [NSString stringWithFormat:@"%@%@",kURL,@"/api/chr/user/userid"]
 
 //我的患者
 #define PATIENT_LIST  [NSString stringWithFormat:@"%@%@",kURL,@"/api/chr/patient/list"]
