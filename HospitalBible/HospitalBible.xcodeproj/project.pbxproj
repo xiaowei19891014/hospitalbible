@@ -2446,7 +2446,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: BANK OF CHINA LIMITED";
 				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2472,9 +2472,10 @@
 					"$(PROJECT_DIR)/HospitalBible/Lib/UMSocial/UMSocialSDKPlugin",
 				);
 				OTHER_LIBTOOLFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = com.kz.HospitalBible;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bocop.yironghui;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "e4738ec9-1065-42f0-8d00-cd3418d42a13";
+				PROVISIONING_PROFILE_SPECIFIER = erh;
 			};
 			name = Debug;
 		};
@@ -2482,6 +2483,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: BANK OF CHINA LIMITED";
 				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2506,9 +2508,10 @@
 					"$(PROJECT_DIR)/HospitalBible/Lib/UMSocial/UMSocialSDKPlugin",
 				);
 				OTHER_LIBTOOLFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = com.kz.HospitalBible;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bocop.yironghui;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "e4738ec9-1065-42f0-8d00-cd3418d42a13";
+				PROVISIONING_PROFILE_SPECIFIER = erh;
 			};
 			name = Release;
 		};
