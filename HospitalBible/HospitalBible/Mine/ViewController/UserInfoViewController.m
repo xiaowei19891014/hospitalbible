@@ -24,6 +24,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.title = @"个人信息";
     self.dataSources = getUserInfpTitleList();
     [UserInfoViewModel requestUserInfoWithUserId:[UserInfoShareClass sharedManager].userId successHandler:^(id result) {
         _infoArr =(NSArray*)result;
@@ -31,12 +32,13 @@
     } errorHandler:^(NSError *error) {
     
     }];
+    self.automaticallyAdjustsScrollViewInsets = NO;
     [self initTableView];
 }
 
 - (void)initTableView
 {
-    UITableView *tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - 64)];
+    UITableView *tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT - 64)];
     tableview.delegate = self;
     tableview.dataSource = self;
     [self.view addSubview:tableview];

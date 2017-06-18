@@ -70,7 +70,10 @@
 
                              };
     [[ERHNetWorkTool sharedManager] requestDataWithUrl:COLLECTION_DISCOVER params:params success:^(id responseObject) {
-        
+        if ([responseObject[@"code"] isEqualToString:@"YYT-007"]) {
+            _isConllect = YES;
+            [self showErrorMessage:@"收藏成功"];
+        }
         [self hideLoadingHUD];
     } failure:^(NSError *error) {
         [self hideLoadingHUD];
@@ -88,7 +91,11 @@
 
                              };
     [[ERHNetWorkTool sharedManager] requestDataWithUrl:COLLECTION_DELETE params:params success:^(id responseObject) {
-        
+        if ([responseObject[@"code"] isEqualToString:@"YYT-006"]) {
+            _isConllect = NO;
+            [self showErrorMessage:@"取消收藏成功"];
+
+        }
         [self hideLoadingHUD];
     } failure:^(NSError *error) {
         [self hideLoadingHUD];
