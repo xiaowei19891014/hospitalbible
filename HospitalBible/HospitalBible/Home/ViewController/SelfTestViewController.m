@@ -50,12 +50,12 @@
         
     }];
     
-    [HomeViewModel requestDiseasequestionListWithClassId:@"2" successHandler:^(id result) {
-        self.dataSources = result;
-        [self.collectionView reloadData];
-    } errorHandler:^(NSError *error) {
-        
-    }];
+//    [HomeViewModel requestDiseasequestionListWithClassId:@"2" successHandler:^(id result) {
+//        self.dataSources = result;
+//        [self.collectionView reloadData];
+//    } errorHandler:^(NSError *error) {
+//        
+//    }];
 
 }
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section

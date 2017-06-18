@@ -197,8 +197,9 @@
         }
         
     }else{
-    
+//        cell.textLabel.frame = CGRectMake(0, 0,SCREEN_WIDTH , cell.height);
         cell.textLabel.text = @"退出登录";
+//        cell.textLabel.textAlignment = NSTextAlignmentCenter;
     }
 
     

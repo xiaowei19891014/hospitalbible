@@ -9,25 +9,29 @@
 #import <Foundation/Foundation.h>
 
 @interface DiseaseQuestionChoiceModel : NSObject
-@property(nonatomic,strong) NSString *fIndex;
-@property(nonatomic,strong) NSString *fContext;
-@property(nonatomic,strong) NSString *fWeight;
+@property(nonatomic,copy) NSString *fIndex;
+@property(nonatomic,copy) NSString *fContext;
+@property(nonatomic,copy) NSString *fWeight;
 @end
 
 @interface DiseaseQuestionModel : NSObject
-@property(nonatomic,strong) NSString *qindex;
-@property(nonatomic,strong) NSString *img;
-@property(nonatomic,strong) NSString *id;
-@property(nonatomic,strong) NSString *classid;
-@property(nonatomic,strong) NSString *title;
-@property(nonatomic,strong) NSString *qtype;
-@property(nonatomic,strong) NSString *effective;
-@property(nonatomic,strong) NSString *sort;
-@property(nonatomic,strong) NSArray *choiceList;
+@property(nonatomic,copy) NSString *choices;
+@property(nonatomic,copy) NSString *classid;
+@property(nonatomic,copy) NSString *effective;
+@property(nonatomic,copy) NSString *id;
+@property(nonatomic,copy) NSString *img;
+@property(nonatomic,copy) NSString *qindex;
+@property(nonatomic,copy) NSString *qtype;
+@property(nonatomic,copy) NSString *sort;
+@property(nonatomic,copy) NSString *target;
+@property(nonatomic,copy) NSString *title;
+@property(nonatomic,strong)NSMutableArray *choiceList;
+
 @end
 
 @interface DiseaseQuestionClass : NSObject
-@property(nonatomic,strong) NSString *id;
-@property(nonatomic,strong) NSString *pname;
-@property(nonatomic,strong) NSString *pdescribe;
+@property(nonatomic,copy) NSString *id;
+@property(nonatomic,copy) NSString *pname;
+@property(nonatomic,copy) NSString *pdescribe;
+@property(nonatomic,strong)NSMutableArray *diseasequestionArr;
 @end
