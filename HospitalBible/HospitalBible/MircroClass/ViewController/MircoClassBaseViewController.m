@@ -32,7 +32,7 @@
 
 - (void)initTableView
 {
-    UITableView *tableview = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - 64-49-44)];
+    UITableView *tableview = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-49-44)];
     tableview.delegate = self;
     tableview.dataSource = self;
     tableview.rowHeight = 94;

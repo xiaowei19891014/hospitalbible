@@ -16,12 +16,15 @@
 #import "UIControl+BlocksKit.h"
 #import "FeedbackViewController.h"
 #import "HomeViewModel.h"
+#import "DiseaseQuestionModel.h"
+
 @interface HomeViewController () <SDCycleScrollViewDelegate, UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) UITableView *tableview;
 @property (nonatomic, strong) NSMutableArray *dataSources;
 @property (nonatomic, strong) SDCycleScrollView *cycleScrollView;
 
 @property (nonatomic, strong) NSMutableArray *asthmaArr; // 哮喘病数组
+@property (nonatomic, strong) HomeViewModel *viewModel;
 
 @end
 
@@ -38,6 +41,7 @@
 {
     [super viewDidLoad];
     _asthmaArr = [[NSMutableArray alloc]init];
+    self.viewModel = [[HomeViewModel alloc] init];
 
     [self initTableView];
     [self initCycleScrollView];
@@ -58,8 +62,10 @@
     }];
     
     
-    [HomeViewModel requestDiseasequestionListWithClassId:@"2" successHandler:^(id result) {
+    [HomeViewModel requestDiseasequestionListWithClassId:@"0" successHandler:^(id result) {
         NSLog(@"%@",result);
+        self.viewModel.listArr = result;
+        [self reloadDiseasequestionList];
     } errorHandler:^(NSError *error) {
         NSLog(@"%@",error);
     }];
@@ -69,9 +75,8 @@
     } errorHandler:^(NSError *error) {
         NSLog(@"%@",error);
     }];
-
-    
 }
+
 - (void)initNav
 {
     UIBarButtonItem *scanBarButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"scan_icon.png"] style:(UIBarButtonItemStyleDone) target:self action:@selector(clickScanAction:)];
@@ -85,7 +90,7 @@
 }
 - (void)initTableView
 {
-    UITableView *tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - 64)];
+    UITableView *tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
     tableview.delegate = self;
     tableview.dataSource = self;
     [tableview registerNib:[UINib nibWithNibName:@"CateGoryCell" bundle:nil] forCellReuseIdentifier:@"CateGoryCell"];
@@ -107,6 +112,18 @@
     self.tableview.tableHeaderView = cycleScrollView2;
     self.tableview.tableFooterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 0)];
 }
+
+//题库赋值
+- (void)reloadDiseasequestionList
+{
+    if (self.viewModel.listArr) {
+//        DiseaseQuestionClass *model =
+        
+        
+        
+    }
+}
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row == 0) {
@@ -136,8 +153,6 @@
         [cell.feedbackButton bk_addEventHandler:^(id  _Nonnull sender) {
             FeedbackViewController *vc = [[FeedbackViewController alloc] initWithNibName:@"FeedbackViewController" bundle:nil];
             [self.navigationController pushViewController:vc animated:NO];
-            
-            
         } forControlEvents:(UIControlEventTouchUpInside)];
         return cell;
     }
@@ -150,6 +165,7 @@
         [cell creatTheUIWithDate:_asthmaArr];
         [cell setClickAction:^{
             QuestionBankViewController *vc = [[QuestionBankViewController alloc] init];
+            vc.dataSources = self.viewModel.listArr;
             [self.navigationController pushViewController:vc animated:YES];
         }];
         return cell;

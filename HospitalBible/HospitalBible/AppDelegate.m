@@ -30,12 +30,12 @@
     
     //友盟继承
     /* 打开调试日志 */
-    [[UMSocialManager defaultManager] openLog:YES];
+//    [[UMSocialManager defaultManager] openLog:YES];
+//    
+//    /* 设置友盟appkey */
+//    [[UMSocialManager defaultManager] setUmSocialAppkey:USHARE_DEMO_APPKEY];
     
-    /* 设置友盟appkey */
-    [[UMSocialManager defaultManager] setUmSocialAppkey:USHARE_DEMO_APPKEY];
-    
-    [self configUSharePlatforms];
+//    [self configUSharePlatforms];
     return YES;
 }
 

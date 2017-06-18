@@ -9,6 +9,16 @@
 #import "HomeViewModel.h"
 #import "UserInfoModel.h"
 @implementation HomeViewModel
+
+- (NSMutableArray *)listArr
+{
+    if (!_listArr) {
+        _listArr = [NSMutableArray arrayWithCapacity:0];
+    }
+    return _listArr;
+}
+
+
 + (void)requestAdvertisementListSuccessHandler:(SuccessCallBack)successHandler
           errorHandler:(ErrorCallBack)errorHandler
 {
@@ -44,25 +54,38 @@
                              @"classid":classid
                              };
     [[ERHNetWorkTool sharedManager] requestDataWithUrl:DISEASEQUEASETION_LIST params:params success:^(id responseObject) {
-        if (successHandler) {
             
-            NSArray *list = responseObject;
-            NSMutableArray *getList = [NSMutableArray array];
-            //遍历数组
-            for (int i = 0; i<list.count; i++) {
-                NSDictionary *dic = list[i];
-                DiseaseQuestionModel *model = [DiseaseQuestionModel mj_objectWithKeyValues:dic];
-
-                NSDictionary *dic1 = [self dictionaryWithJsonString:dic[@"choices"]];
-                NSArray *list2 = dic1[@"cont"];
-                NSLog(@"%@",list2);
-                NSArray *choiceList = [DiseaseQuestionChoiceModel mj_objectArrayWithKeyValuesArray:list2];
-                model.choiceList = choiceList;
-                [getList addObject:model];
-            }
-            
-            successHandler(getList);
+        NSArray *diseasequestionArr = responseObject[@"diseasequestion"];
+        NSMutableArray *arr = [NSMutableArray arrayWithCapacity:0];
+        if (diseasequestionArr.count) {
+            [diseasequestionArr enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+               
+                NSDictionary *dict = (NSDictionary *)obj;
+                DiseaseQuestionClass *DiseaseQuestion = [DiseaseQuestionClass mj_objectWithKeyValues:dict];
+                NSArray *array = dict[@"diseasequestion"];
+                DiseaseQuestion.diseasequestionArr = [NSMutableArray arrayWithCapacity:0];
+                
+                [array enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                    NSDictionary *tempDict = (NSDictionary *)obj;
+                    DiseaseQuestionModel *model = [DiseaseQuestionModel mj_objectWithKeyValues:tempDict];
+                    model.choiceList = [NSMutableArray arrayWithCapacity:0];
+                    NSArray *tempArr = tempDict[@"choice"];
+                    [tempArr enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                        NSDictionary *temp = (NSDictionary *)obj;
+                        DiseaseQuestionChoiceModel *diseaseQuestionChoiceModel = [DiseaseQuestionChoiceModel mj_objectWithKeyValues:temp];
+                        [model.choiceList addObject:diseaseQuestionChoiceModel];
+                    }];
+                    [DiseaseQuestion.diseasequestionArr addObject:model];
+                }];
+                
+                [arr addObject:DiseaseQuestion];
+            }];
         }
+             
+        if (successHandler) {
+            successHandler(arr);
+        }
+             
     } failure:^(NSError *error) {
         if (errorHandler) {
             errorHandler(error);

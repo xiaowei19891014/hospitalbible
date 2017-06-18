@@ -10,4 +10,6 @@
 
 @interface QuestionBankViewController : BaseViewController
 
+@property(nonatomic,strong) NSMutableArray *dataSources;
+
 @end

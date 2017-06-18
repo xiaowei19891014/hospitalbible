@@ -14,7 +14,7 @@
 #import "HomeViewModel.h"
 @interface QuestionBankViewController ()<UICollectionViewDelegate,UICollectionViewDataSource>
 @property (nonatomic, strong) UICollectionView *collectionView;
-@property(nonatomic,strong) NSMutableArray *dataSources;
+
 @end
 
 @implementation QuestionBankViewController
@@ -22,16 +22,20 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.title = @"自检答题";
+    self.title = @"题库";
     self.view.backgroundColor = [UIColor whiteColor];
     [self initCollectionView];
     
-    [HomeViewModel requestDiseasequestionListWithClassId:@"0" successHandler:^(id result) {
-        self.dataSources = result;
+    if (!self.dataSources.count) {
+        [HomeViewModel requestDiseasequestionListWithClassId:@"0" successHandler:^(id result) {
+            self.dataSources = result;
+            [self.collectionView reloadData];
+        } errorHandler:^(NSError *error) {
+            
+        }];
+    }else{
         [self.collectionView reloadData];
-    } errorHandler:^(NSError *error) {
-        
-    }];
+    }
 }
 
 -(void)initCollectionView{
@@ -59,9 +63,9 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    DiseaseQuestionModel *model = self.dataSources[indexPath.row];
+    DiseaseQuestionClass *model = self.dataSources[indexPath.row];
     QuestionBankCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"QuestionBankCell" forIndexPath:indexPath];
-    cell.titleLabel.text = model.title;
+    cell.titleLabel.text = model.pname;
     [cell.selfTestButton bk_addEventHandler:^(id  _Nonnull sender) {
         SelfTestViewController *testVC = [[SelfTestViewController alloc] init];
         [self.navigationController pushViewController:testVC animated:YES];
@@ -73,8 +77,6 @@
         [self.navigationController pushViewController:historyVC animated:NO];
     
     } forControlEvents:(UIControlEventTouchUpInside)];
-    
-    
     return cell;
 }
 -(NSMutableArray *)dataSources{
