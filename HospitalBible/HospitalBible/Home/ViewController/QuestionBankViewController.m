@@ -38,11 +38,13 @@
     [self initCollectionView];
     
     if (!self.dataSources.count) {
+        [self showLoadingHUD];
         [HomeViewModel requestDiseasequestionListWithClassId:@"0" successHandler:^(id result) {
+            [self hideLoadingHUD];
             self.dataSources = result;
             [self.collectionView reloadData];
         } errorHandler:^(NSError *error) {
-            
+            [self hideLoadingHUD];
         }];
     }else{
         [self.collectionView reloadData];
@@ -77,7 +79,9 @@
     DiseaseQuestionClass *model = self.dataSources[indexPath.row];
     QuestionBankCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"QuestionBankCell" forIndexPath:indexPath];
     cell.titleLabel.text = model.pname;
-    cell.imagePicView.image = [UIImage imageNamed:self.placeImageArr[indexPath.item]];
+    if (indexPath.row < self.placeImageArr.count) {
+        cell.imagePicView.image = [UIImage imageNamed:self.placeImageArr[indexPath.item]];
+    }
     [cell.selfTestButton bk_addEventHandler:^(id  _Nonnull sender) {
         SelfTestViewController *testVC = [[SelfTestViewController alloc] init];
         [self.navigationController pushViewController:testVC animated:YES];
