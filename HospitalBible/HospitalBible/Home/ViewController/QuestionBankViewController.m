@@ -33,7 +33,7 @@
                            [UIImage imageNamed:@"bitmap_05"],
                            [UIImage imageNamed:@"bitmap_06"],
                            [UIImage imageNamed:@"bitmap_07"],
-                           [UIImage imageNamed:@"bitmap_08"],];
+                           [UIImage imageNamed:@"bitmap_08"]];
     
     [self initCollectionView];
     
@@ -80,7 +80,7 @@
     QuestionBankCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"QuestionBankCell" forIndexPath:indexPath];
     cell.titleLabel.text = model.pname;
     if (indexPath.row < self.placeImageArr.count) {
-        cell.imagePicView.image = [UIImage imageNamed:self.placeImageArr[indexPath.item]];
+        cell.imagePicView.image = self.placeImageArr[indexPath.item];
     }
     [cell.selfTestButton bk_addEventHandler:^(id  _Nonnull sender) {
         SelfTestViewController *testVC = [[SelfTestViewController alloc] init];
