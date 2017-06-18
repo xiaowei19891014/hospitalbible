@@ -13,6 +13,8 @@
 #import "UserInfoModel.h"
 #import "UserInfoViewModel.h"
 #import "UserInfoShareClass.h"
+#import "UserTableViewCell.h"
+
 @interface UserInfoViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) UITableView *tableview;
 @property (nonatomic, strong) NSArray *dataSources;
@@ -34,11 +36,23 @@
     }];
     self.automaticallyAdjustsScrollViewInsets = NO;
     [self initTableView];
+    [self configRightItemWithType:@"编辑"];
+}
+
+-(void)rightAction:(UIButton *)sender{
+
+    if ([sender.titleLabel.text isEqualToString:@"编辑"]) {
+        [sender setTitle:@"保存" forState:UIControlStateNormal];
+    }
+    if ([sender.titleLabel.text isEqualToString:@"保存"]) {
+        [sender setTitle:@"编辑" forState:UIControlStateNormal];
+
+    }
 }
 
 - (void)initTableView
 {
-    UITableView *tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
+    UITableView *tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT-64)];
     tableview.delegate = self;
     tableview.dataSource = self;
     [self.view addSubview:tableview];
@@ -47,6 +61,8 @@
     [_tableview registerNib:[UINib nibWithNibName:@"UserInfoDocumentTypeCell" bundle:nil] forCellReuseIdentifier:@"UserInfoDocumentTypeCell"];
     
     [_tableview registerNib:[UINib nibWithNibName:@"UserInfoSexCell" bundle:nil] forCellReuseIdentifier:@"UserInfoSexCell"];
+    [_tableview registerNib:[UINib nibWithNibName:@"UserTableViewCell" bundle:nil] forCellReuseIdentifier:@"UserTableViewCell"];
+    self.tableview.tableFooterView = [[UIView alloc]initWithFrame:CGRectZero];
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -64,7 +80,7 @@
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *ID = @"setting1";
+//    static NSString *ID = @"setting1";
     if (indexPath.row ==0) {
         UserInfoHeadTableViewCell *cell =  [tableView dequeueReusableCellWithIdentifier:@"UserInfoHeadTableViewCell"];
         return cell;
@@ -80,15 +96,10 @@
 
     }
     else{
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:ID];
-    }
-    cell.textLabel.text = self.dataSources[indexPath.row];
-    cell.detailTextLabel.text = _infoArr[indexPath.row];
-    cell.textLabel.textColor = [UIColor darkGrayColor];
-    cell.detailTextLabel.textAlignment = NSTextAlignmentRight;
-    cell.accessoryType =UITableViewCellAccessoryNone;// UITableViewCellAccessoryDisclosureIndicator;
+    UserTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UserTableViewCell"];
+
+    cell.titleLab.text = self.dataSources[indexPath.row];
+    cell.myTextField.text = _infoArr[indexPath.row];
     return cell;
     }
 }

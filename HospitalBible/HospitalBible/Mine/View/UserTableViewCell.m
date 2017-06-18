@@ -1,14 +1,14 @@
 //
-//  UserInfoSexCell.m
+//  UserTableViewCell.m
 //  HospitalBible
 //
-//  Created by 边瑞康 on 2017/5/24.
+//  Created by xiaowei on 2017/6/18.
 //  Copyright © 2017年 com.hao. All rights reserved.
 //
 
-#import "UserInfoSexCell.h"
+#import "UserTableViewCell.h"
 
-@implementation UserInfoSexCell
+@implementation UserTableViewCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
@@ -21,13 +21,4 @@
     // Configure the view for the selected state
 }
 
-- (IBAction)selectAction:(UIButton *)sender {
-    _manBtn.selected = NO;
-    _womanBtn.selected = NO;
-    sender.selected = YES;
-    
-    if (self.selectSexBlock) {
-        self.selectSexBlock(sender.tag);
-    }
-}
 @end

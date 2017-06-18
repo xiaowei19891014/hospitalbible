@@ -6,8 +6,11 @@
 //  Copyright © 2017年 com.hao. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-
-@interface AddSickViewController : UIViewController
+#import "BaseViewController.h"
+@interface AddSickViewController : BaseViewController
+@property (weak, nonatomic) IBOutlet UIView *footview;
+@property (weak, nonatomic) IBOutlet UIButton *saveBtn;
+- (IBAction)saveAction:(id)sender;
+@property (weak, nonatomic) IBOutlet UITextView *myTextView;
 
 @end

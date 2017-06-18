@@ -14,4 +14,6 @@
 -(void)showErrorMessage:(NSString*)message;
 -(void)showLoadingHUD;
 -(void)hideLoadingHUD;
+- (void)configRightItemWithType:(NSString *) buttonType;
+- (void)rightAction:(UIButton *)sender;
 @end

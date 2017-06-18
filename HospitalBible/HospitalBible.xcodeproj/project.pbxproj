@@ -53,6 +53,9 @@
 		6596CB781EF6122400B6219E /* AboutAppViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6596CB761EF6122400B6219E /* AboutAppViewController.m */; };
 		6596CB791EF6122400B6219E /* AboutAppViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6596CB771EF6122400B6219E /* AboutAppViewController.xib */; };
 		6596CB7D1EF6314000B6219E /* UIView+Action.m in Sources */ = {isa = PBXBuildFile; fileRef = 6596CB7C1EF6314000B6219E /* UIView+Action.m */; };
+		6596CB811EF6651100B6219E /* UserTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6596CB7F1EF6651100B6219E /* UserTableViewCell.m */; };
+		6596CB821EF6651100B6219E /* UserTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6596CB801EF6651100B6219E /* UserTableViewCell.xib */; };
+		6596CB841EF67A8E00B6219E /* AddSickViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6596CB831EF67A8E00B6219E /* AddSickViewController.xib */; };
 		930BAEDF1ED716CD0026AFFC /* AddSickViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 930BAEDE1ED716CD0026AFFC /* AddSickViewModel.m */; };
 		933710071EC9CA4A00EB0EC3 /* UserLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 933710051EC9CA4A00EB0EC3 /* UserLoginViewController.m */; };
 		933710081EC9CA4A00EB0EC3 /* UserLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 933710061EC9CA4A00EB0EC3 /* UserLoginViewController.xib */; };
@@ -364,6 +367,10 @@
 		6596CB771EF6122400B6219E /* AboutAppViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutAppViewController.xib; sourceTree = "<group>"; };
 		6596CB7B1EF6314000B6219E /* UIView+Action.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Action.h"; sourceTree = "<group>"; };
 		6596CB7C1EF6314000B6219E /* UIView+Action.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Action.m"; sourceTree = "<group>"; };
+		6596CB7E1EF6651100B6219E /* UserTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserTableViewCell.h; sourceTree = "<group>"; };
+		6596CB7F1EF6651100B6219E /* UserTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserTableViewCell.m; sourceTree = "<group>"; };
+		6596CB801EF6651100B6219E /* UserTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserTableViewCell.xib; sourceTree = "<group>"; };
+		6596CB831EF67A8E00B6219E /* AddSickViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddSickViewController.xib; sourceTree = "<group>"; };
 		930BAEDD1ED716CD0026AFFC /* AddSickViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddSickViewModel.h; path = HospitalBible/Mine/AddSickViewModel.h; sourceTree = SOURCE_ROOT; };
 		930BAEDE1ED716CD0026AFFC /* AddSickViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddSickViewModel.m; path = HospitalBible/Mine/AddSickViewModel.m; sourceTree = SOURCE_ROOT; };
 		933710041EC9CA4A00EB0EC3 /* UserLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserLoginViewController.h; sourceTree = "<group>"; };
@@ -1438,6 +1445,9 @@
 				9346B0A81ED5C1DD00A83E88 /* UserInfoSexCell.h */,
 				9346B0A91ED5C1DD00A83E88 /* UserInfoSexCell.m */,
 				9346B0AA1ED5C1DD00A83E88 /* UserInfoSexCell.xib */,
+				6596CB7E1EF6651100B6219E /* UserTableViewCell.h */,
+				6596CB7F1EF6651100B6219E /* UserTableViewCell.m */,
+				6596CB801EF6651100B6219E /* UserTableViewCell.xib */,
 				9346B0AD1ED7105500A83E88 /* SickCallTableViewCell.h */,
 				9346B0AE1ED7105500A83E88 /* SickCallTableViewCell.m */,
 				9346B0AF1ED7105500A83E88 /* SickCallTableViewCell.xib */,
@@ -1471,6 +1481,7 @@
 				9346B0B91ED7108700A83E88 /* SickCallViewController.m */,
 				9346B0BA1ED7108700A83E88 /* AddSickViewController.h */,
 				9346B0BB1ED7108700A83E88 /* AddSickViewController.m */,
+				6596CB831EF67A8E00B6219E /* AddSickViewController.xib */,
 				6550399D1EF509DA00D22A4B /* SettingPassWordViewController.h */,
 				6550399E1EF509DA00D22A4B /* SettingPassWordViewController.m */,
 				6550399F1EF509DA00D22A4B /* SettingPassWordViewController.xib */,
@@ -2068,6 +2079,7 @@
 				655039A11EF509DA00D22A4B /* SettingPassWordViewController.xib in Resources */,
 				933710101EC9D99000EB0EC3 /* AppointmentRemindTipsTableViewCell.xib in Resources */,
 				93B9DEAD1EE41592005FE2E2 /* UserRegisterViewController.xib in Resources */,
+				6596CB821EF6651100B6219E /* UserTableViewCell.xib in Resources */,
 				9B05EBB01ECC6E8C00F8070B /* Info.plist in Resources */,
 				9B05EB2C1EC8987A00F8070B /* scan_icon.png in Resources */,
 				936A82071ED485E500484D94 /* RemindDetailTableViewCell.xib in Resources */,
@@ -2082,6 +2094,7 @@
 				9B05EAC61EC7FB1700F8070B /* AppointmentReminderCell.xib in Resources */,
 				9B05EBE21ECC717300F8070B /* SubmitTaskView.xib in Resources */,
 				6596CB701EF5343500B6219E /* MJRefresh.bundle in Resources */,
+				6596CB841EF67A8E00B6219E /* AddSickViewController.xib in Resources */,
 				9B05EAFF1EC8720500F8070B /* UMSocialSDKResources.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2194,6 +2207,7 @@
 				9B05EB221EC8955900F8070B /* UIWindow+LGAlertView.m in Sources */,
 				9B05EBAB1ECC6E8C00F8070B /* A2DynamicDelegate.m in Sources */,
 				9B59E7C51ED84B4C004390A4 /* LoadingHUDView.m in Sources */,
+				6596CB811EF6651100B6219E /* UserTableViewCell.m in Sources */,
 				9337100B1EC9D91700EB0EC3 /* AppointmentRemindTipsViewController.m in Sources */,
 				9B13BC621EE3DCAC004C285E /* ERHLogin.m in Sources */,
 				9BB359701ECFCE6100323C92 /* WMScrollView.m in Sources */,
