@@ -26,7 +26,7 @@
     self.view.backgroundColor = [UIColor whiteColor];
     [self initCollectionView];
     
-    [HomeViewModel requestDiseasequestionListWithClassId:@"2" successHandler:^(id result) {
+    [HomeViewModel requestDiseasequestionListWithClassId:@"0" successHandler:^(id result) {
         self.dataSources = result;
         [self.collectionView reloadData];
     } errorHandler:^(NSError *error) {

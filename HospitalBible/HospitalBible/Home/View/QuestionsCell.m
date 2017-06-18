@@ -20,6 +20,14 @@
     self.bgView.layer.cornerRadius = 5;
     self.bgView.layer.masksToBounds = YES;
 }
+
+- (IBAction)btnAction:(id)sender {
+    if (self.clickAction) {
+        self.clickAction();
+    }
+}
+
+
 -(void)setSelected:(BOOL)selected animated:(BOOL)animated{
 }
 -(void)setHighlighted:(BOOL)highlighted animated:(BOOL)animated{
@@ -42,8 +50,6 @@
     _questionThree.BtnTitle = dic3[@"pdescribe"];
     _questionThree.imgurl = dic3[@"imgurl"];
     [_questionThree refrestTheUI];
-
-    
 
 }
 
