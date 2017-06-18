@@ -148,10 +148,10 @@
     else if (indexPath.row == 2) {
         QuestionsCell *cell = [tableView dequeueReusableCellWithIdentifier:@"QuestionsCell" forIndexPath:indexPath];
         [cell creatTheUIWithDate:_asthmaArr];
-        [cell.clickCheckAllButton bk_addEventHandler:^(id  _Nonnull sender) {
+        [cell setClickAction:^{
             QuestionBankViewController *vc = [[QuestionBankViewController alloc] init];
             [self.navigationController pushViewController:vc animated:YES];
-        } forControlEvents:(UIControlEventTouchUpInside)];
+        }];
         return cell;
     }
 

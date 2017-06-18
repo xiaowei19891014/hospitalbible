@@ -13,6 +13,7 @@
 @property (weak, nonatomic) IBOutlet SelfCheckView *questionOne;
 @property (weak, nonatomic) IBOutlet SelfCheckView *questionTwo;
 @property (weak, nonatomic) IBOutlet SelfCheckView *questionThree;
+@property (nonatomic,copy) void (^clickAction)();
 
 -(void)creatTheUIWithDate:(NSArray*)arr;
 @end
