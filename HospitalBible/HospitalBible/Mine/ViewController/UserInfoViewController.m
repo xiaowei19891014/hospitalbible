@@ -24,6 +24,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.title = @"个人信息";
     self.dataSources = getUserInfpTitleList();
     [UserInfoViewModel requestUserInfoWithUserId:[UserInfoShareClass sharedManager].userId successHandler:^(id result) {
         _infoArr =(NSArray*)result;
@@ -31,6 +32,7 @@
     } errorHandler:^(NSError *error) {
     
     }];
+    self.automaticallyAdjustsScrollViewInsets = NO;
     [self initTableView];
 }
 

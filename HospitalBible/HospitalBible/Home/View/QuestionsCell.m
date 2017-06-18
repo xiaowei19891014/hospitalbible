@@ -34,7 +34,7 @@
 }
 
 -(void)creatTheUIWithDate:(NSArray*)arr{
-    if (arr.count == 0) {  return; }
+    if (arr.count != 3) {  return; }
     
     NSDictionary *dic1 = arr[0];
     _questionOne.BtnTitle = dic1[@"pdescribe"];

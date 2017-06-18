@@ -18,7 +18,7 @@
 #import "UserInfoShareClass.h"
 #import "UserInfoViewModel.h"
 #import "AboutAppViewController.h"
-
+#import "AppDelegate.h"
 @interface TradeSuccessHeadView : UIView
 @property (nonatomic,strong)UILabel *tipsLabel;
 @property (nonatomic,strong)UIButton *btn;
@@ -60,6 +60,7 @@
     _btn.layer.borderColor = [UIColor whiteColor].CGColor;
     [_btn addTarget:self action:@selector(outLonging) forControlEvents:UIControlEventTouchUpInside];
     [_btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    _btn.hidden = YES;
     [self addSubview:_btn];
     
     _btn.translatesAutoresizingMaskIntoConstraints = NO;
@@ -99,6 +100,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.automaticallyAdjustsScrollViewInsets = NO;
     self.dataSources = getUserCenterTitleAndImageList();
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(logn) name:USERLOGING object:nil];
     [self initTableView];
@@ -116,7 +118,7 @@
 }
 - (void)initTableView
 {
-    UITableView *tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - 64)];
+    UITableView *tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT - 64-50) style:UITableViewStyleGrouped];
     tableview.delegate = self;
     tableview.dataSource = self;
      TradeSuccessHeadView *headView =[[TradeSuccessHeadView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 200)];
@@ -161,29 +163,46 @@
     self.tableview = tableview;
     self.tableview.tableFooterView = [[UIView alloc]initWithFrame:CGRectZero]; 
 }
+
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+
+    return 2;
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.dataSources.count;
+    if (section == 0) {
+        return self.dataSources.count;
+    }
+    return 1;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    TitleImageModel *model = self.dataSources[indexPath.row];
 
     static NSString *ID = @"setting1";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:ID];
     }
-    cell.textLabel.text = model.title;
-    cell.imageView.image = [UIImage imageNamed:model.imageName];
-    if (indexPath.row == 8 || indexPath.row == 10) { //不展示点头
-        cell.accessoryType = UITableViewCellAccessoryNone;
+    if (indexPath.section == 0) {
+        TitleImageModel *model = self.dataSources[indexPath.row];
+        cell.textLabel.text = model.title;
+        cell.imageView.image = [UIImage imageNamed:model.imageName];
+        if (indexPath.row == 8 || indexPath.row == 10) { //不展示点头
+            cell.accessoryType = UITableViewCellAccessoryNone;
+        }
+        else {
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        }
+        
+    }else{
+    
+        cell.textLabel.text = @"退出登录";
     }
-    else {
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    }
+
+    
     return cell;
 }
 
@@ -194,52 +213,78 @@
         UserLoginViewController *vc = [[UserLoginViewController alloc] init];
         [self presentViewController:vc animated:YES completion:nil];
     }
-    if (indexPath.row==2)//我的信息
-    {
-        UserInfoViewController *vc= [[UserInfoViewController alloc] init];
-        
-        [self.navigationController pushViewController:vc animated:YES];
-        return;
-    }else if (indexPath.row == 1)//我的收藏
-    {
-        MyCollectionViewController*vc= [[MyCollectionViewController alloc] init];
-        
-        [self.navigationController pushViewController:vc animated:YES];
-        return;
+   
+    if (indexPath.section == 1) {
+        [self showLoadingHUD];
+        [UserInfoViewModel userLogOutWithUserName:[UserInfoShareClass sharedManager].userId successHandler:^(id result) {
+            [self hideLoadingHUD];
+            [UserInfoShareClass sharedManager].userId = nil;
+            [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"userId"];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+            exit(0);
+        } errorHandler:^(NSError *error) {
+            [self hideLoadingHUD];
+        }];
+    }else{
+            if (indexPath.row==2)//我的信息
+            {
+                UserInfoViewController *vc= [[UserInfoViewController alloc] init];
+                
+                [self.navigationController pushViewController:vc animated:YES];
+                return;
+            }else if (indexPath.row == 1)//我的收藏
+            {
+                MyCollectionViewController*vc= [[MyCollectionViewController alloc] init];
+                
+                [self.navigationController pushViewController:vc animated:YES];
+                return;
 
-    }else if (indexPath.row ==0)//预约
-    {
-        AppointmentRemindTipsViewController*vc= [[AppointmentRemindTipsViewController alloc] init];
-        
-        [self.navigationController pushViewController:vc animated:YES];
-        return;
+            }else if (indexPath.row ==0)//预约
+            {
+                AppointmentRemindTipsViewController*vc= [[AppointmentRemindTipsViewController alloc] init];
+                
+                [self.navigationController pushViewController:vc animated:YES];
+                return;
 
-        
-    }else if (indexPath.row == 4)//就诊患者管理
-    {
-        SickCallViewController*vc= [[SickCallViewController alloc] init];
-        
-        [self.navigationController pushViewController:vc animated:YES];
-        return;
+                
+            }else if (indexPath.row == 4)//就诊患者管理
+            {
+                SickCallViewController*vc= [[SickCallViewController alloc] init];
+                
+                [self.navigationController pushViewController:vc animated:YES];
+                return;
 
-    }else if (indexPath.row == 3)//就诊卡绑定
-    {
-        AddSickViewController* vc= [[AddSickViewController alloc] init];
-        
-        [self.navigationController pushViewController:vc animated:YES];
-        return;
-    }else if (indexPath.row == 5)//就诊卡绑定
-    {
-        AboutAppViewController* vc= [[AboutAppViewController alloc] init];
-        
-        [self.navigationController pushViewController:vc animated:YES];
-        return;
+            }else if (indexPath.row == 3)//就诊卡绑定
+            {
+                AddSickViewController* vc= [[AddSickViewController alloc] init];
+                
+                [self.navigationController pushViewController:vc animated:YES];
+                return;
+            }else if (indexPath.row == 5)//就诊卡绑定
+            {
+                AboutAppViewController* vc= [[AboutAppViewController alloc] init];
+                
+                [self.navigationController pushViewController:vc animated:YES];
+                return;
+            }else if(indexPath.row == 6){
+                
+               NSString* str=[[NSMutableString alloc] initWithFormat:@"tel:%@",@"10010"];
+                // NSLog(@"str======%@",str);
+                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
+            }
     }
-
-    
-    
-    
 }
+
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+
+    return 0.1;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+
+    return 10;
+}
+
 - (NSMutableArray *)dataSources
 {
     if (!_dataSources) {
