@@ -21,6 +21,9 @@
 // /api/chr/diseasequestion/list
 #define DISEASEQUEASETION_LIST [NSString stringWithFormat:@"%@%@",kURL,@"/api/chr/diseasequestion/list"]
 
+//题库历史记录
+#define DISEASEQUEASETION_HISTORY_LIST [NSString stringWithFormat:@"%@%@",kURL,@"/api/chr/result/list"]
+
 //我的信息
 #define USER_INFO [NSString stringWithFormat:@"%@%@",kURL,@"/api/chr/user/userid"]
 

@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DiseaseQuestionModel.h"
 
 @interface HistoryDetailViewController : UIViewController
+
+@property (nonatomic,strong)DiseaseQuestionClass *model;
 
 @end

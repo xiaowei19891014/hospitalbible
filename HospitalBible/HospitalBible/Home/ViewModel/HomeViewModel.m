@@ -76,7 +76,6 @@
                     }];
                     [DiseaseQuestion.diseasequestionArr addObject:model];
                 }];
-                
                 [arr addObject:DiseaseQuestion];
             }];
         }
