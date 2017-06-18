@@ -100,7 +100,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.automaticallyAdjustsScrollViewInsets = NO;
     self.dataSources = getUserCenterTitleAndImageList();
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(logn) name:USERLOGING object:nil];
     [self initTableView];
@@ -118,7 +117,7 @@
 }
 - (void)initTableView
 {
-    UITableView *tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT - 64-50) style:UITableViewStyleGrouped];
+    UITableView *tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT) style:UITableViewStyleGrouped];
     tableview.delegate = self;
     tableview.dataSource = self;
      TradeSuccessHeadView *headView =[[TradeSuccessHeadView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 200)];

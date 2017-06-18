@@ -22,7 +22,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.title = @"自检答题";
+    self.title = @"题库";
     self.view.backgroundColor = [UIColor whiteColor];
     [self initCollectionView];
     

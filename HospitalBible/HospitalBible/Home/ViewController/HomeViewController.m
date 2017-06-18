@@ -58,11 +58,11 @@
     }];
     
     
-    [HomeViewModel requestDiseasequestionListWithClassId:@"2" successHandler:^(id result) {
-        NSLog(@"%@",result);
-    } errorHandler:^(NSError *error) {
-        NSLog(@"%@",error);
-    }];
+//    [HomeViewModel requestDiseasequestionListWithClassId:@"2" successHandler:^(id result) {
+//        NSLog(@"%@",result);
+//    } errorHandler:^(NSError *error) {
+//        NSLog(@"%@",error);
+//    }];
     
     [HomeViewModel requestAllDiseasequestionListSuccessHandler:^(id result) {
         NSLog(@"%@",result);
@@ -85,7 +85,7 @@
 }
 - (void)initTableView
 {
-    UITableView *tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - 64)];
+    UITableView *tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
     tableview.delegate = self;
     tableview.dataSource = self;
     [tableview registerNib:[UINib nibWithNibName:@"CateGoryCell" bundle:nil] forCellReuseIdentifier:@"CateGoryCell"];
@@ -136,8 +136,6 @@
         [cell.feedbackButton bk_addEventHandler:^(id  _Nonnull sender) {
             FeedbackViewController *vc = [[FeedbackViewController alloc] initWithNibName:@"FeedbackViewController" bundle:nil];
             [self.navigationController pushViewController:vc animated:NO];
-            
-            
         } forControlEvents:(UIControlEventTouchUpInside)];
         return cell;
     }
