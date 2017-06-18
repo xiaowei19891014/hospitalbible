@@ -1,0 +1,98 @@
+//
+//  PrefixHeader.pch
+//  新闻
+//
+//  Created by gyh on 16/2/29.
+//  Copyright © 2016年 apple. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+#import "MJExtension.h"
+#import "UIStoryboard+KZ.h"
+#import "UIView+Frame.h"
+#import "AppConfig.h"
+#import "UserInfoShareClass.h"
+#import "UIColor+Extension.h"
+#import "NSString+Extension.h"
+#import "SDCycleScrollView.h"
+#import "CommonFunction.h"
+#import <UMSocialCore/UMSocialCore.h>
+#import "ERHLogin.h"
+#import "ERHNetWorkTool.h"
+#import "ERHNetWorkTool+HttpHeader.h"
+#import "RequestsURL.h"
+#import "CacheMethod.h"
+#import "EUnit.h"
+#import "AppDelegate.h"
+typedef void(^SuccessCallBack)(id result);
+typedef void(^ErrorCallBack)(NSError *error);
+#define kCOLOR(ColorName)           [UIColor ColorName]
+#define kRGBCOLOR(r,g,b)            [UIColor colorWithRed:(r)/255.0f green:(g)/255.0f blue:(b)/255.0f alpha:1]
+#define kRGBACOLOR(r,g,b,a)         [UIColor colorWithRed:(r)/255.0f green:(g)/255.0f blue:(b)/255.0f alpha:(a)]
+#define kIMAGE(ImageName)           [UIImage imageNamed:ImageName]
+#define kFONT(FontSize)             [UIFont systemFontOfSize:FontSize]
+#define kBOLDFONT(FontSize)         [UIFont boldSystemFontOfSize:FontSize]
+#define kSEL(SELName)               @selector(SELName)
+#define kPoint(x,y)                 CGPointMake(x,y)
+#define IntToString(key)     [NSString stringWithFormat:@"%d",key]
+#define DoubleToString(key)  [NSString stringWithFormat:@"%.2f",key]
+
+#define NOTNIL(v) (v?v:@"")
+
+//相对iphone6 屏幕比
+#define KWidth_Scale    MIN([UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)/375.0f
+#define Scale(CGFloat) CGFloat * KWidth_Scale
+#define SCREEN_WIDTH                    ([UIScreen mainScreen].bounds.size.width)
+#define SCREEN_HEIGHT                   ([UIScreen mainScreen].bounds.size.height)
+#define theApp                          ((AppDelegate *)[[UIApplication sharedApplication] delegate])
+#define theWindow                       [[UIApplication sharedApplication] delegate].window
+#define RGBA(r,g,b,a)                   [UIColor colorWithRed:r/255.0f green:g/255.0f blue:b/255.0f alpha:a]
+#define HEXColor(colorString)           [UIColor colorWithHexString:colorString]
+
+#define RGBCOLOR(r,g,b) [UIColor colorWithRed:(r)/255.0f green:(g)/255.0f blue:(b)/255.0f alpha:1]
+#define RGBACOLOR(r,g,b,a) [UIColor colorWithRed:(r)/255.0f green:(g)/255.0f blue:(b)/255.0f alpha:(a)]
+#define UIColorFromRGB(rgbValue)   [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
+#ifndef UIColorHex
+#define UIColorHex(_hex_)   [UIColor colorWithHexString:((__bridge NSString *)CFSTR(#_hex_))]
+#endif
+
+///判断是否是ios7
+#define isIOS7 (DeviceSystemMajorVersion()< 7 ? NO:YES)
+///判断是否是ios8
+#define isIOS8 (DeviceSystemMajorVersion()< 8 ? NO:YES)
+
+#define isIOS9 (DeviceSystemMajorVersion()< 9 ? NO:YES)
+
+#define isIOS10 (DeviceSystemMajorVersion()< 10 ? NO:YES)
+
+#define USERLOGING @"121323"
+#define IS_IPHONE4 ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(640, 960), [[UIScreen mainScreen] currentMode].size) : NO)
+#define IS_IPHONE5 ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(640, 1136), [[UIScreen mainScreen] currentMode].size) : NO)
+#define IS_IPHONE6 ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? (CGSizeEqualToSize(CGSizeMake(750, 1334), [[UIScreen mainScreen] currentMode].size) || CGSizeEqualToSize(CGSizeMake(640, 1136), [[UIScreen mainScreen] currentMode].size)) : NO)
+#define IS_IPHONE6PLUS ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? (CGSizeEqualToSize(CGSizeMake(1125, 2001), [[UIScreen mainScreen] currentMode].size) || CGSizeEqualToSize(CGSizeMake(1242, 2208), [[UIScreen mainScreen] currentMode].size)) : NO)
+
+
+typedef NS_ENUM(NSInteger, RegistType){
+    kRegist,   //注册
+    kForgetPassWord,   //忘记密码
+};
+
+
+
+//
+#if __has_feature(objc_arc)
+#define IMP_BLOCK_SELF(type) __weak type *block_self=self;
+#else
+#define IMP_BLOCK_SELF(type) __block type *block_self=self;
+#endif
+
+#ifdef DEBUG
+#define DLog(...) NSLog(@"%s(第%d行) %@", __PRETTY_FUNCTION__, __LINE__, [NSString stringWithFormat:__VA_ARGS__])
+#else
+#define DLog(...)
+#endif
+
+
+
+#endif /* PrefixHeader_pch */

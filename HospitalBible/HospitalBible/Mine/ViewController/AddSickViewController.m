@@ -1,0 +1,142 @@
+//
+//  AddSickViewController.m
+//  HospitalBible
+//
+//  Created by 边瑞康 on 2017/5/25.
+//  Copyright © 2017年 com.hao. All rights reserved.
+//
+
+#import "AddSickViewController.h"
+#import "AddSickTableViewCell.h"
+#import "UserInfoDocumentTypeCell.h"
+#import "UserInfoSexCell.h"
+#import "AddSickViewModel.h"
+
+@interface AddSickFootView : UIView
+@property (nonatomic, copy) void (^addSickNextBlock)();
+@property (nonatomic, strong) UIButton *tradeSuccessBtn;
+@end
+
+@implementation AddSickFootView
+- (instancetype)initWithFrame:(CGRect)frame;
+{
+    if (self = [super initWithFrame:frame]) {
+        [self initializeUI];
+    }
+    return self;
+}
+- (void)initializeUI
+{
+    _tradeSuccessBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [_tradeSuccessBtn setTitle:@"保存" forState:UIControlStateNormal];
+    [_tradeSuccessBtn setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+    [_tradeSuccessBtn addTarget:self action:@selector(tradeSuccessBtnClick) forControlEvents:UIControlEventTouchUpInside];
+    _tradeSuccessBtn.layer.cornerRadius = 20;
+    _tradeSuccessBtn.layer.masksToBounds = YES;
+    _tradeSuccessBtn.layer.borderWidth = 1;
+    
+    [self addSubview:_tradeSuccessBtn];
+    
+    _tradeSuccessBtn.translatesAutoresizingMaskIntoConstraints = NO;
+    
+    
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-32-[_tradeSuccessBtn(44)]" options:0 metrics:nil views:NSDictionaryOfVariableBindings(_tradeSuccessBtn)]];
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-120-[_tradeSuccessBtn]-120-|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(_tradeSuccessBtn)]];
+}
+- (void)tradeSuccessBtnClick
+{
+    if (self.addSickNextBlock) {
+        self.addSickNextBlock();
+    }
+}
+
+@end
+
+
+
+
+@interface AddSickViewController ()<UITableViewDelegate, UITableViewDataSource>
+@property (nonatomic, strong) UITableView *tableview;
+@property (nonatomic, strong) NSMutableArray *dataSources;
+
+
+@end
+
+@implementation AddSickViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // Do any additional setup after loading the view.
+    self.navigationItem.title = @"添加就诊人";
+    _dataSources = getAddSickTitleAndIndexList();
+    [self initTableView];
+}
+- (void)initTableView
+{
+    UITableView *tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - 64)];
+    tableview.delegate = self;
+    tableview.dataSource = self;
+    AddSickFootView *footView = [[AddSickFootView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 100)];
+    tableview.tableFooterView =footView ;
+    __weak typeof(self) weakself = self;
+    footView.addSickNextBlock =^{
+        [weakself.view endEditing:YES];
+        AddSickTableViewCell *cell = [weakself.tableview cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+        NSString *str = cell.textfield.text;
+        AddSickTableViewCell *cell1 = [weakself.tableview cellForRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:0]];
+        NSString *str1 = cell1.textfield.text;
+        AddSickTableViewCell *cell2 = [weakself.tableview cellForRowAtIndexPath:[NSIndexPath indexPathForRow:4 inSection:0]];
+        NSString *str2 = cell2.textfield.text;
+        AddSickTableViewCell *cell3 = [weakself.tableview cellForRowAtIndexPath:[NSIndexPath indexPathForRow:5 inSection:0]];
+        NSString *str3 = cell3.textfield.text;
+        AddSickTableViewCell *cell4 = [weakself.tableview cellForRowAtIndexPath:[NSIndexPath indexPathForRow:6 inSection:0]];
+        NSString *str4 = cell4.textfield.text;
+    };
+    [self.view addSubview:tableview];
+    self.tableview = tableview;
+    
+    [_tableview registerNib:[UINib nibWithNibName:@"AddSickTableViewCell" bundle:nil] forCellReuseIdentifier:@"AddSickTableViewCell"];
+    
+    [_tableview registerNib:[UINib nibWithNibName:@"UserInfoDocumentTypeCell" bundle:nil] forCellReuseIdentifier:@"UserInfoDocumentTypeCell"];
+    
+    [_tableview registerNib:[UINib nibWithNibName:@"UserInfoSexCell" bundle:nil] forCellReuseIdentifier:@"UserInfoSexCell"];
+
+}
+
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return _dataSources.count;
+}
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if(indexPath.row==1)
+    {
+        UserInfoDocumentTypeCell*cell = [tableView dequeueReusableCellWithIdentifier:@"UserInfoDocumentTypeCell"];
+        cell.accessoryType =UITableViewCellAccessoryNone;
+        return cell;
+
+    }else if(indexPath.row==3)
+    {
+        UserInfoSexCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UserInfoSexCell"];
+        cell.accessoryType =UITableViewCellAccessoryNone;
+        return cell;
+
+        
+    }
+    else {
+        AddSickTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"AddSickTableViewCell"];
+        cell.accessoryType =UITableViewCellAccessoryNone;
+        cell.model = _dataSources[indexPath.row];
+        
+        return cell;
+    }
+    
+    
+}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
+    [self.view endEditing:YES];
+}
+@end

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1421" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="QuestionBankCell">
+            <rect key="frame" x="0.0" y="0.0" width="138" height="122"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="138" height="122"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bSX-qK-hgw">
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DTR-wy-cv4">
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hIo-Kb-QIq">
+                                        <fontDescription key="fontDescription" type="system" pointSize="13.199999809265137"/>
+                                        <state key="normal" title="自检">
+                                            <color key="titleColor" red="0.0" green="0.64313725490196072" blue="0.62352941176470589" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6EZ-NJ-NRp">
+                                        <fontDescription key="fontDescription" type="system" pointSize="13.199999809265137"/>
+                                        <state key="normal" title="历史记录">
+                                            <color key="titleColor" red="0.0" green="0.64313725490196072" blue="0.62352941176470589" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.95294117647058818" green="0.95294117647058818" blue="0.95294117647058818" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="6EZ-NJ-NRp" firstAttribute="centerY" secondItem="hIo-Kb-QIq" secondAttribute="centerY" id="NI4-Gl-p27"/>
+                                    <constraint firstItem="hIo-Kb-QIq" firstAttribute="centerY" secondItem="DTR-wy-cv4" secondAttribute="centerY" id="RhY-k0-tIs"/>
+                                    <constraint firstAttribute="height" constant="30" id="UOJ-aw-n05"/>
+                                    <constraint firstAttribute="trailing" secondItem="6EZ-NJ-NRp" secondAttribute="trailing" constant="10" id="coI-88-JBo"/>
+                                    <constraint firstItem="hIo-Kb-QIq" firstAttribute="height" secondItem="DTR-wy-cv4" secondAttribute="height" id="eP1-wh-nRw"/>
+                                    <constraint firstItem="hIo-Kb-QIq" firstAttribute="leading" secondItem="DTR-wy-cv4" secondAttribute="leading" constant="10" id="jax-4r-SJR"/>
+                                    <constraint firstItem="6EZ-NJ-NRp" firstAttribute="height" secondItem="hIo-Kb-QIq" secondAttribute="height" id="wHI-CI-iom"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="支气管哮喘" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E5b-qq-feR">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="iZw-li-MPv"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15.399999618530273"/>
+                                <color key="textColor" red="0.80392156862745101" green="0.80000000000000004" blue="0.80392156862745101" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="DTR-wy-cv4" firstAttribute="top" secondItem="E5b-qq-feR" secondAttribute="bottom" constant="9.4000000000000004" id="35j-Ly-faR"/>
+                            <constraint firstAttribute="trailing" secondItem="DTR-wy-cv4" secondAttribute="trailing" id="45P-sl-t3D"/>
+                            <constraint firstAttribute="trailing" secondItem="E5b-qq-feR" secondAttribute="trailing" id="NDT-L3-Fis"/>
+                            <constraint firstItem="E5b-qq-feR" firstAttribute="leading" secondItem="bSX-qK-hgw" secondAttribute="leading" id="hxR-3p-L2l"/>
+                            <constraint firstItem="DTR-wy-cv4" firstAttribute="leading" secondItem="bSX-qK-hgw" secondAttribute="leading" id="ihZ-hj-buS"/>
+                            <constraint firstAttribute="bottom" secondItem="DTR-wy-cv4" secondAttribute="bottom" id="ub9-np-Cfm"/>
+                        </constraints>
+                    </view>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5jc-Gx-XWy">
+                        <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="5jc-Gx-XWy" secondAttribute="height" multiplier="1:1" id="k0m-ci-0cX"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+            </view>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="5jc-Gx-XWy" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="GgV-ui-acm"/>
+                <constraint firstItem="bSX-qK-hgw" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="d6h-10-k9U"/>
+                <constraint firstAttribute="bottom" secondItem="bSX-qK-hgw" secondAttribute="bottom" id="g29-rC-NsU"/>
+                <constraint firstAttribute="trailing" secondItem="bSX-qK-hgw" secondAttribute="trailing" id="kQZ-qG-arg"/>
+                <constraint firstItem="bSX-qK-hgw" firstAttribute="height" secondItem="gTV-IL-0wX" secondAttribute="height" multiplier="3/4" id="q0B-Is-LRj"/>
+                <constraint firstItem="5jc-Gx-XWy" firstAttribute="height" secondItem="gTV-IL-0wX" secondAttribute="height" multiplier="1/2" id="xrx-dp-cev"/>
+                <constraint firstItem="5jc-Gx-XWy" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="yFT-yy-xY9"/>
+            </constraints>
+            <size key="customSize" width="138" height="122"/>
+            <connections>
+                <outlet property="bottomBgView" destination="DTR-wy-cv4" id="ZRG-6V-SLq"/>
+                <outlet property="historyRecordButton" destination="6EZ-NJ-NRp" id="xv9-Em-oAk"/>
+                <outlet property="imagePicView" destination="5jc-Gx-XWy" id="57h-xe-Guy"/>
+                <outlet property="selfTestButton" destination="hIo-Kb-QIq" id="0qI-yt-XQZ"/>
+                <outlet property="titleLabel" destination="E5b-qq-feR" id="cbT-jH-hg2"/>
+                <outlet property="topBgView" destination="bSX-qK-hgw" id="t6k-tN-DBW"/>
+            </connections>
+            <point key="canvasLocation" x="-40" y="58"/>
+        </collectionViewCell>
+    </objects>
+</document>
