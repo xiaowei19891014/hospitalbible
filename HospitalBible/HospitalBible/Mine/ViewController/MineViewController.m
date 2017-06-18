@@ -140,11 +140,15 @@
                 [UserInfoShareClass sharedManager].userId = nil;
                 [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"userId"];
                 [[NSUserDefaults standardUserDefaults] synchronize];
-                headView.tipsLabel.text = @"";
-                [headView.btn setTitle:@"登录" forState:UIControlStateNormal];
-                [tableview reloadData];
                 
-                exit(0);
+                UserLoginViewController *uvc = [[UserLoginViewController alloc]init];
+                
+                [uvc setLoginSuccessBlock:^{
+                    [AppDelegate currentDelegate].window.rootViewController = [AppDelegate currentDelegate].tabbarMain;
+                    [AppDelegate currentDelegate].tabbarMain.selectedIndex = 0;
+
+                }];
+                [AppDelegate currentDelegate].window.rootViewController = uvc;
             } errorHandler:^(NSError *error) {
                 [self hideLoadingHUD];
             }];
@@ -189,6 +193,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:ID];
     }
     if (indexPath.section == 0) {
+        
         TitleImageModel *model = self.dataSources[indexPath.row];
         cell.textLabel.text = model.title;
         cell.imageView.image = [UIImage imageNamed:model.imageName];
@@ -200,7 +205,7 @@
         }
         
     }else{
-    
+        
         cell.textLabel.text = @"退出登录";
     }
 
@@ -223,10 +228,19 @@
             [UserInfoShareClass sharedManager].userId = nil;
             [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"userId"];
             [[NSUserDefaults standardUserDefaults] synchronize];
-            exit(0);
+            
+            UserLoginViewController *uvc = [[UserLoginViewController alloc]init];
+            
+            [uvc setLoginSuccessBlock:^{
+                [AppDelegate currentDelegate].window.rootViewController = [AppDelegate currentDelegate].tabbarMain;
+                [AppDelegate currentDelegate].tabbarMain.selectedIndex = 0;
+                
+            }];
+            [AppDelegate currentDelegate].window.rootViewController = uvc;
         } errorHandler:^(NSError *error) {
             [self hideLoadingHUD];
         }];
+
     }else{
             if (indexPath.row==2)//我的信息
             {
