@@ -25,6 +25,8 @@
 #import "CacheMethod.h"
 #import "EUnit.h"
 #import "AppDelegate.h"
+#import "DiseaseQuestionModel.h"
+
 typedef void(^SuccessCallBack)(id result);
 typedef void(^ErrorCallBack)(NSError *error);
 #define kCOLOR(ColorName)           [UIColor ColorName]

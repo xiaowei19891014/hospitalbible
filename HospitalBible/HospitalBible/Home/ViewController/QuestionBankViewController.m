@@ -14,16 +14,27 @@
 #import "HomeViewModel.h"
 @interface QuestionBankViewController ()<UICollectionViewDelegate,UICollectionViewDataSource>
 @property (nonatomic, strong) UICollectionView *collectionView;
+@property (nonatomic, strong) NSArray *placeImageArr;
 
 @end
 
 @implementation QuestionBankViewController
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title = @"题库";
     self.view.backgroundColor = [UIColor whiteColor];
+    self.placeImageArr = @[[UIImage imageNamed:@"bitmap_01"],
+                           [UIImage imageNamed:@"bitmap_02"],
+                           [UIImage imageNamed:@"bitmap_03"],
+                           [UIImage imageNamed:@"bitmap_04"],
+                           [UIImage imageNamed:@"bitmap_05"],
+                           [UIImage imageNamed:@"bitmap_06"],
+                           [UIImage imageNamed:@"bitmap_07"],
+                           [UIImage imageNamed:@"bitmap_08"],];
+    
     [self initCollectionView];
     
     if (!self.dataSources.count) {
@@ -66,6 +77,7 @@
     DiseaseQuestionClass *model = self.dataSources[indexPath.row];
     QuestionBankCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"QuestionBankCell" forIndexPath:indexPath];
     cell.titleLabel.text = model.pname;
+    cell.imagePicView.image = [UIImage imageNamed:self.placeImageArr[indexPath.item]];
     [cell.selfTestButton bk_addEventHandler:^(id  _Nonnull sender) {
         SelfTestViewController *testVC = [[SelfTestViewController alloc] init];
         [self.navigationController pushViewController:testVC animated:YES];

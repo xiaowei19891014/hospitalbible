@@ -16,6 +16,7 @@
 
 @property(copy,nonatomic) NSString *imgurl;
 
+
 -(void)refrestTheUI;
 
 @end

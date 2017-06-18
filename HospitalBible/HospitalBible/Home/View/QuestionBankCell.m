@@ -8,7 +8,6 @@
 
 #import "QuestionBankCell.h"
 @interface QuestionBankCell()
-@property (weak, nonatomic) IBOutlet UIImageView *imagePicView;
 @property (weak, nonatomic) IBOutlet UIView *bottomBgView;
 @property (weak, nonatomic) IBOutlet UIView *topBgView;
 
@@ -26,7 +25,13 @@
     
     self.imagePicView.layer.cornerRadius =1.2*(SCREEN_WIDTH - 40)/12.0;
     self.imagePicView.layer.masksToBounds = YES;
-
 }
+
+- (void)setModel:(DiseaseQuestionClass *)model
+{
+    _model = model;
+    
+}
+
 
 @end

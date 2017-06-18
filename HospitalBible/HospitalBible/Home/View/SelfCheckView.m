@@ -33,8 +33,8 @@
     _button = [UIButton buttonWithType:(UIButtonTypeCustom)];
     _button.frame = CGRectMake(0, 0, width, height-30);
     [_button setTitleColor:[UIColor colorWithHexString:@"000000"] forState:UIControlStateNormal];
-    [_button sd_setImageWithURL:[NSURL URLWithString:self.imgurl] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"cat.png"]];
-//    [button setImage:[UIImage imageNamed:@"cat.png"] forState:(UIControlStateNormal)];
+    
+    [_button sd_setImageWithURL:[NSURL URLWithString:self.imgurl] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"feibu_icon"]];
     _button.titleLabel.font = [UIFont systemFontOfSize:15];
     [_button setTitle:self.BtnTitle forState:UIControlStateNormal];
     [_button layoutButtonWithEdgeInsetsStyle:MKButtonEdgeInsetsStyleTop
