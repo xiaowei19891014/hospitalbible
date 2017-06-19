@@ -56,6 +56,13 @@
 		6596CB811EF6651100B6219E /* UserTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6596CB7F1EF6651100B6219E /* UserTableViewCell.m */; };
 		6596CB821EF6651100B6219E /* UserTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6596CB801EF6651100B6219E /* UserTableViewCell.xib */; };
 		6596CB841EF67A8E00B6219E /* AddSickViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6596CB831EF67A8E00B6219E /* AddSickViewController.xib */; };
+		6596CB881EF8054300B6219E /* AppointmentRemindTipsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6596CB871EF8054300B6219E /* AppointmentRemindTipsViewController.xib */; };
+		6596CB8C1EF80FC000B6219E /* CommonDatePickView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6596CB8B1EF80FC000B6219E /* CommonDatePickView.m */; };
+		6596CB8F1EF8109000B6219E /* CommonMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = 6596CB8E1EF8109000B6219E /* CommonMethod.m */; };
+		6596CB931EF8113100B6219E /* CommonAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6596CB911EF8113100B6219E /* CommonAlertView.m */; };
+		6596CB941EF8113100B6219E /* CommonAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6596CB921EF8113100B6219E /* CommonAlertView.xib */; };
+		6596CB971EF8122F00B6219E /* LGAlertViewExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 6596CB961EF8122F00B6219E /* LGAlertViewExtension.m */; };
+		6596CBF21EF8156C00B6219E /* DateFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = 6596CBF11EF8156C00B6219E /* DateFormat.m */; };
 		930BAEDF1ED716CD0026AFFC /* AddSickViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 930BAEDE1ED716CD0026AFFC /* AddSickViewModel.m */; };
 		933710071EC9CA4A00EB0EC3 /* UserLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 933710051EC9CA4A00EB0EC3 /* UserLoginViewController.m */; };
 		933710081EC9CA4A00EB0EC3 /* UserLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 933710061EC9CA4A00EB0EC3 /* UserLoginViewController.xib */; };
@@ -178,7 +185,6 @@
 		9B05EB211EC8955900F8070B /* LGAlertViewWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B05EB1A1EC8955900F8070B /* LGAlertViewWindow.m */; };
 		9B05EB221EC8955900F8070B /* UIWindow+LGAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B05EB1C1EC8955900F8070B /* UIWindow+LGAlertView.m */; };
 		9B05EB251EC8958100F8070B /* LGAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B05EB231EC8958100F8070B /* LGAlertView.m */; };
-		9B05EB281EC8963300F8070B /* LGAlertViewExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B05EB271EC8963300F8070B /* LGAlertViewExtension.m */; };
 		9B05EB2C1EC8987A00F8070B /* scan_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B05EB2B1EC8987A00F8070B /* scan_icon.png */; };
 		9B05EB371EC9E7BB00F8070B /* QuestionBankViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B05EB361EC9E7BB00F8070B /* QuestionBankViewController.m */; };
 		9B05EB3B1EC9E7C900F8070B /* QuestionBankCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B05EB391EC9E7C900F8070B /* QuestionBankCell.m */; };
@@ -371,6 +377,18 @@
 		6596CB7F1EF6651100B6219E /* UserTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserTableViewCell.m; sourceTree = "<group>"; };
 		6596CB801EF6651100B6219E /* UserTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserTableViewCell.xib; sourceTree = "<group>"; };
 		6596CB831EF67A8E00B6219E /* AddSickViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddSickViewController.xib; sourceTree = "<group>"; };
+		6596CB871EF8054300B6219E /* AppointmentRemindTipsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AppointmentRemindTipsViewController.xib; sourceTree = "<group>"; };
+		6596CB8A1EF80FC000B6219E /* CommonDatePickView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonDatePickView.h; sourceTree = "<group>"; };
+		6596CB8B1EF80FC000B6219E /* CommonDatePickView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonDatePickView.m; sourceTree = "<group>"; };
+		6596CB8D1EF8109000B6219E /* CommonMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonMethod.h; sourceTree = "<group>"; };
+		6596CB8E1EF8109000B6219E /* CommonMethod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonMethod.m; sourceTree = "<group>"; };
+		6596CB901EF8113100B6219E /* CommonAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonAlertView.h; sourceTree = "<group>"; };
+		6596CB911EF8113100B6219E /* CommonAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonAlertView.m; sourceTree = "<group>"; };
+		6596CB921EF8113100B6219E /* CommonAlertView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommonAlertView.xib; sourceTree = "<group>"; };
+		6596CB951EF8122F00B6219E /* LGAlertViewExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGAlertViewExtension.h; sourceTree = "<group>"; };
+		6596CB961EF8122F00B6219E /* LGAlertViewExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGAlertViewExtension.m; sourceTree = "<group>"; };
+		6596CBF01EF8156C00B6219E /* DateFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateFormat.h; sourceTree = "<group>"; };
+		6596CBF11EF8156C00B6219E /* DateFormat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateFormat.m; sourceTree = "<group>"; };
 		930BAEDD1ED716CD0026AFFC /* AddSickViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddSickViewModel.h; path = HospitalBible/Mine/AddSickViewModel.h; sourceTree = SOURCE_ROOT; };
 		930BAEDE1ED716CD0026AFFC /* AddSickViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddSickViewModel.m; path = HospitalBible/Mine/AddSickViewModel.m; sourceTree = SOURCE_ROOT; };
 		933710041EC9CA4A00EB0EC3 /* UserLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserLoginViewController.h; sourceTree = "<group>"; };
@@ -598,8 +616,6 @@
 		9B05EB1C1EC8955900F8070B /* UIWindow+LGAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+LGAlertView.m"; sourceTree = "<group>"; };
 		9B05EB231EC8958100F8070B /* LGAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGAlertView.m; sourceTree = "<group>"; };
 		9B05EB241EC8958100F8070B /* LGAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGAlertView.h; sourceTree = "<group>"; };
-		9B05EB261EC8963300F8070B /* LGAlertViewExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGAlertViewExtension.h; sourceTree = "<group>"; };
-		9B05EB271EC8963300F8070B /* LGAlertViewExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGAlertViewExtension.m; sourceTree = "<group>"; };
 		9B05EB2B1EC8987A00F8070B /* scan_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = scan_icon.png; sourceTree = "<group>"; };
 		9B05EB351EC9E7BB00F8070B /* QuestionBankViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionBankViewController.h; sourceTree = "<group>"; };
 		9B05EB361EC9E7BB00F8070B /* QuestionBankViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionBankViewController.m; sourceTree = "<group>"; };
@@ -1020,6 +1036,24 @@
 			path = EXTENSION;
 			sourceTree = "<group>";
 		};
+		6596CB891EF80FB600B6219E /* common */ = {
+			isa = PBXGroup;
+			children = (
+				6596CBF01EF8156C00B6219E /* DateFormat.h */,
+				6596CBF11EF8156C00B6219E /* DateFormat.m */,
+				6596CB951EF8122F00B6219E /* LGAlertViewExtension.h */,
+				6596CB961EF8122F00B6219E /* LGAlertViewExtension.m */,
+				6596CB8A1EF80FC000B6219E /* CommonDatePickView.h */,
+				6596CB8B1EF80FC000B6219E /* CommonDatePickView.m */,
+				6596CB8D1EF8109000B6219E /* CommonMethod.h */,
+				6596CB8E1EF8109000B6219E /* CommonMethod.m */,
+				6596CB901EF8113100B6219E /* CommonAlertView.h */,
+				6596CB911EF8113100B6219E /* CommonAlertView.m */,
+				6596CB921EF8113100B6219E /* CommonAlertView.xib */,
+			);
+			path = common;
+			sourceTree = "<group>";
+		};
 		9B05E84F1EC749AD00F8070B = {
 			isa = PBXGroup;
 			children = (
@@ -1205,6 +1239,7 @@
 				9B05EB071EC8913300F8070B /* QRScanViewController.m */,
 				933710091EC9D91700EB0EC3 /* AppointmentRemindTipsViewController.h */,
 				9337100A1EC9D91700EB0EC3 /* AppointmentRemindTipsViewController.m */,
+				6596CB871EF8054300B6219E /* AppointmentRemindTipsViewController.xib */,
 				9B05EB351EC9E7BB00F8070B /* QuestionBankViewController.h */,
 				9B05EB361EC9E7BB00F8070B /* QuestionBankViewController.m */,
 				9B05EBC01ECC6FD700F8070B /* SelfTestViewController.h */,
@@ -1223,6 +1258,7 @@
 		9B05EA111EC750B700F8070B /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				6596CB891EF80FB600B6219E /* common */,
 				6596CB7A1EF6313300B6219E /* EXTENSION */,
 				6596CB351EF5343500B6219E /* MJRefresh */,
 				6596CB271EF52A4D00B6219E /* TFHpple */,
@@ -1753,8 +1789,6 @@
 				9B05EB1A1EC8955900F8070B /* LGAlertViewWindow.m */,
 				9B05EB1B1EC8955900F8070B /* UIWindow+LGAlertView.h */,
 				9B05EB1C1EC8955900F8070B /* UIWindow+LGAlertView.m */,
-				9B05EB261EC8963300F8070B /* LGAlertViewExtension.h */,
-				9B05EB271EC8963300F8070B /* LGAlertViewExtension.m */,
 			);
 			path = LGAlertView;
 			sourceTree = "<group>";
@@ -2068,6 +2102,7 @@
 				933710081EC9CA4A00EB0EC3 /* UserLoginViewController.xib in Resources */,
 				9B05EB3C1EC9E7C900F8070B /* QuestionBankCell.xib in Resources */,
 				9B05EAC11EC7FA0500F8070B /* cat.png in Resources */,
+				6596CB941EF8113100B6219E /* CommonAlertView.xib in Resources */,
 				9B59E7C41ED84B4C004390A4 /* jiazai_.png in Resources */,
 				9346B0B61ED7105500A83E88 /* AddSickTableViewCell.xib in Resources */,
 				9B3A86641ED0128E00106E7C /* MircoClasssCell.xib in Resources */,
@@ -2094,6 +2129,7 @@
 				9B05EAC61EC7FB1700F8070B /* AppointmentReminderCell.xib in Resources */,
 				9B05EBE21ECC717300F8070B /* SubmitTaskView.xib in Resources */,
 				6596CB701EF5343500B6219E /* MJRefresh.bundle in Resources */,
+				6596CB881EF8054300B6219E /* AppointmentRemindTipsViewController.xib in Resources */,
 				6596CB841EF67A8E00B6219E /* AddSickViewController.xib in Resources */,
 				9B05EAFF1EC8720500F8070B /* UMSocialSDKResources.bundle in Resources */,
 			);
@@ -2144,6 +2180,7 @@
 				9B05EA661EC7D0B000F8070B /* FactoryTableViewCell.m in Sources */,
 				6596CB2E1EF52A4D00B6219E /* TFHpple.m in Sources */,
 				9B05EBB21ECC6E8C00F8070B /* MFMessageComposeViewController+BlocksKit.m in Sources */,
+				6596CB8C1EF80FC000B6219E /* CommonDatePickView.m in Sources */,
 				655039901EF4ED0C00D22A4B /* IQPreviousNextView.m in Sources */,
 				9B05EA841EC7E0F500F8070B /* TADotView.m in Sources */,
 				9B05EBB91ECC6E8C00F8070B /* UIImage+BlocksKit.m in Sources */,
@@ -2258,16 +2295,17 @@
 				9B05EBBD1ECC6E8C00F8070B /* UITextView+BlocksKit.m in Sources */,
 				6596CB261EF52A0C00B6219E /* ERHHtmlAnalysisTool.m in Sources */,
 				6596CB661EF5343500B6219E /* MJRefreshHeader.m in Sources */,
-				9B05EB281EC8963300F8070B /* LGAlertViewExtension.m in Sources */,
 				9B05EB201EC8955900F8070B /* LGAlertViewTextField.m in Sources */,
 				9B05EBBC1ECC6E8C00F8070B /* UITextField+BlocksKit.m in Sources */,
 				9B05EA821EC7E0F500F8070B /* TAAbstractDotView.m in Sources */,
 				9B05EBB81ECC6E8C00F8070B /* UIGestureRecognizer+BlocksKit.m in Sources */,
 				6596CB6C1EF5343500B6219E /* MJRefreshBackStateFooter.m in Sources */,
 				93B9DE9E1EE3F5EF005FE2E2 /* NSObject+MJClass.m in Sources */,
+				6596CBF21EF8156C00B6219E /* DateFormat.m in Sources */,
 				9B3A866A1ED01A9700106E7C /* NavigationController.m in Sources */,
 				9B05EBB51ECC6E8C00F8070B /* UIAlertView+BlocksKit.m in Sources */,
 				9B05EBAE1ECC6E8C00F8070B /* NSObject+A2BlockDelegate.m in Sources */,
+				6596CB8F1EF8109000B6219E /* CommonMethod.m in Sources */,
 				6596CB731EF5343500B6219E /* UIScrollView+MJRefresh.m in Sources */,
 				9B59E7C71ED84B4C004390A4 /* ToolTipView.m in Sources */,
 				9346B0A61ED5BC0100A83E88 /* UserInfoDocumentTypeCell.m in Sources */,
@@ -2303,7 +2341,9 @@
 				9B59E7A41ED5ABFD004390A4 /* HistoryDetailSectionHeaderView.m in Sources */,
 				936A82021ED485B200484D94 /* RemindDetailViewController.m in Sources */,
 				9B59E7AB1ED70A61004390A4 /* QuestionsCollectionViewController.m in Sources */,
+				6596CB971EF8122F00B6219E /* LGAlertViewExtension.m in Sources */,
 				6596CB6E1EF5343500B6219E /* MJRefreshNormalHeader.m in Sources */,
+				6596CB931EF8113100B6219E /* CommonAlertView.m in Sources */,
 				93B9DE9F1EE3F5EF005FE2E2 /* NSObject+MJCoding.m in Sources */,
 				655039921EF4ED0C00D22A4B /* IQToolbar.m in Sources */,
 				9B05EBAA1ECC6E8C00F8070B /* A2BlockInvocation.m in Sources */,

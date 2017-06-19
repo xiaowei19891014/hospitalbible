@@ -9,6 +9,7 @@
 #import "SelfCheckView.h"
 #import "UIButton+ImageTitleSpacing.h"
 #import "UIButton+WebCache.h"
+#import "UIImage+Extension.h"
 @implementation SelfCheckView
 - (instancetype)initWithFrame:(CGRect)frame
 {
@@ -74,9 +75,12 @@
 
 -(void)refrestTheUI{
 
-//    [_button setTitle:self.BtnTitle forState:UIControlStateNormal];
-//    [_button sd_setImageWithURL:[NSURL URLWithString:self.imgurl] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"cat.png"]];
+    [_button setTitle:self.BtnTitle forState:UIControlStateNormal];
+    [_button sd_setImageWithURL:[NSURL URLWithString:self.imgurl] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"cat.png"]];
 
+    [_button.imageView.image scaleToSize:CGSizeMake(50, 50)];
 }
+
+
 
 @end

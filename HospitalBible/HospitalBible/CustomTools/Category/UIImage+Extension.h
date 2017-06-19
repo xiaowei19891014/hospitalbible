@@ -12,4 +12,6 @@
 + (UIImage *)resizableImage:(NSString *)name;
 /* 裁剪圆形图片 */
 + (UIImage *)clipImage:(UIImage *)image;
+
+-(UIImage*)scaleToSize:(CGSize)size;
 @end
