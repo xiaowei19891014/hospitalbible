@@ -226,13 +226,14 @@
             [[NSUserDefaults standardUserDefaults] synchronize];
             
             UserLoginViewController *uvc = [[UserLoginViewController alloc]init];
-            
+            UINavigationController *nvc = [[UINavigationController alloc] initWithRootViewController:uvc];
+
             [uvc setLoginSuccessBlock:^{
                 [AppDelegate currentDelegate].window.rootViewController = [AppDelegate currentDelegate].tabbarMain;
                 [AppDelegate currentDelegate].tabbarMain.selectedIndex = 0;
                 
             }];
-            [AppDelegate currentDelegate].window.rootViewController = uvc;
+            [AppDelegate currentDelegate].window.rootViewController = nvc;
         } errorHandler:^(NSError *error) {
             [self hideLoadingHUD];
         }];
@@ -268,10 +269,8 @@
 
             }else if (indexPath.row == 3)//就诊卡绑定
             {
-                AddSickViewController* vc= [[AddSickViewController alloc] init];
                 
-                [self.navigationController pushViewController:vc animated:YES];
-                return;
+                
             }else if (indexPath.row == 5)//就诊卡绑定
             {
                 AboutAppViewController* vc= [[AboutAppViewController alloc] init];

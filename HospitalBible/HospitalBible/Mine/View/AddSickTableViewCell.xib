@@ -18,16 +18,16 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="姓名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4XU-A7-JdN">
-                        <rect key="frame" x="17" y="11" width="35" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="姓名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4XU-A7-JdN">
+                        <rect key="frame" x="20" y="11" width="35" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" red="0.0" green="0.64313725490196072" blue="0.62352941176470589" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="d1w-59-2L7">
-                        <rect key="frame" x="138" y="8" width="182" height="21"/>
+                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="d1w-59-2L7">
+                        <rect key="frame" x="75" y="7" width="235" height="30"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="200" id="lb4-hN-lm9"/>
+                            <constraint firstAttribute="height" constant="30" id="sAZ-1W-avV"/>
                         </constraints>
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -35,7 +35,8 @@
                     </textField>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="d1w-59-2L7" firstAttribute="bottom" secondItem="4XU-A7-JdN" secondAttribute="bottom" id="eAu-qT-Fio"/>
+                    <constraint firstItem="d1w-59-2L7" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="7dQ-gs-FWc"/>
+                    <constraint firstItem="d1w-59-2L7" firstAttribute="leading" secondItem="4XU-A7-JdN" secondAttribute="trailing" constant="20" id="UJf-fE-HQQ"/>
                     <constraint firstItem="4XU-A7-JdN" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="jgJ-Im-bCY"/>
                     <constraint firstAttribute="trailing" secondItem="d1w-59-2L7" secondAttribute="trailing" constant="10" id="sr8-MK-OPD"/>
                     <constraint firstItem="4XU-A7-JdN" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="vSV-gg-GMQ"/>

@@ -133,6 +133,7 @@
     if (_count == -1) {
         [self resetCount];
     }else{
+        
          [_validate setTitle:[NSString stringWithFormat:@"(%zd)",_count] forState:UIControlStateNormal];
     }
 }

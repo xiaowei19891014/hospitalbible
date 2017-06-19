@@ -21,6 +21,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.title = @"预约提醒";
     // Do any additional setup after loading the view.
     [self initTableView];
     [HomeViewModel requestPatientListWithUserId:@"1" successHandler:^(id result) {
