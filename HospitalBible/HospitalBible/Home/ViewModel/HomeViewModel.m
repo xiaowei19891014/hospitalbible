@@ -49,7 +49,6 @@
 + (void)requestDiseasequestionListWithClassId:(NSString*)classid successHandler:(SuccessCallBack)successHandler
                                   errorHandler:(ErrorCallBack)errorHandler
 {
-    return;
     NSDictionary *params = @{
                              @"classid":classid
                              };

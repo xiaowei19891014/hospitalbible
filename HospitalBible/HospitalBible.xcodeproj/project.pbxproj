@@ -56,6 +56,7 @@
 		6596CB811EF6651100B6219E /* UserTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6596CB7F1EF6651100B6219E /* UserTableViewCell.m */; };
 		6596CB821EF6651100B6219E /* UserTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6596CB801EF6651100B6219E /* UserTableViewCell.xib */; };
 		6596CB841EF67A8E00B6219E /* AddSickViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6596CB831EF67A8E00B6219E /* AddSickViewController.xib */; };
+<<<<<<< HEAD
 		6596CB881EF8054300B6219E /* AppointmentRemindTipsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6596CB871EF8054300B6219E /* AppointmentRemindTipsViewController.xib */; };
 		6596CB8C1EF80FC000B6219E /* CommonDatePickView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6596CB8B1EF80FC000B6219E /* CommonDatePickView.m */; };
 		6596CB8F1EF8109000B6219E /* CommonMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = 6596CB8E1EF8109000B6219E /* CommonMethod.m */; };
@@ -63,6 +64,10 @@
 		6596CB941EF8113100B6219E /* CommonAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6596CB921EF8113100B6219E /* CommonAlertView.xib */; };
 		6596CB971EF8122F00B6219E /* LGAlertViewExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 6596CB961EF8122F00B6219E /* LGAlertViewExtension.m */; };
 		6596CBF21EF8156C00B6219E /* DateFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = 6596CBF11EF8156C00B6219E /* DateFormat.m */; };
+=======
+		90CAF4911EF7FF7C0031D8D1 /* SwipeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 90CAF4901EF7FF7C0031D8D1 /* SwipeView.m */; };
+		90CAF4941EF803120031D8D1 /* LGQuestionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 90CAF4931EF803120031D8D1 /* LGQuestionView.m */; };
+>>>>>>> 016ab57cdd32710a0bbcc216fc1924024b53d83e
 		930BAEDF1ED716CD0026AFFC /* AddSickViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 930BAEDE1ED716CD0026AFFC /* AddSickViewModel.m */; };
 		933710071EC9CA4A00EB0EC3 /* UserLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 933710051EC9CA4A00EB0EC3 /* UserLoginViewController.m */; };
 		933710081EC9CA4A00EB0EC3 /* UserLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 933710061EC9CA4A00EB0EC3 /* UserLoginViewController.xib */; };
@@ -377,6 +382,7 @@
 		6596CB7F1EF6651100B6219E /* UserTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserTableViewCell.m; sourceTree = "<group>"; };
 		6596CB801EF6651100B6219E /* UserTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserTableViewCell.xib; sourceTree = "<group>"; };
 		6596CB831EF67A8E00B6219E /* AddSickViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddSickViewController.xib; sourceTree = "<group>"; };
+<<<<<<< HEAD
 		6596CB871EF8054300B6219E /* AppointmentRemindTipsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AppointmentRemindTipsViewController.xib; sourceTree = "<group>"; };
 		6596CB8A1EF80FC000B6219E /* CommonDatePickView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonDatePickView.h; sourceTree = "<group>"; };
 		6596CB8B1EF80FC000B6219E /* CommonDatePickView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonDatePickView.m; sourceTree = "<group>"; };
@@ -389,6 +395,12 @@
 		6596CB961EF8122F00B6219E /* LGAlertViewExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGAlertViewExtension.m; sourceTree = "<group>"; };
 		6596CBF01EF8156C00B6219E /* DateFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateFormat.h; sourceTree = "<group>"; };
 		6596CBF11EF8156C00B6219E /* DateFormat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateFormat.m; sourceTree = "<group>"; };
+=======
+		90CAF48F1EF7FF7C0031D8D1 /* SwipeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwipeView.h; sourceTree = "<group>"; };
+		90CAF4901EF7FF7C0031D8D1 /* SwipeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SwipeView.m; sourceTree = "<group>"; };
+		90CAF4921EF803120031D8D1 /* LGQuestionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGQuestionView.h; sourceTree = "<group>"; };
+		90CAF4931EF803120031D8D1 /* LGQuestionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGQuestionView.m; sourceTree = "<group>"; };
+>>>>>>> 016ab57cdd32710a0bbcc216fc1924024b53d83e
 		930BAEDD1ED716CD0026AFFC /* AddSickViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddSickViewModel.h; path = HospitalBible/Mine/AddSickViewModel.h; sourceTree = SOURCE_ROOT; };
 		930BAEDE1ED716CD0026AFFC /* AddSickViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddSickViewModel.m; path = HospitalBible/Mine/AddSickViewModel.m; sourceTree = SOURCE_ROOT; };
 		933710041EC9CA4A00EB0EC3 /* UserLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserLoginViewController.h; sourceTree = "<group>"; };
@@ -1036,6 +1048,7 @@
 			path = EXTENSION;
 			sourceTree = "<group>";
 		};
+<<<<<<< HEAD
 		6596CB891EF80FB600B6219E /* common */ = {
 			isa = PBXGroup;
 			children = (
@@ -1052,6 +1065,15 @@
 				6596CB921EF8113100B6219E /* CommonAlertView.xib */,
 			);
 			path = common;
+=======
+		90CAF48E1EF7FF7C0031D8D1 /* SwipeView */ = {
+			isa = PBXGroup;
+			children = (
+				90CAF48F1EF7FF7C0031D8D1 /* SwipeView.h */,
+				90CAF4901EF7FF7C0031D8D1 /* SwipeView.m */,
+			);
+			path = SwipeView;
+>>>>>>> 016ab57cdd32710a0bbcc216fc1924024b53d83e
 			sourceTree = "<group>";
 		};
 		9B05E84F1EC749AD00F8070B = {
@@ -1226,6 +1248,8 @@
 				936A82031ED485E500484D94 /* RemindDetailTableViewCell.h */,
 				936A82041ED485E500484D94 /* RemindDetailTableViewCell.m */,
 				936A82051ED485E500484D94 /* RemindDetailTableViewCell.xib */,
+				90CAF4921EF803120031D8D1 /* LGQuestionView.h */,
+				90CAF4931EF803120031D8D1 /* LGQuestionView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1258,7 +1282,11 @@
 		9B05EA111EC750B700F8070B /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+<<<<<<< HEAD
 				6596CB891EF80FB600B6219E /* common */,
+=======
+				90CAF48E1EF7FF7C0031D8D1 /* SwipeView */,
+>>>>>>> 016ab57cdd32710a0bbcc216fc1924024b53d83e
 				6596CB7A1EF6313300B6219E /* EXTENSION */,
 				6596CB351EF5343500B6219E /* MJRefresh */,
 				6596CB271EF52A4D00B6219E /* TFHpple */,
@@ -2200,6 +2228,7 @@
 				9B05EA861EC7E0F500F8070B /* SDCollectionViewCell.m in Sources */,
 				9346B0B51ED7105500A83E88 /* AddSickTableViewCell.m in Sources */,
 				655039A01EF509DA00D22A4B /* SettingPassWordViewController.m in Sources */,
+				90CAF4911EF7FF7C0031D8D1 /* SwipeView.m in Sources */,
 				9B59E7AC1ED70A61004390A4 /* MircroClassCollectionViewController.m in Sources */,
 				93B9DE9B1EE3F5EF005FE2E2 /* MJProperty.m in Sources */,
 				9346B09A1ED5B32100A83E88 /* ERHErrorRequestView.m in Sources */,
@@ -2330,6 +2359,7 @@
 				9B05EAAA1EC7E35100F8070B /* SDWebImageCompat.m in Sources */,
 				9B05EB9A1ECC6E8C00F8070B /* NSDictionary+BlocksKit.m in Sources */,
 				9B05EB1E1EC8955900F8070B /* LGAlertViewCell.m in Sources */,
+				90CAF4941EF803120031D8D1 /* LGQuestionView.m in Sources */,
 				9B59E7A61ED5ABFD004390A4 /* HistoryDetailViewModel.m in Sources */,
 				9B05EACA1EC7FF5F00F8070B /* QuestionsCell.m in Sources */,
 				9B05EA081EC74B2E00F8070B /* Foundation+Log.m in Sources */,
