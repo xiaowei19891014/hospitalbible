@@ -9,7 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface LGQuestionView : UIScrollView
-
+@property (nonatomic,strong)UIButton *nextBtn;
 @property (nonatomic,strong)NSArray *dataArray;
+@property (nonatomic)NSInteger index;
+@property (nonatomic,copy) void(^nextBtnClickAction)(NSInteger);
 
 @end
