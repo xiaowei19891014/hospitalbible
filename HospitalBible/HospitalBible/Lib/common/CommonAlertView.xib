@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="CommonAlertView">
+            <rect key="frame" x="0.0" y="0.0" width="389" height="364"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u2z-4c-jDf">
+                    <rect key="frame" x="0.0" y="299" width="389" height="50"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="sTI-TL-vsx"/>
+                    </constraints>
+                    <state key="normal" title="取消">
+                        <color key="titleColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="btnAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="GDd-Zg-4jp"/>
+                    </connections>
+                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yL5-lF-leX">
+                    <rect key="frame" x="0.0" y="18" width="389" height="266"/>
+                    <subviews>
+                        <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7GA-ml-8TB">
+                            <rect key="frame" x="0.0" y="216" width="389" height="50"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="50" id="kw9-zT-6jC"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                            <state key="normal" title="确定">
+                                <color key="titleColor" red="0.96862745100000003" green="0.31372549020000001" blue="0.30196078430000001" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="btnAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="Wsa-yc-Yj6"/>
+                            </connections>
+                        </button>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nz3-vE-738">
+                            <rect key="frame" x="0.0" y="214" width="389" height="1"/>
+                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="0.5" id="sOp-7t-9JR"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zNw-fd-kDO">
+                            <rect key="frame" x="-10" y="0.0" width="399" height="213"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="zNw-fd-kDO" firstAttribute="leading" secondItem="yL5-lF-leX" secondAttribute="leading" constant="-10" id="0uD-Wy-4F7"/>
+                        <constraint firstAttribute="bottom" secondItem="7GA-ml-8TB" secondAttribute="bottom" id="1RQ-cq-bLR"/>
+                        <constraint firstItem="nz3-vE-738" firstAttribute="leading" secondItem="yL5-lF-leX" secondAttribute="leading" id="RO7-jn-lCU"/>
+                        <constraint firstItem="7GA-ml-8TB" firstAttribute="leading" secondItem="yL5-lF-leX" secondAttribute="leading" id="TUT-mI-UtQ"/>
+                        <constraint firstItem="7GA-ml-8TB" firstAttribute="top" secondItem="nz3-vE-738" secondAttribute="bottom" constant="1" id="Xdl-b8-Iru"/>
+                        <constraint firstAttribute="trailing" secondItem="nz3-vE-738" secondAttribute="trailing" id="YHI-OJ-y9q"/>
+                        <constraint firstAttribute="height" constant="266" id="YrC-Xy-y6m"/>
+                        <constraint firstAttribute="trailing" secondItem="zNw-fd-kDO" secondAttribute="trailing" id="dpq-3g-sym"/>
+                        <constraint firstAttribute="trailing" secondItem="7GA-ml-8TB" secondAttribute="trailing" id="duO-id-CRe"/>
+                        <constraint firstItem="zNw-fd-kDO" firstAttribute="top" secondItem="yL5-lF-leX" secondAttribute="top" id="jaY-cS-xIg"/>
+                        <constraint firstItem="nz3-vE-738" firstAttribute="top" secondItem="zNw-fd-kDO" secondAttribute="bottom" constant="1" id="xvw-u2-uB1"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="u2z-4c-jDf" secondAttribute="trailing" id="0jC-QC-T1w"/>
+                <constraint firstAttribute="trailing" secondItem="yL5-lF-leX" secondAttribute="trailing" id="1OJ-89-3Zf"/>
+                <constraint firstItem="yL5-lF-leX" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="6to-2x-sM3"/>
+                <constraint firstItem="u2z-4c-jDf" firstAttribute="top" secondItem="yL5-lF-leX" secondAttribute="bottom" constant="15" id="Rny-qe-yB9"/>
+                <constraint firstItem="u2z-4c-jDf" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="aTY-T4-Y5b"/>
+                <constraint firstAttribute="bottom" secondItem="u2z-4c-jDf" secondAttribute="bottom" constant="15" id="aku-CC-Get"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="addView" destination="zNw-fd-kDO" id="Pzw-1O-TF1"/>
+                <outlet property="cancelBtn" destination="u2z-4c-jDf" id="EYy-64-Nzs"/>
+                <outlet property="contentView" destination="yL5-lF-leX" id="sh6-i9-LvZ"/>
+            </connections>
+            <point key="canvasLocation" x="41.5" y="154.5"/>
+        </view>
+    </objects>
+</document>

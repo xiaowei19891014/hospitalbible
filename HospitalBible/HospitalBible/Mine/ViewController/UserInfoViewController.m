@@ -19,6 +19,8 @@
 @property (nonatomic, strong) UITableView *tableview;
 @property (nonatomic, strong) NSArray *dataSources;
 @property (nonatomic, strong) NSArray *infoArr;
+
+@property(nonatomic,assign) BOOL isCanEdit;//是否可以编辑
 @end
 
 @implementation UserInfoViewController
@@ -43,11 +45,14 @@
 
     if ([sender.titleLabel.text isEqualToString:@"编辑"]) {
         [sender setTitle:@"保存" forState:UIControlStateNormal];
+        _isCanEdit = YES;
     }
     if ([sender.titleLabel.text isEqualToString:@"保存"]) {
         [sender setTitle:@"编辑" forState:UIControlStateNormal];
+        _isCanEdit = NO;
 
     }
+    [self.tableview reloadData];
 }
 
 - (void)initTableView
@@ -97,9 +102,14 @@
     }
     else{
     UserTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UserTableViewCell"];
-
     cell.titleLab.text = self.dataSources[indexPath.row];
     cell.myTextField.text = _infoArr[indexPath.row];
+        if (_isCanEdit) {
+            cell.myTextField.enabled = YES;
+        }else{
+            cell.myTextField.enabled = NO;
+
+        }
     return cell;
     }
 }

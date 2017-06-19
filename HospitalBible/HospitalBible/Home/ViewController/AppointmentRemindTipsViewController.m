@@ -11,6 +11,10 @@
 #import "RemindDetailViewController.h"
 #import "HomeViewModel.h"
 #import "UserInfoModel.h"
+#import "UIView+Action.h"
+#import "LGAlertViewExtension.h"
+#import "DateFormat.h"
+
 @interface AppointmentRemindTipsViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) UITableView *tableview;
 @property (nonatomic, strong) NSMutableArray *dataSources;
@@ -30,7 +34,39 @@
     } errorHandler:^(NSError *error) {
         
     }];
+    
+    [self creatSelectView];
 }
+
+
+-(void)creatSelectView{
+
+    [self.startView setViewActionWithBlock:^{
+        
+        NSDate *date = [NSDate date];
+        NSDateFormatter *formatters = [[NSDateFormatter alloc] init];
+        [formatters setDateFormat:@"yyyy-MM-dd"];
+        NSString *nowDate= [formatters stringFromDate:date];
+        
+        [LGAlertViewExtension showDateSelectInViewController:self indexDate:nowDate andMax:nil andMin:date type:kDatePickerTypeFull clickOk:^(NSString *selectDateStr){
+        }];
+
+
+        
+        
+    }];
+    [self.endView setViewActionWithBlock:^{
+        
+        
+    }];
+    
+    [self.selectImageView setViewActionWithBlock:^{
+        
+    }];
+
+}
+
+
 - (void)initTableView
 {
     UITableView *tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
@@ -40,6 +76,8 @@
     [self.view addSubview:tableview];
     tableview.rowHeight = 100;
     self.tableview = tableview;
+    
+    self.tableview.tableHeaderView = self.headView;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
