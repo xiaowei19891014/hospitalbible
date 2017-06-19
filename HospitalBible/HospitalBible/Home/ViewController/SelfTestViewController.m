@@ -66,7 +66,20 @@
     
     
     scrollView.dataArray = @[@"1",@"2",@"3"];
+    scrollView.index = index;
+    
+    __block typeof(swipeView) weakView = swipeView;
+    [scrollView setNextBtnClickAction:^(NSInteger currentIndex) {
+        if (currentIndex < weakView.numberOfPages-1) {
+             [weakView scrollToPage:currentIndex+1 duration:0.25];
+        }else{
+            NSLog(@"完成");
+        }
+    }];
 
+    if (index == swipeView.numberOfPages - 1) {
+        [scrollView.nextBtn setTitle:@"交卷" forState:UIControlStateNormal];
+    }
     
 //    CGFloat red = arc4random() / (CGFloat)INT_MAX;
 //    CGFloat green = arc4random() / (CGFloat)INT_MAX;

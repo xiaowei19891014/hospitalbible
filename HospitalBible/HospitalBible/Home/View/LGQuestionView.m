@@ -11,7 +11,6 @@
 @interface LGQuestionView()
 @property (nonatomic,strong)UILabel *titleLabel;
 @property (nonatomic,strong)UILabel *desLabel;
-@property (nonatomic,strong)UIButton *nextBtn;
 @end
 
 @implementation LGQuestionView
@@ -61,7 +60,9 @@
     
     NSInteger count = 4;
     for (int i = 0; i<count; i++) {
-        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(leftSpace,coodY, 20, 20)];
+        UIView *baseView = [[UIView alloc] init];
+        
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0,0, 20, 20)];
         label.text = [self getSelectedByIndex:i];
         label.font = [UIFont systemFontOfSize:16];
         label.textAlignment = NSTextAlignmentCenter;
@@ -69,17 +70,24 @@
         label.layer.cornerRadius = 10;
         label.clipsToBounds = YES;
         label.backgroundColor = UIColorFromRGB(0x00A49F);
-        [self addSubview:label];
+        [baseView addSubview:label];
 
         NSString *questionText = @"每个人都会有梦，有的梦坚定不移，有的梦虚无缥缈。四年以前，对勇士来说，一切的未来都是若隐若现的，可是他们，至少有梦.";
         CGSize queSize = [questionText boundingRectWithSize:CGSizeMake(coodX, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:12]} context:nil].size;;
-        UILabel *questionLabel = [[UILabel alloc] initWithFrame:CGRectMake(60, coodY, coodX-30, queSize.height+1)];
+        UILabel *questionLabel = [[UILabel alloc] initWithFrame:CGRectMake(30, 0, coodX-30, queSize.height+1)];
         questionLabel.font = [UIFont systemFontOfSize:12];
         questionLabel.text = questionText;
         questionLabel.numberOfLines = 0;//多行显示，计算高度
         questionLabel.textColor = UIColorFromRGB(0x9B9B9B);
-        [self addSubview:questionLabel];
+        [baseView addSubview:questionLabel];
+        
+        baseView.frame = CGRectMake(leftSpace, coodY, coodX, questionLabel.height);
+        [self addSubview:baseView];
         coodY = coodY + questionLabel.height+15;
+        baseView.tag = i;
+        
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
+        [baseView addGestureRecognizer:tap];
     }
     
     self.nextBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -102,8 +110,22 @@
     self.nextBtn.center = CGPointMake(SCREEN_WIDTH/2.0, self.nextBtn.center.y);
     coodY = coodY + 44 + 15;
     [self addSubview:self.nextBtn];
+    [self.nextBtn addTarget:self action:@selector(clickAction) forControlEvents:UIControlEventTouchUpInside];
     
     self.contentSize = CGSizeMake(0, coodY);
+}
+
+- (void)tapAction:(UITapGestureRecognizer *)tap
+{
+    UIView *view = tap.view;
+    NSLog(@"tapAction---%ld",view.tag);
+}
+
+- (void)clickAction
+{
+    if (self.nextBtnClickAction) {
+        self.nextBtnClickAction(self.index);
+    }
 }
 
 - (NSString *)getSelectedByIndex:(NSInteger)index
