@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -79,7 +79,7 @@
                 <imageView hidden="YES" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="home_weixin_icon" translatesAutoresizingMaskIntoConstraints="NO" id="IWm-dI-DwY">
                     <rect key="frame" x="100" y="510" width="55" height="55"/>
                 </imageView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="do5-Oa-skx">
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="do5-Oa-skx">
                     <rect key="frame" x="15" y="15" width="47" height="40"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="47" id="Jsk-84-EBt"/>
@@ -90,6 +90,12 @@
                         <action selector="backAction:" destination="-1" eventType="touchUpInside" id="6Wu-GF-Pod"/>
                     </connections>
                 </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="慢病通" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t3R-AE-Rlw">
+                    <rect key="frame" x="161" y="195" width="52" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="jhk-YT-zuY" secondAttribute="trailing" id="1GR-pG-eEW"/>
@@ -100,10 +106,12 @@
                 <constraint firstItem="Oot-Cs-gI5" firstAttribute="leading" secondItem="eJJ-NQ-nvS" secondAttribute="leading" id="7dl-U5-TWE"/>
                 <constraint firstItem="xDt-qO-iab" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" constant="60" id="9VL-KK-41Y"/>
                 <constraint firstItem="raj-vN-CHG" firstAttribute="leading" secondItem="Oot-Cs-gI5" secondAttribute="trailing" constant="20" id="Cp2-Kf-RPb"/>
+                <constraint firstItem="t3R-AE-Rlw" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Dqn-Y7-YOA"/>
                 <constraint firstAttribute="bottom" secondItem="jhk-YT-zuY" secondAttribute="bottom" id="GfL-Sn-X4Q"/>
                 <constraint firstItem="fNl-xK-aSx" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="RAx-Oo-ZaY"/>
                 <constraint firstItem="raj-vN-CHG" firstAttribute="trailing" secondItem="Ykg-b0-apx" secondAttribute="trailing" id="SWT-AO-P9p"/>
                 <constraint firstItem="Oot-Cs-gI5" firstAttribute="width" secondItem="raj-vN-CHG" secondAttribute="width" multiplier="1:1.2" id="Z8f-6a-p3a"/>
+                <constraint firstItem="t3R-AE-Rlw" firstAttribute="top" secondItem="fNl-xK-aSx" secondAttribute="bottom" constant="8" id="a7Z-8m-cgD"/>
                 <constraint firstItem="raj-vN-CHG" firstAttribute="trailing" secondItem="eJJ-NQ-nvS" secondAttribute="trailing" id="ae9-uh-oeL"/>
                 <constraint firstItem="Oot-Cs-gI5" firstAttribute="centerY" secondItem="raj-vN-CHG" secondAttribute="centerY" id="b0L-YW-Aa5"/>
                 <constraint firstItem="jhk-YT-zuY" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="kay-H3-1YQ"/>

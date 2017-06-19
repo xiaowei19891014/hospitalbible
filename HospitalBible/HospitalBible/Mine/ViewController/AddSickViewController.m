@@ -90,44 +90,7 @@
     self.myTextView.layer.borderWidth = 1;
     self.myTextView.layer.borderColor = [UIColor colorWithHexString:@"DEDEDE"].CGColor;
     self.myTextView.layer.masksToBounds = YES;
-    __weak typeof(self) weakself = self;
-    footView.addSickNextBlock =^{
-        [weakself.view endEditing:YES];
-        AddSickTableViewCell *cell = [weakself.tableview cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
-        NSString *str = cell.textfield.text;
-        AddSickTableViewCell *cell1 = [weakself.tableview cellForRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:0]];
-        NSString *str1 = cell1.textfield.text;
-        AddSickTableViewCell *cell2 = [weakself.tableview cellForRowAtIndexPath:[NSIndexPath indexPathForRow:4 inSection:0]];
-        NSString *str2 = cell2.textfield.text;
-        AddSickTableViewCell *cell3 = [weakself.tableview cellForRowAtIndexPath:[NSIndexPath indexPathForRow:5 inSection:0]];
-        NSString *str3 = cell3.textfield.text;
-        AddSickTableViewCell *cell4 = [weakself.tableview cellForRowAtIndexPath:[NSIndexPath indexPathForRow:6 inSection:0]];
-        NSString *str4 = cell4.textfield.text;
-        
-        
-        NSDictionary *params = @{
-                                 @"userId":[UserInfoShareClass sharedManager].userId,
-                                 @"pname":[UserInfoShareClass sharedManager].userId,
-                                 @"birthday":[UserInfoShareClass sharedManager].userId,
-                                 @"sex":[UserInfoShareClass sharedManager].userId,
-                                 @"weight":[UserInfoShareClass sharedManager].userId,
-                                 @"height":[UserInfoShareClass sharedManager].userId,
-                                 @"cartevital":[UserInfoShareClass sharedManager].userId,
-                                 @"pdescribe":[UserInfoShareClass sharedManager].userId,
-                                 @"idtype":[UserInfoShareClass sharedManager].userId,
-                                 @"idcard":[UserInfoShareClass sharedManager].userId,
-
-                                 
-                                 };
-        [[ERHNetWorkTool sharedManager] requestDataWithUrl:PATIENT_LIST params:params success:^(NSDictionary *responseObject) {
-            
-            //        [UserInfoModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
-            
-        } failure:^(NSError *error) {
-        }];
-        
-        
-    };
+    self.myTextView.delegate = self;
     [self.view addSubview:tableview];
     self.tableview = tableview;
     
@@ -173,6 +136,13 @@
         cell.accessoryType =UITableViewCellAccessoryNone;
         cell.model = _dataSources[indexPath.row];
         
+        if (indexPath.row == 4) {
+            cell.textfield.keyboardType = UIKeyboardTypePhonePad;
+        }else if (indexPath.row == 5 || indexPath.row == 6 || indexPath.row == 7) {
+            cell.textfield.keyboardType = UIKeyboardTypeDecimalPad;
+        }else{
+            cell.textfield.keyboardType = UIKeyboardTypeDefault;
+        }
         return cell;
     }
     
@@ -184,6 +154,12 @@
     [self.view endEditing:YES];
 }
 
+-(void)textViewDidBeginEditing:(UITextView *)textView{
+
+    if ([textView.text isEqualToString:@"请简单描述病情" ]) {
+        textView.text = nil;
+    }
+}
 
 
 - (IBAction)saveAction:(id)sender {
@@ -200,9 +176,9 @@
     NSString *str4 = cell4.textfield.text;
     
     AddSickTableViewCell *cell5 = [self.tableview cellForRowAtIndexPath:[NSIndexPath indexPathForRow:7 inSection:0]];
-    NSString *str5 = cell3.textfield.text;
+    NSString *str5 = cell5.textfield.text;
     AddSickTableViewCell *cell6 = [self.tableview cellForRowAtIndexPath:[NSIndexPath indexPathForRow:8 inSection:0]];
-    NSString *str6 = cell4.textfield.text;
+    NSString *str6 = cell6.textfield.text;
 
     
     NSDictionary *params = @{
@@ -215,16 +191,24 @@
                              @"cartevital":@"",
                              @"pdescribe":NOTNIL(self.myTextView.text),
                              @"idtype":@"0",
-                             @"idcard":NOTNIL(str2),
-                             
+                             @"idcard":NOTNIL(str1),
+                             @"address":NOTNIL(str6),
+                             @"regdate":@"",
+                             @"imgurl":@"",
+                             @"qQNum":@"",
+                             @"weChat":@"",
+                             @"birthday":@"",
+                             @"IDCard":@"",
+
                              
                              };
     [[ERHNetWorkTool sharedManager] requestDataWithUrl:PATIENT_SAVE params:params success:^(NSDictionary *responseObject) {
-        
-        
+        if (self.addSuccessBlock) {
+            self.addSuccessBlock();
+        }
+        [self showErrorMessage:@"添加成功"];
+        [self.navigationController popViewControllerAnimated:YES];
     } failure:^(NSError *error) {
     }];
-
-    
 }
 @end

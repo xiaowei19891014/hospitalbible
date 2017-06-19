@@ -23,8 +23,12 @@
     [super viewDidLoad];
     self.title = @"微课堂详情";
     self.automaticallyAdjustsScrollViewInsets = NO;
+    self.mWebView.scalesPageToFit = YES;
     [self.mWebView loadHTMLString:[[ERHHtmlAnalysisTool shareERHHtmlAnalysisTool] getNewHtmlStringWithOriginalHtmlString:_model.content] baseURL:nil];
     [self checkIfCollectNetWork];
+    
+    self.titleLable.text = _model.title;
+    self.dateLable.text = _model.date;
     
 //    [self.mWebView loadHTMLString:_model.content baseURL:nil];
     
@@ -36,6 +40,7 @@
             [self collectRequest];
         }
     }];
+    
 }
 
 - (void)checkIfCollectNetWork {

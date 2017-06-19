@@ -70,10 +70,10 @@
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
                     <state key="normal" title=" 获取验证码 ">
-                        <color key="titleColor" red="0.64252394437789917" green="0.2073996365070343" blue="0.26398980617523193" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="titleColor" red="0.64313725490196072" green="0.20784313725490194" blue="0.2627450980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
                     <state key="disabled">
-                        <color key="titleColor" red="0.82352941180000006" green="0.82352941180000006" blue="0.82352941180000006" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="titleColor" red="0.64313725490196072" green="0.20784313725490194" blue="0.2627450980392157" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
                     <connections>
                         <action selector="validateAction:" destination="-1" eventType="touchUpInside" id="DjQ-Mt-PWi"/>

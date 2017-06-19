@@ -13,4 +13,6 @@
 - (IBAction)saveAction:(id)sender;
 @property (weak, nonatomic) IBOutlet UITextView *myTextView;
 
+@property(copy,nonatomic) void(^addSuccessBlock) (void);
+
 @end

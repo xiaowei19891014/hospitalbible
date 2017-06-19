@@ -29,53 +29,5 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "HospitalBible/Mine/ViewController/AddSickViewController.m"
-            timestampString = "519472796.61547"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "224"
-            endingLineNumber = "224"
-            landmarkName = "-saveAction:"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__36-[AddSickViewController saveAction:]_block_invoke"
-                  moduleName = "HospitalBible"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/issuser/Documents/myProject/hospitalbible/HospitalBible/HospitalBible/Mine/ViewController/AddSickViewController.m"
-                  timestampString = "519487872.110458"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "225"
-                  endingLineNumber = "225"
-                  offsetFromSymbolStart = "52">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__36-[AddSickViewController saveAction:]_block_invoke_2"
-                  moduleName = "HospitalBible"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/issuser/Documents/myProject/hospitalbible/HospitalBible/HospitalBible/Mine/ViewController/AddSickViewController.m"
-                  timestampString = "519487872.11213"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "226"
-                  endingLineNumber = "226"
-                  offsetFromSymbolStart = "52">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

@@ -16,5 +16,7 @@
 
 @property (nonatomic, weak) IBOutlet UIWebView *mWebView;
 @property (weak, nonatomic) IBOutlet UIImageView *collectImgView;
+@property (weak, nonatomic) IBOutlet UILabel *titleLable;
+@property (weak, nonatomic) IBOutlet UILabel *dateLable;
 
 @end
