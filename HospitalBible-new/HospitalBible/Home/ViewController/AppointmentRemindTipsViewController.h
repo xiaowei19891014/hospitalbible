@@ -6,9 +6,8 @@
 //  Copyright © 2017年 com.hao. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-
-@interface AppointmentRemindTipsViewController : UIViewController
+#import "BaseViewController.h"
+@interface AppointmentRemindTipsViewController : BaseViewController
 @property (weak, nonatomic) IBOutlet UILabel *startLable;
 @property (weak, nonatomic) IBOutlet UILabel *endLable;
 @property (weak, nonatomic) IBOutlet UIImageView *selectImageView;
