@@ -11,6 +11,7 @@
 #import "UserInfoDocumentTypeCell.h"
 #import "UserInfoSexCell.h"
 #import "AddSickViewModel.h"
+#import "NSString+EAddition.h"
 
 @interface AddSickFootView : UIView
 @property (nonatomic, copy) void (^addSickNextBlock)();
@@ -168,6 +169,12 @@
     NSString *str = cell.textfield.text;
     AddSickTableViewCell *cell1 = [self.tableview cellForRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:0]];
     NSString *str1 = cell1.textfield.text;
+    
+    if (![NSString isValidID:str1]) {
+        [self showErrorMessage:@"请输入正确的身份证号"];
+        return;
+    }
+    
     AddSickTableViewCell *cell2 = [self.tableview cellForRowAtIndexPath:[NSIndexPath indexPathForRow:4 inSection:0]];
     NSString *str2 = cell2.textfield.text;
     AddSickTableViewCell *cell3 = [self.tableview cellForRowAtIndexPath:[NSIndexPath indexPathForRow:5 inSection:0]];
@@ -180,6 +187,13 @@
     AddSickTableViewCell *cell6 = [self.tableview cellForRowAtIndexPath:[NSIndexPath indexPathForRow:8 inSection:0]];
     NSString *str6 = cell6.textfield.text;
 
+    if (_personSex.length == 0) {
+        [self showErrorMessage:@"请选择性别"];
+    }
+    if(str.length == 0)
+    {
+        [self showErrorMessage:@"请输入姓名"];
+    }
     
     NSDictionary *params = @{
                              @"pname":NOTNIL(str),
@@ -194,11 +208,11 @@
                              @"weChat":@"",
                              @"weight":NOTNIL(str5),
                              @"sex":NOTNIL(_personSex),
-                             @"birthday":@"",
+                             @"birthday":  [str1 substringWithRange:NSMakeRange(6, 8)],
                              @"userId":[UserInfoShareClass sharedManager].userId,
                              @"pdescribe":NOTNIL(self.myTextView.text),
                              @"cartevital":@"",
-                             @"IDCard":@"",
+                             @"IDCard":NOTNIL(str1),
 
                              
                              };

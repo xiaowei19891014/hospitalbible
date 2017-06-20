@@ -12,6 +12,7 @@
 #import "AddSickViewController.h"
 @interface SickCallHeadView : UIView
 @property (nonatomic,strong)UILabel *tipsLabel;
+
 @end
 
 @implementation SickCallHeadView
@@ -45,7 +46,7 @@
 
 @interface SickCallViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) UITableView *tableview;
-@property (nonatomic, strong) NSArray *dataSources;
+@property (nonatomic, strong) NSMutableArray *dataSources;
 
 
 @end
@@ -54,6 +55,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    _dataSources = [[NSMutableArray alloc]init];
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.navigationItem.title = @"就诊人列表";
     [self initTableView];
@@ -63,15 +65,18 @@
 }
 
 -(void)startRequestData{
-
+    [self showLoadingHUD];
     NSDictionary *params = @{
                              @"userId":[UserInfoShareClass sharedManager].userId
                              };
     [[ERHNetWorkTool sharedManager] requestDataWithUrl:PATIENT_LIST params:params success:^(NSDictionary *responseObject) {
+        [self hideLoadingHUD];
+        _dataSources =   [UserInfoModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
         
-//        [UserInfoModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
+        [self.tableview reloadData];
 
     } failure:^(NSError *error) {
+        [self hideLoadingHUD];
     }];
 
 }
@@ -79,7 +84,9 @@
 -(void)rightAction:(UIButton *)sender{
     
     AddSickViewController* vc= [[AddSickViewController alloc] init];
-    
+    [vc setAddSuccessBlock:^{
+        [self startRequestData ];
+    }];
     [self.navigationController pushViewController:vc animated:YES];
 
 
@@ -104,12 +111,16 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 2;
+    return _dataSources.count;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
 
         SickCallTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SickCallTableViewCell"];
+        UserInfoModel *model = _dataSources[indexPath.row];
+    cell.sex.text = [model.sex isEqualToString:@"M"] ?@"性别：女":@"性别：男";
+    cell.name.text = model.pname;
+    cell.number.text = model.idcard;
         cell.accessoryType =UITableViewCellAccessoryNone;// UITableViewCellAccessoryDisclosureIndicator;
         return cell;
     
@@ -127,15 +138,33 @@
 - (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return @"删除";
+    
+    
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // 从数据源中删除
-//    [_data removeObjectAtIndex:indexPath.row];
-//    // 从列表中删除
-//    [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    UserInfoModel *model = _dataSources[indexPath.row];
+    [self showLoadingHUD];
+    NSDictionary *params = @{
+                             @"userId":[UserInfoShareClass sharedManager].userId
+                             @"id":model.id
+                             };
+    [[ERHNetWorkTool sharedManager] requestDataWithUrl:PATIENT_DELETE params:params success:^(NSDictionary *responseObject) {
+        [self hideLoadingHUD];
+        // 从数据源中删除
+        [_dataSources removeObjectAtIndex:indexPath.row];
+        //    // 从列表中删除
+        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+
+    } failure:^(NSError *error) {
+        [self hideLoadingHUD];
+    }];
+    
+
 }
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

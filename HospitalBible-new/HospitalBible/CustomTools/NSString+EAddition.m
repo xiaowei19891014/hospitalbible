@@ -104,4 +104,33 @@
 - (NSString *)toSex{
     return [self isEqualToString:@"男"] ? @"M" : @"F" ;
 }
+
++(BOOL)isValidID:(NSString*)identityString{
+    if (identityString.length != 18)
+        return NO;
+    // 正则表达式判断基本 身份证号是否满足格式
+    NSString *regex = @"^[1-9]\\d{5}[1-9]\\d{3}((0\\d)|(1[0-2]))(([0|1|2]\\d)|3[0-1])\\d{3}([0-9]|X)$";
+    NSPredicate *identityStringPredicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",regex];
+    //如果通过该验证，说明身份证格式正确，但准确性还需计算
+    if(![identityStringPredicate evaluateWithObject:identityString])
+        return NO;
+    //计算最后一位余数
+    NSArray *arrExp = [NSArray arrayWithObjects:@"7", @"9", @"10", @"5", @"8", @"4", @"2", @"1", @"6", @"3", @"7", @"9", @"10", @"5", @"8", @"4", @"2", nil];
+    NSArray *arrVaild = [NSArray arrayWithObjects:@"1", @"0", @"X", @"9", @"8", @"7", @"6", @"5", @"4", @"3", @"2", nil];
+    
+    long sum = 0;
+    for (int i = 0; i < (identityString.length -1); i++) {
+        NSString * str = [identityString substringWithRange:NSMakeRange(i, 1)];
+        sum += [str intValue] * [arrExp[i] intValue];
+    }
+    
+    int idx = (sum % 11);
+    if ([arrVaild[idx] isEqualToString:[identityString substringWithRange:NSMakeRange(identityString.length - 1, 1)]]) {
+        return YES;
+    }else{
+        return NO;
+    }
+}
+
+
 @end
