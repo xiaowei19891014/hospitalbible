@@ -12,6 +12,7 @@
 #import "UIControl+BlocksKit.h"
 #import "HistoryDetailViewController.h"
 #import "HomeViewModel.h"
+
 @interface QuestionBankViewController ()<UICollectionViewDelegate,UICollectionViewDataSource>
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) NSArray *placeImageArr;
@@ -78,9 +79,9 @@
 {
     DiseaseQuestionClass *model = self.dataSources[indexPath.row];
     QuestionBankCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"QuestionBankCell" forIndexPath:indexPath];
-    cell.titleLabel.text = model.pname;
+    cell.titleLabel.text = model.pdescribe;
     if (indexPath.row < self.placeImageArr.count) {
-        cell.imagePicView.image = self.placeImageArr[indexPath.item];
+        [cell.imagePicView sd_setImageWithURL:[NSURL URLWithString:model.imgurl] placeholderImage:self.placeImageArr[indexPath.item]];
     }
     [cell.selfTestButton bk_addEventHandler:^(id  _Nonnull sender) {
         SelfTestViewController *testVC = [[SelfTestViewController alloc] init];

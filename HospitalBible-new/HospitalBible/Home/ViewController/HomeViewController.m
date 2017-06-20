@@ -117,10 +117,7 @@
 - (void)reloadDiseasequestionList
 {
     if (self.viewModel.listArr) {
-//        DiseaseQuestionClass *model =
-        
-        
-        
+        [self.tableview reloadData];
     }
 }
 
@@ -203,7 +200,6 @@
     NSLog(@"---点击了第%ld张图片", (long)index);
 
     QuestionBankViewController *vc = [[QuestionBankViewController alloc] init];
-    
     [self.navigationController pushViewController:vc animated:YES];
 }
 

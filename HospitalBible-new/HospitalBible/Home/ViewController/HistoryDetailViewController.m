@@ -35,13 +35,10 @@
     [self.view addSubview:self.tableView];
     
 //    /api/chr/result/list
-//    逆流鱼
-//    逆流鱼
-//    {"userid":2,"classid":1}
     
-    
-    NSDictionary *params = @{@"userid":[UserInfoShareClass sharedManager].userId,
-                         @"classid":NOTNIL(self.model.id)};
+//    {"userId":2147483647,"classid":1}
+    NSDictionary *params = @{@"userId":[UserInfoShareClass sharedManager].userId,
+                             @"classid":NOTNIL(self.model.id)};
     [[ERHNetWorkTool sharedManager] requestDataWithUrl:DISEASEQUEASETION_HISTORY_LIST params:params success:^(NSDictionary *responseObject) {
         NSLog(@"---%@--",responseObject);
     } failure:^(NSError *error) {

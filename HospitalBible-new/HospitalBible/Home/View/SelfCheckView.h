@@ -10,7 +10,8 @@
 
 @interface SelfCheckView : UIView
 
-@property(strong,nonatomic) UIButton *button;
+@property(strong,nonatomic) UIImageView *imageView;
+@property(strong,nonatomic) UILabel     *label;
 
 @property(copy,nonatomic) NSString *BtnTitle;
 

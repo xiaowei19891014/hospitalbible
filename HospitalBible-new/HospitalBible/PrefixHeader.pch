@@ -28,6 +28,7 @@
 #import "AppDelegate.h"
 #import "DiseaseQuestionModel.h"
 #import "LGAlertViewExtension.h"
+#import "UIImageView+WebCache.h"
 
 typedef void(^SuccessCallBack)(id result);
 typedef void(^ErrorCallBack)(NSError *error);
