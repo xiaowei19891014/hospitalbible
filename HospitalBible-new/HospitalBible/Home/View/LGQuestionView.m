@@ -11,31 +11,33 @@
 @interface LGQuestionView()
 @property (nonatomic,strong)UILabel *titleLabel;
 @property (nonatomic,strong)UILabel *desLabel;
+@property (nonatomic,strong)NSMutableArray *labels;
 @end
 
 @implementation LGQuestionView
 
-- (void)setDataArray:(NSArray *)dataArray
+
+- (void)setModel:(DiseaseQuestionModel *)model
 {
-    _dataArray = dataArray;
-    
+    _model = model;
+    _labels = [NSMutableArray arrayWithCapacity:0];
     NSArray *viewArr = self.subviews;
     [viewArr enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         UIView *view = (UIView *)obj;
         [view removeFromSuperview];
     }];
 
-    [self reconfigUI];
+    [self reconfigUI:model];
 }
 
-- (void)reconfigUI
+- (void)reconfigUI:(DiseaseQuestionModel *)model
 {
     CGFloat coodY = 10;
     CGFloat leftSpace = 30;
     CGFloat coodX = SCREEN_WIDTH - 2*leftSpace;
     CGFloat space = 5.0;
     
-    NSString *titleContent = @"亲，欢迎您通过以下方式与我们的营销顾问取得联系，交流您再营销推广工作中遇到的问题，营销顾问将免费为您提供咨询服务。";
+    NSString *titleContent = [NSString stringWithFormat:@"%ld .%@",(long)self.index+1,model.title];
     CGSize titleSize = [titleContent boundingRectWithSize:CGSizeMake(coodX, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:16]} context:nil].size;
     self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(leftSpace, coodY, coodX, titleSize.height+space)];
     self.titleLabel.font = [UIFont systemFontOfSize:16];
@@ -58,21 +60,22 @@
 
     coodY = coodY + self.desLabel.height + 5;
     
-    NSInteger count = 4;
+    NSInteger count = model.choiceList.count;
     for (int i = 0; i<count; i++) {
         UIView *baseView = [[UIView alloc] init];
         
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0,0, 20, 20)];
-        label.text = [self getSelectedByIndex:i];
+        label.text = [NSString stringWithFormat:@"%d",i+1];
         label.font = [UIFont systemFontOfSize:16];
         label.textAlignment = NSTextAlignmentCenter;
         label.textColor = [UIColor whiteColor];
         label.layer.cornerRadius = 10;
+        label.backgroundColor = [UIColor grayColor];
         label.clipsToBounds = YES;
-        label.backgroundColor = UIColorFromRGB(0x00A49F);
         [baseView addSubview:label];
 
-        NSString *questionText = @"每个人都会有梦，有的梦坚定不移，有的梦虚无缥缈。四年以前，对勇士来说，一切的未来都是若隐若现的，可是他们，至少有梦.";
+        DiseaseQuestionChoiceModel *tempModel = (DiseaseQuestionChoiceModel *)model.choiceList[i];
+        NSString *questionText = tempModel.fContext;
         CGSize queSize = [questionText boundingRectWithSize:CGSizeMake(coodX, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:12]} context:nil].size;;
         UILabel *questionLabel = [[UILabel alloc] initWithFrame:CGRectMake(30, 0, coodX-30, queSize.height+1)];
         questionLabel.font = [UIFont systemFontOfSize:12];
@@ -88,6 +91,8 @@
         
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
         [baseView addGestureRecognizer:tap];
+        
+        [_labels addObject:label];
     }
     
     self.nextBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -128,23 +133,33 @@
     }
 }
 
-- (NSString *)getSelectedByIndex:(NSInteger)index
+- (void)setCurrentSelectedIndex:(NSInteger)currentSelectedIndex
 {
-    NSArray *arr = @[@"A",
-                    @"B",
-                    @"C",
-                    @"D",
-                    @"E",
-                    @"F",
-                    @"G",
-                    @"H",
-                    @"I",
-                    @"J",
-                    @"K",
-                    @"L",
-                    @"M",
-                    @"N"];
-    return arr[index];
+    if (_currentSelectedIndex == 0) {
+        return;
+    }else{
+        UILabel *label = self.labels[currentSelectedIndex-1];
+        label.backgroundColor = UIColorFromRGB(0x00A49F);
+    }
 }
+
+//- (NSString *)getSelectedByIndex:(NSInteger)index
+//{
+//    NSArray *arr = @[@"A",
+//                    @"B",
+//                    @"C",
+//                    @"D",
+//                    @"E",
+//                    @"F",
+//                    @"G",
+//                    @"H",
+//                    @"I",
+//                    @"J",
+//                    @"K",
+//                    @"L",
+//                    @"M",
+//                    @"N"];
+//    return arr[index];
+//}
 
 @end
