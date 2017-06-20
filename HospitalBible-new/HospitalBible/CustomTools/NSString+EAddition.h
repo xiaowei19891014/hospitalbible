@@ -52,4 +52,6 @@
 
 - (NSString *)toSex;
 
++(BOOL)isValidID:(NSString*)identityString;
+
 @end
