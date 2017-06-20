@@ -26,8 +26,9 @@
 @property(nonatomic,strong) NSString *nickname;
 @property(nonatomic,strong) NSString *email;
 @property(nonatomic,strong) NSString *patientId;
-
-
+@property(nonatomic,strong) NSString *phoneNum;
+@property(nonatomic,strong) NSString *pdescribe;
+@property(nonatomic,strong) NSString *birthday;
 
 //患者信息扩充
 @property(nonatomic,strong) NSString *pname;

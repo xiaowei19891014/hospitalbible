@@ -101,6 +101,12 @@
     
     [_tableview registerNib:[UINib nibWithNibName:@"UserInfoSexCell" bundle:nil] forCellReuseIdentifier:@"UserInfoSexCell"];
 
+    if (_model) {
+        _saveBtn.hidden = YES;
+        _myTextView.editable = NO;
+        _myTextView.text = _model.pdescribe;
+        self.title = @"个人信息";
+    }
 }
 
 
@@ -127,6 +133,17 @@
                 _personSex = @"F";
             }
         }];
+        if (_model) {
+            cell.manBtn.selected = NO;
+            cell.womanBtn.selected = NO;
+            
+            if ([_model.sex isEqualToString:@"M"]) {
+                cell.manBtn.selected =YES;
+            }else{
+                cell.womanBtn.selected =YES;
+            }
+            
+        }
         cell.accessoryType =UITableViewCellAccessoryNone;
         return cell;
 
@@ -144,6 +161,33 @@
         }else{
             cell.textfield.keyboardType = UIKeyboardTypeDefault;
         }
+        
+        if (_model) {
+            cell.textfield.enabled = NO;
+            if (indexPath.row == 0) {
+                cell.textfield.text = _model.pname;
+            }
+            if (indexPath.row == 2) {
+                cell.textfield.text = _model.idcard;
+            }
+            if (indexPath.row == 4) {
+                cell.textfield.text = _model.phoneNum;
+            }
+            if (indexPath.row == 5) {
+                cell.textfield.text = _model.birthDay;
+            }
+            if (indexPath.row == 6) {
+                cell.textfield.text = _model.height;
+            }
+            if (indexPath.row == 7) {
+                cell.textfield.text = _model.weight;
+            }
+            if (indexPath.row == 8) {
+                cell.textfield.text = _model.address;
+            }
+
+        }
+        
         return cell;
     }
     
@@ -213,6 +257,7 @@
                              @"pdescribe":NOTNIL(self.myTextView.text),
                              @"cartevital":@"",
                              @"IDCard":NOTNIL(str1),
+                             @"phoneNum":NOTNIL(str2),
 
                              
                              };

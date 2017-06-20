@@ -118,7 +118,7 @@
 
         SickCallTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SickCallTableViewCell"];
         UserInfoModel *model = _dataSources[indexPath.row];
-    cell.sex.text = [model.sex isEqualToString:@"M"] ?@"性别：女":@"性别：男";
+    cell.sex.text = [model.sex isEqualToString:@"M"] ?@"性别：男":@"性别：女";
     cell.name.text = model.pname;
     cell.number.text = model.idcard;
         cell.accessoryType =UITableViewCellAccessoryNone;// UITableViewCellAccessoryDisclosureIndicator;
@@ -128,6 +128,10 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
+    
+    AddSickViewController* vc= [[AddSickViewController alloc] init];
+    vc.model = _dataSources[indexPath.row];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
@@ -152,6 +156,7 @@
                              };
     [[ERHNetWorkTool sharedManager] requestDataWithUrl:PATIENT_DELETE params:params success:^(NSDictionary *responseObject) {
         [self hideLoadingHUD];
+        [self showErrorMessage:@"删除成功"];
         // 从数据源中删除
         [_dataSources removeObjectAtIndex:indexPath.row];
         //    // 从列表中删除
