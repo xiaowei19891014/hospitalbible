@@ -147,8 +147,8 @@
     UserInfoModel *model = _dataSources[indexPath.row];
     [self showLoadingHUD];
     NSDictionary *params = @{
-                             @"userId":[UserInfoShareClass sharedManager].userId
-                             @"id":model.id
+                             @"userId":[UserInfoShareClass sharedManager].userId,
+                             @"id":model.patientId
                              };
     [[ERHNetWorkTool sharedManager] requestDataWithUrl:PATIENT_DELETE params:params success:^(NSDictionary *responseObject) {
         [self hideLoadingHUD];
