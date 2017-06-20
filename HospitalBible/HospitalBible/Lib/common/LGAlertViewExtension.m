@@ -141,6 +141,7 @@
     [viewController.view endEditing:YES];
     CommonDatePickView *view =[[CommonDatePickView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 216)];
     view.width = SCREEN_WIDTH-20;
+    view.centerX = (SCREEN_WIDTH -20)/2;
     view.pageType = pickerType;
     view.indexDate = dateStr;
     

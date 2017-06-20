@@ -182,22 +182,22 @@
 
     
     NSDictionary *params = @{
-                             @"userId":[UserInfoShareClass sharedManager].userId,
                              @"pname":NOTNIL(str),
-                             @"birthday":@"",
-                             @"sex":NOTNIL(_personSex),
-                             @"weight":NOTNIL(str5),
-                             @"height":NOTNIL(str4),
-                             @"cartevital":@"",
-                             @"pdescribe":NOTNIL(self.myTextView.text),
-                             @"idtype":@"0",
-                             @"idcard":NOTNIL(str1),
+                             @"email":@"",
                              @"address":NOTNIL(str6),
                              @"regdate":@"",
+                             @"idtype":@"0",
+                             @"idcard":NOTNIL(str1),
                              @"imgurl":@"",
+                             @"height":NOTNIL(str4),
                              @"qQNum":@"",
                              @"weChat":@"",
+                             @"weight":NOTNIL(str5),
+                             @"sex":NOTNIL(_personSex),
                              @"birthday":@"",
+                             @"userId":[UserInfoShareClass sharedManager].userId,
+                             @"pdescribe":NOTNIL(self.myTextView.text),
+                             @"cartevital":@"",
                              @"IDCard":@"",
 
                              

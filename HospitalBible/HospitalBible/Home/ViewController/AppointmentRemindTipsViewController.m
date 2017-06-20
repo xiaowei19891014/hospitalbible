@@ -48,15 +48,22 @@
         [formatters setDateFormat:@"yyyy-MM-dd"];
         NSString *nowDate= [formatters stringFromDate:date];
         
-        [LGAlertViewExtension showDateSelectInViewController:self indexDate:nowDate andMax:nil andMin:date type:kDatePickerTypeFull clickOk:^(NSString *selectDateStr){
-        }];
-
-
-        
+        [LGAlertViewExtension showDateSelectInViewController:self indexDate:nowDate andMax:date andMin:nil type:kDatePickerTypeFull clickOk:^(NSString *selectDateStr){
+            NSLog(@"%@",selectDateStr);
+        }];        
         
     }];
     [self.endView setViewActionWithBlock:^{
+        NSDate *date = [NSDate date];
+        NSDateFormatter *formatters = [[NSDateFormatter alloc] init];
+        [formatters setDateFormat:@"yyyy-MM-dd"];
+        NSString *nowDate= [formatters stringFromDate:date];
         
+        [LGAlertViewExtension showDateSelectInViewController:self indexDate:nowDate andMax:date andMin:nil type:kDatePickerTypeFull clickOk:^(NSString *selectDateStr){
+            NSLog(@"%@",selectDateStr);
+
+        }];
+  
         
     }];
     

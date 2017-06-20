@@ -11,6 +11,7 @@
 #import "MJExtension.h"
 #import "UIStoryboard+KZ.h"
 #import "UIView+Frame.h"
+#import  "UIView+Additions.h"
 #import "AppConfig.h"
 #import "UserInfoShareClass.h"
 #import "UIColor+Extension.h"

@@ -63,11 +63,14 @@
     _pickerView.delegate = self;
     _pickerView.dataSource = self;
     _pickerView.showsSelectionIndicator = YES;
+    _pickerView.centerX = (SCREEN_WIDTH-20)/2;
+
     NSLog(@"%@",NSStringFromCGRect(_pickerView.frame));
     
     [self addSubview:_pickerView];
     
     _datePicker = [[UIDatePicker alloc] init];
+    _datePicker.centerX = (SCREEN_WIDTH-20)/2;
     [self addSubview:_datePicker];
 }
 
@@ -105,6 +108,9 @@
     if(self.pageType == kDatePickerTypeFull) //年 月 日
     {
         self.pickerView.hidden = YES; //年月日 把自定义的隐藏 用系统的
+        [_datePicker setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"zh_Hans_CN"]];
+        self.datePicker.datePickerMode = UIDatePickerModeDate;
+
         if(self.maxDate)
             self.datePicker.maximumDate = self.maxDate;
         if(self.minDate)
@@ -112,6 +118,7 @@
         
         if (self.indexDate!= nil) //设置默认选中项
         {
+            
             [self.datePicker setDate:[CommonMethod getDateFromDateStr:self.indexDate] animated:NO];
         }
         
