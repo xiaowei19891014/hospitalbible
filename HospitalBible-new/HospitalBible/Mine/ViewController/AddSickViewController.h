@@ -7,6 +7,8 @@
 //
 
 #import "BaseViewController.h"
+#import "UserInfoModel.h"
+
 @interface AddSickViewController : BaseViewController
 @property (weak, nonatomic) IBOutlet UIView *footview;
 @property (weak, nonatomic) IBOutlet UIButton *saveBtn;
@@ -14,5 +16,8 @@
 @property (weak, nonatomic) IBOutlet UITextView *myTextView;
 
 @property(copy,nonatomic) void(^addSuccessBlock) (void);
+
+@property (strong, nonatomic)  UserInfoModel *model;
+
 
 @end
