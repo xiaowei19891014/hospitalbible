@@ -25,10 +25,19 @@
 @property(nonatomic,strong) NSTimer *timer;
 @property(nonatomic,strong) SwipeView *swipeView;
 @property(nonatomic,strong) NSArray *dataArray;
+@property(nonatomic,strong) NSMutableArray *ansArr;
 
 @end
 
 @implementation SelfTestViewController
+
+- (NSMutableArray *)ansArr
+{
+    if (!_ansArr) {
+        _ansArr = [NSMutableArray arrayWithCapacity:0];
+    }
+    return _ansArr;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -55,8 +64,11 @@
 {
     _model = model;
     _dataArray = model.diseasequestionArr;
+    
+    for (int i =0 ; i<model.diseasequestionArr.count; i++) {
+        [self.ansArr addObject:@0];
+    }
 }
-
 
 - (NSInteger)numberOfItemsInSwipeView:(SwipeView *)swipeView
 {
@@ -75,26 +87,26 @@
     DiseaseQuestionModel *model = self.dataArray[index];
     scrollView.index = index;
     scrollView.model = model;
+    scrollView.currentSelectedIndex = [self.ansArr[index] integerValue];
     __block typeof(swipeView) weakView = swipeView;
     [scrollView setNextBtnClickAction:^(NSInteger currentIndex) {
         if (currentIndex < weakView.numberOfPages-1) {
              [weakView scrollToPage:currentIndex+1 duration:0.25];
         }else{
             NSLog(@"完成");
+            [self checkResult];
         }
+    }];
+    
+    __block typeof(self) weakSelf = self;
+    [scrollView setTapAction:^(NSInteger index, NSInteger selNumber) {
+        [weakSelf.ansArr replaceObjectAtIndex:index withObject:@(selNumber)];
     }];
 
     if (index == swipeView.numberOfPages - 1) {
         [scrollView.nextBtn setTitle:@"交卷" forState:UIControlStateNormal];
     }
     
-//    CGFloat red = arc4random() / (CGFloat)INT_MAX;
-//    CGFloat green = arc4random() / (CGFloat)INT_MAX;
-//    CGFloat blue = arc4random() / (CGFloat)INT_MAX;
-//    view.backgroundColor = [UIColor colorWithRed:red
-//                                           green:green
-//                                            blue:blue
-//                                           alpha:1.0];
     view.backgroundColor = [UIColor whiteColor];
     
     return view;
@@ -103,35 +115,6 @@
 - (CGSize)swipeViewItemSize:(SwipeView *)swipeView
 {
     return self.swipeView.bounds.size;
-}
-
--(void)test{
-    
-    AnswerModel *model1 = [AnswerModel new];
-    model1.title = @"一，这是第一个题";
-    model1.options = @[@"1、风险测评旨在帮助您了解自己的风险偏好和风险承受能力风险测评旨在帮助您了解自己的风险偏好和风险承受能力风险测评旨在帮助您了解自己的风险偏好和风险承受能力风险测评旨在帮助您了解自己的风险偏好和风险承受能力",
-                       @"2、您提供的信息应当真实、准确、完整，我们的风险评价将基于",
-                       @"3、本测试结果的有效期为12个月"];
-    model1.result =@[@"A"];
-    model1.selectedResult = @"";
-    
-    AnswerModel *model2 = [AnswerModel new];
-    model2.title = @"二，这是第二个题";
-    model2.options = @[@"1、风险测评旨在帮助您了解自己的风险偏好和风险承受能力",
-                       @"2、您提供的信息应当真实、准确、完整，我们的风险评价将基于",
-                       @"3、本测试结果的有效期为12个月"];
-    model2.result =@[@"A",@"B"];
-    model2.selectedResult = @"";
-    
-    AnswerModel *model3 = [AnswerModel new];
-    model3.title = @"三，这是第三个题";
-    model3.options = @[@"1、风险测评旨在帮助您了解自己的风险偏好和风险承受能力",
-                       @"2、您提供的信息应当真实、准确、完整，我们的风险评价将基于",
-                       @"3、本测试结果的有效期为12个月"];
-    model3.result =@[@"A",@"C"];
-    model3.selectedResult = @"";
-    
-//    [self.dataSources addObjectsFromArray:@[model1,model2,model3]];
 }
 
 -(UIImageView *)clockImageView{
@@ -154,5 +137,30 @@
     }
     return _timeLabel;
 }
+
+
+static NSInteger finished;
+- (void)checkResult
+{
+    finished = -1;
+    [self.ansArr enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        NSNumber *num = (NSNumber *)obj;
+        if ([num integerValue] == 0) {
+            finished = idx;
+            *stop = YES;
+        }
+    }];
+    
+    if (finished == -1) {
+//        提交
+        
+        
+    }else{
+        [LGAlertViewExtension showAlertTitle:[NSString stringWithFormat:@"请选择第%ld题答案",finished+1] cancelTitle:@"取消" cancelHandler:nil destructiveTitle:@"确定" destructiveHandler:^{
+            
+        }];
+    }
+}
+
 
 @end

@@ -27,6 +27,7 @@
 #import "EUnit.h"
 #import "AppDelegate.h"
 #import "DiseaseQuestionModel.h"
+#import "LGAlertViewExtension.h"
 
 typedef void(^SuccessCallBack)(id result);
 typedef void(^ErrorCallBack)(NSError *error);

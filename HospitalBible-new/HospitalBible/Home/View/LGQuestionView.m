@@ -10,7 +10,7 @@
 
 @interface LGQuestionView()
 @property (nonatomic,strong)UILabel *titleLabel;
-@property (nonatomic,strong)UILabel *desLabel;
+//@property (nonatomic,strong)UILabel *desLabel;
 @property (nonatomic,strong)NSMutableArray *labels;
 @end
 
@@ -46,19 +46,19 @@
     self.titleLabel.textColor = UIColorFromRGB(0x001627);
     [self addSubview:self.titleLabel];
     
-    coodY = coodY + self.titleLabel.height + 2;
+    coodY = coodY + self.titleLabel.height + 10;
     
-    NSString *desContent = @"近来，世界正呈现出新的力量格局变化。中国目前是世界上最大的发展中国家，亚洲第一大国，其先锋是领导人习近平。因地理位置而对朝鲜半岛具有巨大影响力的中国领导人习近平，他追求的是什么，这对朝鲜半岛局势和韩国究竟有什么样的影响";
-    CGSize desSize = [desContent boundingRectWithSize:CGSizeMake(coodX, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:12]} context:nil].size;
-    
-    self.desLabel = [[UILabel alloc] initWithFrame:CGRectMake(leftSpace, coodY, coodX, desSize.height+space+5)];
-    self.desLabel.font = [UIFont systemFontOfSize:12];
-    self.desLabel.text = desContent;
-    self.desLabel.numberOfLines = 0;//多行显示，计算高度
-    self.desLabel.textColor = UIColorFromRGB(0x9B9B9B);
-    [self addSubview:self.desLabel];
-
-    coodY = coodY + self.desLabel.height + 5;
+//    NSString *desContent = @"近来，世界正呈现出新的力量格局变化。中国目前是世界上最大的发展中国家，亚洲第一大国，其先锋是领导人习近平。因地理位置而对朝鲜半岛具有巨大影响力的中国领导人习近平，他追求的是什么，这对朝鲜半岛局势和韩国究竟有什么样的影响";
+//    CGSize desSize = [desContent boundingRectWithSize:CGSizeMake(coodX, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:12]} context:nil].size;
+//    
+//    self.desLabel = [[UILabel alloc] initWithFrame:CGRectMake(leftSpace, coodY, coodX, desSize.height+space+5)];
+//    self.desLabel.font = [UIFont systemFontOfSize:12];
+//    self.desLabel.text = desContent;
+//    self.desLabel.numberOfLines = 0;//多行显示，计算高度
+//    self.desLabel.textColor = UIColorFromRGB(0x9B9B9B);
+//    [self addSubview:self.desLabel];
+//
+//    coodY = coodY + self.desLabel.height + 5;
     
     NSInteger count = model.choiceList.count;
     for (int i = 0; i<count; i++) {
@@ -70,7 +70,7 @@
         label.textAlignment = NSTextAlignmentCenter;
         label.textColor = [UIColor whiteColor];
         label.layer.cornerRadius = 10;
-        label.backgroundColor = [UIColor grayColor];
+        label.backgroundColor = [UIColor lightGrayColor];
         label.clipsToBounds = YES;
         [baseView addSubview:label];
 
@@ -124,6 +124,18 @@
 {
     UIView *view = tap.view;
     NSLog(@"tapAction---%ld",view.tag);
+    
+    [self.labels enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        UILabel *l = (UILabel *)obj;
+        l.backgroundColor = [UIColor lightGrayColor];
+        if (idx == view.tag) {
+            l.backgroundColor = UIColorFromRGB(0x00A49F);
+        }
+    }];
+    
+    if (self.tapAction) {
+        self.tapAction(self.index,view.tag+1);
+    }
 }
 
 - (void)clickAction
@@ -135,6 +147,7 @@
 
 - (void)setCurrentSelectedIndex:(NSInteger)currentSelectedIndex
 {
+    _currentSelectedIndex = currentSelectedIndex;
     if (_currentSelectedIndex == 0) {
         return;
     }else{
