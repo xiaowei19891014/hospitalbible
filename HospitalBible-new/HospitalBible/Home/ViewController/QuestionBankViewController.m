@@ -84,6 +84,7 @@
     }
     [cell.selfTestButton bk_addEventHandler:^(id  _Nonnull sender) {
         SelfTestViewController *testVC = [[SelfTestViewController alloc] init];
+        testVC.model = model;
         [self.navigationController pushViewController:testVC animated:YES];
         
     } forControlEvents:(UIControlEventTouchUpInside)];

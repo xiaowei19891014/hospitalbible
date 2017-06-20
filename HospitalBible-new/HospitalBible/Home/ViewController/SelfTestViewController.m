@@ -23,8 +23,9 @@
 @property(nonatomic,strong) UILabel *timeLabel;
 @property(nonatomic,strong) UIImageView *clockImageView;
 @property(nonatomic,strong) NSTimer *timer;
-
 @property(nonatomic,strong) SwipeView *swipeView;
+@property(nonatomic,strong) NSArray *dataArray;
+
 @end
 
 @implementation SelfTestViewController
@@ -50,9 +51,16 @@
     [self.view addSubview:self.swipeView];
 }
 
+- (void)setModel:(DiseaseQuestionClass *)model
+{
+    _model = model;
+    _dataArray = model.diseasequestionArr;
+}
+
+
 - (NSInteger)numberOfItemsInSwipeView:(SwipeView *)swipeView
 {
-    return 3;
+    return self.dataArray.count;
 }
 - (UIView *)swipeView:(SwipeView *)swipeView viewForItemAtIndex:(NSInteger)index reusingView:(UIView *)view
 {
@@ -64,10 +72,9 @@
         view = scrollView;
     }
     
-    
-    scrollView.dataArray = @[@"1",@"2",@"3"];
+    DiseaseQuestionModel *model = self.dataArray[index];
     scrollView.index = index;
-    
+    scrollView.model = model;
     __block typeof(swipeView) weakView = swipeView;
     [scrollView setNextBtnClickAction:^(NSInteger currentIndex) {
         if (currentIndex < weakView.numberOfPages-1) {

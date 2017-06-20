@@ -9,5 +9,7 @@
 #import "BaseViewController.h"
 #import "DiseaseQuestionModel.h"
 @interface SelfTestViewController : BaseViewController
-@property(nonatomic,strong) DiseaseQuestionModel *mdel;
+
+@property(nonatomic,strong) DiseaseQuestionClass *model;
+
 @end

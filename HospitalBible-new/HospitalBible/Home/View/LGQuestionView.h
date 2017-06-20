@@ -7,11 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DiseaseQuestionModel.h"
 
 @interface LGQuestionView : UIScrollView
 @property (nonatomic,strong)UIButton *nextBtn;
-@property (nonatomic,strong)NSArray *dataArray;
+@property (nonatomic,strong)DiseaseQuestionModel *model;
 @property (nonatomic)NSInteger index;
+@property (nonatomic)NSInteger currentSelectedIndex;
 @property (nonatomic,copy) void(^nextBtnClickAction)(NSInteger);
 
 @end
