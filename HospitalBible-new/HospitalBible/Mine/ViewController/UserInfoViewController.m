@@ -21,6 +21,8 @@
 @property (nonatomic, strong) NSArray *infoArr;
 
 @property(nonatomic,assign) BOOL isCanEdit;//是否可以编辑
+@property(nonatomic,strong)NSString* personSex; //性别
+
 @end
 
 @implementation UserInfoViewController
@@ -144,7 +146,25 @@
     {
         UserInfoSexCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UserInfoSexCell"];
         
+        _personSex = _infoArr[indexPath.row];
+        if ([_personSex isEqualToString:@"M"]) {
+            cell.manBtn.selected =YES;
+            cell.womanBtn.selected = NO;
+        }else{
+            cell.manBtn.selected = NO;
+            cell.womanBtn.selected = YES;
+        }
         
+        [cell setSelectSexBlock:^(NSInteger tag ) {
+            if (tag ==0) {
+                if (tag ==0 ) {
+                    _personSex = @"M";
+                }else{
+                    
+                    _personSex = @"F";
+                }
+            }
+        }];
         return cell;
 
     }
