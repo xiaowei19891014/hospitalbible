@@ -63,7 +63,7 @@
     historyButton.titleLabel.font = [UIFont systemFontOfSize:12];
     historyButton.backgroundColor = [UIColor colorWithHexString:@"F9F9F9"];
     [historyButton setTitle:@"历史记录" forState:UIControlStateNormal];
-     [selfCheckButton addTarget:self action:@selector(tapAction:) forControlEvents:UIControlEventTouchUpInside];
+    [historyButton addTarget:self action:@selector(tapAction:) forControlEvents:UIControlEventTouchUpInside];
     
     //3.分割线
     UIView *view = [[UIView alloc] init];
@@ -85,9 +85,13 @@
 - (void)tapAction:(UIButton *)btn
 {
     if ([btn.currentTitle isEqualToString:@"自检"]) {
-        
+        if (self.clicked) {
+            self.clicked(YES,self.index);
+        }
     }else{
-    
+        if (self.clicked) {
+            self.clicked(NO,self.index);
+        }
     }
 }
 

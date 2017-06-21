@@ -15,5 +15,7 @@
 @property (weak, nonatomic) IBOutlet SelfCheckView *questionThree;
 @property (nonatomic,copy) void (^clickAction)();
 
+@property (nonatomic,copy) void (^bottomItemclicked)(BOOL leftBtn,NSInteger index);
+
 -(void)creatTheUIWithDate:(NSArray*)arr;
 @end

@@ -16,7 +16,9 @@
 @property(copy,nonatomic) NSString *BtnTitle;
 
 @property(copy,nonatomic) NSString *imgurl;
+@property (nonatomic)NSInteger index;
 
+@property (nonatomic,copy) void (^clicked)(BOOL left,NSInteger index);
 
 -(void)refrestTheUI;
 

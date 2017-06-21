@@ -8,9 +8,13 @@
 
 #import <Foundation/Foundation.h>
 #import "DiseaseQuestionModel.h"
+
 @interface HomeViewModel : NSObject
 
 @property (nonatomic,strong)NSMutableArray *listArr;
+
+- (void)checkData:(void(^)(DiseaseQuestionClass *))checkModel
+             byId:(NSString *)Id;
 
 + (void)requestAdvertisementListSuccessHandler:(SuccessCallBack)successHandler
                                   errorHandler:(ErrorCallBack)errorHandler;
