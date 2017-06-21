@@ -21,6 +21,9 @@
 // /api/chr/diseasequestion/list
 #define DISEASEQUEASETION_LIST [NSString stringWithFormat:@"%@%@",kURL,@"/api/chr/diseasequestion/list"]
 
+//题库答案提交
+#define DISEASEQUEASETION_SAVE [NSString stringWithFormat:@"%@%@",kURL,@"/api/chr/result/save"]
+
 //题库历史记录
 #define DISEASEQUEASETION_HISTORY_LIST [NSString stringWithFormat:@"%@%@",kURL,@"/api/chr/result/list"]
 

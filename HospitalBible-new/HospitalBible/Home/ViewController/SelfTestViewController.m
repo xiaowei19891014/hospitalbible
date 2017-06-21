@@ -170,13 +170,47 @@ static NSInteger finished;
             sum = sum + score;
         }
         
+//        /api/chr/result/save
+//        {"userid":2,"classid":1,"patientid":1,"result":"1","point":60，flag:true}
+//        DISEASEQUEASETION_SAVE
+
         
         
+        
+        NSDictionary *dict = @{@"userid":@"",
+                               @"classid":@"",
+                               @"patientid":@"",
+                               @"result":@"",
+                               @"point":@"",
+                               @"flag":@""};
+        [[ERHNetWorkTool sharedManager] requestDataWithUrl:DISEASEQUEASETION_SAVE params:dict success:^(NSDictionary *responseObject) {
+            
+        } failure:^(NSError *error) {
+            
+        }];
     }else{
         [LGAlertViewExtension showAlertTitle:[NSString stringWithFormat:@"请选择第%ld题答案",finished+1] cancelTitle:@"取消" cancelHandler:nil destructiveTitle:@"确定" destructiveHandler:^{
             
         }];
     }
+}
+
+- (void)updateScore:(NSInteger)score flag:(BOOL)flag
+{
+
+    NSDictionary *dict = @{@"userid":[UserInfoShareClass sharedManager].userId,
+                           @"classid":self.model.id,
+                           @"patientid":self.userId,
+                           @"result":@"",
+                           @"point":[NSString stringWithFormat:@"%ld",score],
+                           @"flag":flag ? @"ture":@"false"};
+    [self showLoadingHUD];
+    [[ERHNetWorkTool sharedManager] requestDataWithUrl:DISEASEQUEASETION_SAVE params:dict success:^(NSDictionary *responseObject) {
+        [self hideLoadingHUD];
+        [self.navigationController popViewControllerAnimated:YES];
+    } failure:^(NSError *error) {
+        [self hideLoadingHUD];
+    }];
 }
 
 
