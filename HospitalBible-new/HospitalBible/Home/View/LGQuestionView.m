@@ -133,8 +133,9 @@
         }
     }];
     
+    DiseaseQuestionChoiceModel *temp = self.model.choiceList[view.tag];
     if (self.tapAction) {
-        self.tapAction(self.index,view.tag+1);
+        self.tapAction(self.index,view.tag+1,[temp.fWeight integerValue]);
     }
 }
 

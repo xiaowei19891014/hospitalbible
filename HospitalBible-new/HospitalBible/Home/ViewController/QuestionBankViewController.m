@@ -12,6 +12,7 @@
 #import "UIControl+BlocksKit.h"
 #import "HistoryDetailViewController.h"
 #import "HomeViewModel.h"
+#import "SickCallViewController.h"
 
 @interface QuestionBankViewController ()<UICollectionViewDelegate,UICollectionViewDataSource>
 @property (nonatomic, strong) UICollectionView *collectionView;
@@ -84,9 +85,10 @@
         [cell.imagePicView sd_setImageWithURL:[NSURL URLWithString:model.imgurl] placeholderImage:self.placeImageArr[indexPath.item]];
     }
     [cell.selfTestButton bk_addEventHandler:^(id  _Nonnull sender) {
-        SelfTestViewController *testVC = [[SelfTestViewController alloc] init];
-        testVC.model = model;
-        [self.navigationController pushViewController:testVC animated:YES];
+        
+        SickCallViewController *vc = [[SickCallViewController alloc] init];
+        vc.model = model;
+        [self.navigationController pushViewController:vc animated:YES];
         
     } forControlEvents:(UIControlEventTouchUpInside)];
     

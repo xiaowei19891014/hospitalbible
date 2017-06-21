@@ -15,6 +15,6 @@
 @property (nonatomic)NSInteger index;
 @property (nonatomic)NSInteger currentSelectedIndex;
 @property (nonatomic,copy) void(^nextBtnClickAction)(NSInteger);
-@property (nonatomic,copy) void(^tapAction)(NSInteger index,NSInteger selNumber);
+@property (nonatomic,copy) void(^tapAction)(NSInteger index,NSInteger selNumber,NSInteger score);
 
 @end

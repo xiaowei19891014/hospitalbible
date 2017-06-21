@@ -26,6 +26,7 @@
 @property(nonatomic,strong) SwipeView *swipeView;
 @property(nonatomic,strong) NSArray *dataArray;
 @property(nonatomic,strong) NSMutableArray *ansArr;
+@property(nonatomic,strong) NSMutableArray *scoreArr;
 
 @end
 
@@ -37,6 +38,14 @@
         _ansArr = [NSMutableArray arrayWithCapacity:0];
     }
     return _ansArr;
+}
+
+- (NSMutableArray *)scoreArr
+{
+    if (!_scoreArr) {
+        _scoreArr = [NSMutableArray arrayWithCapacity:0];
+    }
+    return _scoreArr;
 }
 
 - (void)viewDidLoad {
@@ -67,6 +76,7 @@
     
     for (int i =0 ; i<model.diseasequestionArr.count; i++) {
         [self.ansArr addObject:@0];
+        [self.scoreArr addObject:@0];
     }
 }
 
@@ -99,8 +109,9 @@
     }];
     
     __block typeof(self) weakSelf = self;
-    [scrollView setTapAction:^(NSInteger index, NSInteger selNumber) {
+    [scrollView setTapAction:^(NSInteger index, NSInteger selNumber,NSInteger score) {
         [weakSelf.ansArr replaceObjectAtIndex:index withObject:@(selNumber)];
+        [weakSelf.scoreArr replaceObjectAtIndex:index withObject:@(score)];
     }];
 
     if (index == swipeView.numberOfPages - 1) {
@@ -153,6 +164,12 @@ static NSInteger finished;
     
     if (finished == -1) {
 //        提交
+        NSInteger sum = 0;
+        for (int i=0; i<self.scoreArr.count; i++) {
+            NSInteger score = [self.scoreArr[i] integerValue];
+            sum = sum + score;
+        }
+        
         
         
     }else{

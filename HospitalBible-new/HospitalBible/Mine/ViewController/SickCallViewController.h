@@ -7,6 +7,9 @@
 //
 
 #import "BaseViewController.h"
+#import "DiseaseQuestionModel.h"
 @interface SickCallViewController : BaseViewController
+
+@property (nonatomic,strong)DiseaseQuestionClass *model;
 
 @end

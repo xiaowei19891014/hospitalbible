@@ -11,5 +11,6 @@
 @interface SelfTestViewController : BaseViewController
 
 @property(nonatomic,strong) DiseaseQuestionClass *model;
+@property(nonatomic,copy) NSString *userId;
 
 @end

@@ -10,6 +10,8 @@
 #import "SickCallTableViewCell.h"
 #import "UserInfoModel.h"
 #import "AddSickViewController.h"
+#import "SelfTestViewController.h"
+
 @interface SickCallHeadView : UIView
 @property (nonatomic,strong)UILabel *tipsLabel;
 
@@ -129,8 +131,16 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     
+    UserInfoModel *tempModel = _dataSources[indexPath.row];
+    if (self.model) {
+        SelfTestViewController *testVC = [[SelfTestViewController alloc] init];
+        testVC.model = self.model;
+        testVC.userId = tempModel.patientId;
+        [self.navigationController pushViewController:testVC animated:YES];
+        return;
+    }
     AddSickViewController* vc= [[AddSickViewController alloc] init];
-    vc.model = _dataSources[indexPath.row];
+    vc.model = tempModel;
     [self.navigationController pushViewController:vc animated:YES];
 }
 
