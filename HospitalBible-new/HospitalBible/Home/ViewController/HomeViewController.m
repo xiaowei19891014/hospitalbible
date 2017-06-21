@@ -65,7 +65,6 @@
     [HomeViewModel requestDiseasequestionListWithClassId:@"0" successHandler:^(id result) {
         NSLog(@"%@",result);
         self.viewModel.listArr = result;
-        [self reloadDiseasequestionList];
     } errorHandler:^(NSError *error) {
         NSLog(@"%@",error);
     }];
@@ -93,7 +92,6 @@
     UITableView *tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
     tableview.delegate = self;
     tableview.dataSource = self;
-    [tableview registerNib:[UINib nibWithNibName:@"CateGoryCell" bundle:nil] forCellReuseIdentifier:@"CateGoryCell"];
     [tableview registerNib:[UINib nibWithNibName:@"AppointmentReminderCell" bundle:nil] forCellReuseIdentifier:@"AppointmentReminderCell"];
     [tableview registerNib:[UINib nibWithNibName:@"QuestionsCell" bundle:nil] forCellReuseIdentifier:@"QuestionsCell"];
     tableview.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -111,14 +109,6 @@
     self.cycleScrollView = cycleScrollView2;
     self.tableview.tableHeaderView = cycleScrollView2;
     self.tableview.tableFooterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 0)];
-}
-
-//题库赋值
-- (void)reloadDiseasequestionList
-{
-    if (self.viewModel.listArr) {
-        [self.tableview reloadData];
-    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -146,19 +136,26 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row == 0) {
-        CateGoryCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CateGoryCell" forIndexPath:indexPath];
-        [cell.cateGoryButton bk_addEventHandler:^(id  _Nonnull sender) {
-        } forControlEvents:(UIControlEventTouchUpInside)];
-        [cell.feedbackButton bk_addEventHandler:^(id  _Nonnull sender) {
-            FeedbackViewController *vc = [[FeedbackViewController alloc] initWithNibName:@"FeedbackViewController" bundle:nil];
-            [self.navigationController pushViewController:vc animated:NO];
-        } forControlEvents:(UIControlEventTouchUpInside)];
-        [cell.contactUsButton bk_addEventHandler:^(id  _Nonnull sender) {
-            UIWebView * callWebview = [[UIWebView alloc]init];
-            [callWebview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"tel:10010"]]];
-            [[UIApplication sharedApplication].keyWindow addSubview:callWebview];
-
-        } forControlEvents:(UIControlEventTouchUpInside)];
+        CateGoryCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CateGoryCell"];
+        if (!cell) {
+            cell = [[[NSBundle mainBundle] loadNibNamed:@"CateGoryCell" owner:self options:nil] lastObject];
+            [cell.cateGoryButton bk_addEventHandler:^(id  _Nonnull sender) {
+                
+                
+            } forControlEvents:(UIControlEventTouchUpInside)];
+            
+            [cell.feedbackButton bk_addEventHandler:^(id  _Nonnull sender) {
+                FeedbackViewController *vc = [[FeedbackViewController alloc] initWithNibName:@"FeedbackViewController" bundle:nil];
+                [self.navigationController pushViewController:vc animated:YES];
+            } forControlEvents:(UIControlEventTouchUpInside)];
+            
+            [cell.contactUsButton bk_addEventHandler:^(id  _Nonnull sender) {
+                UIWebView * callWebview = [[UIWebView alloc]init];
+                [callWebview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"tel:10010"]]];
+                [[UIApplication sharedApplication].keyWindow addSubview:callWebview];
+                
+            } forControlEvents:(UIControlEventTouchUpInside)];
+        }
         return cell;
     }
     else if (indexPath.row == 1) {
