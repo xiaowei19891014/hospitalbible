@@ -14,6 +14,7 @@
 #import "UIView+Action.h"
 #import "LGAlertViewExtension.h"
 #import "DateFormat.h"
+#import "appointmentModel.h"
 
 @interface AppointmentRemindTipsViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) UITableView *tableview;
@@ -122,12 +123,12 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UserInfoModel *model = self.dataSources[indexPath.row];
+    appointmentModel *model = self.dataSources[indexPath.row];
     AppointmentRemindTipsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"AppointmentRemindTipsTableViewCell"];
-    cell.nameLabel.text = model.pname;
-    cell.dateLabel.text = model.birthDay;
-    cell.hospitalLabel.text = model.pname;
-    cell.addressLabel.text = model.sex;
+    cell.nameLabel.text = model.patientid;
+    cell.dateLabel.text = model.appointdate;
+    cell.hospitalLabel.text = model.hospitalid;
+    cell.addressLabel.text = model.address;
     
     return cell;
 }

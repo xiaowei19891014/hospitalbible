@@ -63,6 +63,7 @@
 		6596CC031EF8A59900B6219E /* DateFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = 6596CBFC1EF8A59900B6219E /* DateFormat.m */; };
 		6596CC041EF8A59900B6219E /* LGAlertViewExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 6596CBFE1EF8A59900B6219E /* LGAlertViewExtension.m */; };
 		6596CC061EF8A6B500B6219E /* AppointmentRemindTipsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6596CC051EF8A6B500B6219E /* AppointmentRemindTipsViewController.xib */; };
+		6596CC191EFAA0B600B6219E /* appointmentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6596CC181EFAA0B600B6219E /* appointmentModel.m */; };
 		90CAF4911EF7FF7C0031D8D1 /* SwipeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 90CAF4901EF7FF7C0031D8D1 /* SwipeView.m */; };
 		90CAF4941EF803120031D8D1 /* LGQuestionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 90CAF4931EF803120031D8D1 /* LGQuestionView.m */; };
 		930BAEDF1ED716CD0026AFFC /* AddSickViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 930BAEDE1ED716CD0026AFFC /* AddSickViewModel.m */; };
@@ -391,6 +392,8 @@
 		6596CBFD1EF8A59900B6219E /* LGAlertViewExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGAlertViewExtension.h; sourceTree = "<group>"; };
 		6596CBFE1EF8A59900B6219E /* LGAlertViewExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGAlertViewExtension.m; sourceTree = "<group>"; };
 		6596CC051EF8A6B500B6219E /* AppointmentRemindTipsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AppointmentRemindTipsViewController.xib; sourceTree = "<group>"; };
+		6596CC171EFAA0B600B6219E /* appointmentModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = appointmentModel.h; sourceTree = "<group>"; };
+		6596CC181EFAA0B600B6219E /* appointmentModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = appointmentModel.m; sourceTree = "<group>"; };
 		90CAF48F1EF7FF7C0031D8D1 /* SwipeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwipeView.h; sourceTree = "<group>"; };
 		90CAF4901EF7FF7C0031D8D1 /* SwipeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SwipeView.m; sourceTree = "<group>"; };
 		90CAF4921EF803120031D8D1 /* LGQuestionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGQuestionView.h; sourceTree = "<group>"; };
@@ -1958,6 +1961,8 @@
 				9B05EBD11ECC70DE00F8070B /* AnswerModel.m */,
 				9B13BC7B1EE3F7E7004C285E /* DiseaseQuestionModel.h */,
 				9B13BC7C1EE3F7E7004C285E /* DiseaseQuestionModel.m */,
+				6596CC171EFAA0B600B6219E /* appointmentModel.h */,
+				6596CC181EFAA0B600B6219E /* appointmentModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2293,6 +2298,7 @@
 				9B05EAAD1EC7E35100F8070B /* SDWebImageDownloaderOperation.m in Sources */,
 				9B05EBA51ECC6E8C00F8070B /* NSObject+BKBlockExecution.m in Sources */,
 				6550398F1EF4ED0C00D22A4B /* IQBarButtonItem.m in Sources */,
+				6596CC191EFAA0B600B6219E /* appointmentModel.m in Sources */,
 				9B05EA691EC7D4E300F8070B /* HotSpotCell.m in Sources */,
 				9B05EAB41EC7E35100F8070B /* UIImageView+WebCache.m in Sources */,
 				9B05EBCF1ECC70C800F8070B /* QuestionBankViewModel.m in Sources */,

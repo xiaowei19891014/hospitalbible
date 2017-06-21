@@ -21,7 +21,7 @@
             if (!detailModel.id) {
                 return ;
             }
-            NSArray *arr = @[detailModel.imgurl,detailModel.nickname,detailModel.idtype,detailModel.idcard,detailModel.sex,detailModel.cellphone,detailModel.weight,detailModel.address,detailModel.height,@"体重",detailModel.birthDay,detailModel.address,detailModel.email];
+            NSArray *arr = @[detailModel.imgurl,detailModel.nickname,detailModel.idtype,detailModel.idcard,detailModel.sex,detailModel.cellphone,detailModel.age,detailModel.address,detailModel.height,detailModel.weight,detailModel.birthDay,detailModel.email];
             successHandler(arr);
         }
     } failure:^(NSError *error) {

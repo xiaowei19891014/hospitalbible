@@ -51,8 +51,54 @@
         [sender setTitle:@"编辑" forState:UIControlStateNormal];
         _isCanEdit = NO;
 
+        [self saveinfo];
     }
     [self.tableview reloadData];
+}
+
+-(void)saveinfo{
+
+    UserTableViewCell *cell1 = [self.tableview cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]];
+    NSString *name = cell1.myTextField.text;
+
+    UserTableViewCell *cell3 = [self.tableview cellForRowAtIndexPath:[NSIndexPath indexPathForRow:3 inSection:0]];
+    NSString *idNum = cell3.myTextField.text;
+
+    UserTableViewCell *cell5 = [self.tableview cellForRowAtIndexPath:[NSIndexPath indexPathForRow:5 inSection:0]];
+    NSString *phoneNUm = cell5.myTextField.text;
+
+    UserTableViewCell *cell6 = [self.tableview cellForRowAtIndexPath:[NSIndexPath indexPathForRow:6 inSection:0]];
+    NSString *age = cell6.myTextField.text;
+
+    UserTableViewCell *cell7 = [self.tableview cellForRowAtIndexPath:[NSIndexPath indexPathForRow:7 inSection:0]];
+    NSString *address = cell7.myTextField.text;
+
+    UserTableViewCell *cell8 = [self.tableview cellForRowAtIndexPath:[NSIndexPath indexPathForRow:8 inSection:0]];
+    NSString *heigh = cell8.myTextField.text;
+
+    UserTableViewCell *cell9 = [self.tableview cellForRowAtIndexPath:[NSIndexPath indexPathForRow:9 inSection:0]];
+    NSString *width = cell9.myTextField.text;
+    
+    UserTableViewCell *cell10 = [self.tableview cellForRowAtIndexPath:[NSIndexPath indexPathForRow:10 inSection:0]];
+    NSString *birthDay = cell10.myTextField.text;
+
+    UserTableViewCell *cell11 = [self.tableview cellForRowAtIndexPath:[NSIndexPath indexPathForRow:11 inSection:0]];
+    NSString *email = cell11.myTextField.text;
+
+
+    [self showLoadingHUD];
+    NSDictionary *params = @{
+                             @"userId":[UserInfoShareClass sharedManager].userId,
+                             
+                             };
+    [[ERHNetWorkTool sharedManager] requestDataWithUrl:USER_USER_UPDATE params:params success:^(NSDictionary *responseObject) {
+        [self hideLoadingHUD];
+    } failure:^(NSError *error) {
+        [self hideLoadingHUD];
+    }];
+
+
+    
 }
 
 - (void)initTableView
@@ -97,6 +143,8 @@
     }else if (indexPath.row==4)
     {
         UserInfoSexCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UserInfoSexCell"];
+        
+        
         return cell;
 
     }

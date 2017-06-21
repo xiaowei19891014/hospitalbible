@@ -8,6 +8,7 @@
 
 #import "HomeViewModel.h"
 #import "UserInfoModel.h"
+#import "appointmentModel.h"
 @implementation HomeViewModel
 
 - (NSMutableArray *)listArr
@@ -134,7 +135,7 @@
                              };
     [[ERHNetWorkTool sharedManager] requestDataWithUrl:APPOPINTMENT_SEARCH params:params success:^(NSDictionary *responseObject) {
         if (successHandler) {
-            successHandler([UserInfoModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]]);
+            successHandler([appointmentModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]]);
         }
     } failure:^(NSError *error) {
         if (errorHandler) {
