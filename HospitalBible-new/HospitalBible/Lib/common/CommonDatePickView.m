@@ -71,7 +71,12 @@
     
     _datePicker = [[UIDatePicker alloc] init];
     _datePicker.centerX = (SCREEN_WIDTH-20)/2;
+    [_datePicker addTarget:self action:@selector(dateChanged:) forControlEvents:UIControlEventValueChanged ];
     [self addSubview:_datePicker];
+}
+
+-(void)dateChanged:(id)sender{
+    [CacheMethod userDefaultSetValue:[CommonMethod getDateStrWithDate:self.datePicker.date withCutStr:@"-" hasTime:NO] forKey:@"dateStr"];
 }
 
 -(void)awakeFromNib{
@@ -409,6 +414,9 @@
     if (self.pageType == kDatePickerTypeFull)
     {
         self.clickOkAction([CommonMethod getDateStrWithDate:self.datePicker.date withCutStr:@"-" hasTime:NO]);
+        
+        [CacheMethod userDefaultSetValue:[CommonMethod getDateStrWithDate:self.datePicker.date withCutStr:@"-" hasTime:NO] forKey:@"dateStr"];
+
     }
     else if(self.pageType == kDatePickerTypeNoDay)
     {

@@ -130,9 +130,9 @@
 + (void)requestPatientListWithUserId:(NSString*)userId successHandler:(SuccessCallBack)successHandler errorHandler:(ErrorCallBack)errorHandler
 {
     NSDictionary *params = @{
-                             @"userId":userId
+                             @"userId": NOTNIL([UserInfoShareClass sharedManager].userId)
                              };
-    [[ERHNetWorkTool sharedManager] requestDataWithUrl:PATIENT_LIST params:params success:^(NSDictionary *responseObject) {
+    [[ERHNetWorkTool sharedManager] requestDataWithUrl:APPOPINTMENT_SEARCH params:params success:^(NSDictionary *responseObject) {
         if (successHandler) {
             successHandler([UserInfoModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]]);
         }

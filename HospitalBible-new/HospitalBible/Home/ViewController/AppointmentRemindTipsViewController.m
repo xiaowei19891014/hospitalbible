@@ -50,6 +50,7 @@
         
         [LGAlertViewExtension showDateSelectInViewController:self indexDate:nowDate andMax:date andMin:nil type:kDatePickerTypeFull clickOk:^(NSString *selectDateStr){
             NSLog(@"%@",selectDateStr);
+            self.startLable.text = selectDateStr;
         }];        
         
     }];
@@ -61,6 +62,8 @@
         
         [LGAlertViewExtension showDateSelectInViewController:self indexDate:nowDate andMax:date andMin:nil type:kDatePickerTypeFull clickOk:^(NSString *selectDateStr){
             NSLog(@"%@",selectDateStr);
+            self.endLable.text = selectDateStr;
+
 
         }];
   
@@ -68,6 +71,29 @@
     }];
     
     [self.selectImageView setViewActionWithBlock:^{
+        
+        if ([_startLable.text hasPrefix:@"请选择"]) {
+            [self showErrorMessage:@"请选择起始日期"];
+            return ;
+        }
+        if ([_endLable.text hasPrefix:@"请选择"]) {
+            [self showErrorMessage:@"请选择结束日期"];
+            return;
+        }
+        
+        NSDictionary *params = @{
+                                 @"userId": NOTNIL([UserInfoShareClass sharedManager].userId),
+                                 @"startDate": [[DateFormat share]convertString:_startLable.text fromType:DATEFORMAT28 toType:DATEFORMAT24],
+
+                                 @"endDate": [[DateFormat share]convertString:_endLable.text fromType:DATEFORMAT28 toType:DATEFORMAT24],
+
+                                 };
+        [[ERHNetWorkTool sharedManager] requestDataWithUrl:APPOPINTMENT_SEARCH params:params success:^(NSDictionary *responseObject) {
+
+        } failure:^(NSError *error) {
+            
+        }];
+
         
     }];
 
@@ -85,6 +111,7 @@
     self.tableview = tableview;
     
     self.tableview.tableHeaderView = self.headView;
+    self.tableview.tableFooterView = [[UIView alloc]initWithFrame:CGRectZero];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
