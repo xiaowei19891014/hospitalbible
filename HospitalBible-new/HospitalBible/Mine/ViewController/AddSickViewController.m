@@ -174,7 +174,7 @@
                 cell.textfield.text = _model.phoneNum;
             }
             if (indexPath.row == 5) {
-                cell.textfield.text = _model.birthDay;
+                cell.textfield.text = _model.age;
             }
             if (indexPath.row == 6) {
                 cell.textfield.text = _model.height;
@@ -214,11 +214,6 @@
     AddSickTableViewCell *cell1 = [self.tableview cellForRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:0]];
     NSString *str1 = cell1.textfield.text;
     
-    if (![NSString isValidID:str1]) {
-        [self showErrorMessage:@"请输入正确的身份证号"];
-        return;
-    }
-    
     AddSickTableViewCell *cell2 = [self.tableview cellForRowAtIndexPath:[NSIndexPath indexPathForRow:4 inSection:0]];
     NSString *str2 = cell2.textfield.text;
     AddSickTableViewCell *cell3 = [self.tableview cellForRowAtIndexPath:[NSIndexPath indexPathForRow:5 inSection:0]];
@@ -252,14 +247,15 @@
                              @"weChat":@"",
                              @"weight":NOTNIL(str5),
                              @"sex":NOTNIL(_personSex),
-                             @"birthday":  [str1 substringWithRange:NSMakeRange(6, 8)],
+                             @"birthday": [NSString isValidID:str1]? [str1 substringWithRange:NSMakeRange(6, 8)] : @"",
                              @"userId":[UserInfoShareClass sharedManager].userId,
                              @"pdescribe":NOTNIL(self.myTextView.text),
                              @"cartevital":@"",
                              @"IDCard":NOTNIL(str1),
                              @"phoneNum":NOTNIL(str2),
 
-                             
+                             @"age":NOTNIL(str3),
+
                              };
     [[ERHNetWorkTool sharedManager] requestDataWithUrl:PATIENT_SAVE params:params success:^(NSDictionary *responseObject) {
         if (self.addSuccessBlock) {
