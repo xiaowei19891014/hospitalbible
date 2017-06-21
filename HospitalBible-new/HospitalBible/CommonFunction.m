@@ -22,7 +22,7 @@ NSMutableArray* getUserCenterTitleAndImageList(){
     return models;
 }
 NSArray* getUserInfpTitleList(){
-    NSArray *titles = @[@"头像",@"姓名",@"证件类型",@"证件号",@"性别",@"联系电话",@"年龄",@"地址",@"身高",@"体重",@"生日",@"家庭住址",@"Email"];
+    NSArray *titles = @[@"头像",@"姓名",@"证件类型",@"证件号",@"性别",@"联系电话",@"年龄",@"地址",@"身高",@"体重",@"生日",@"Email"];
     return titles;
 }
 NSString* getUpperCaseWithIndex(NSInteger index){

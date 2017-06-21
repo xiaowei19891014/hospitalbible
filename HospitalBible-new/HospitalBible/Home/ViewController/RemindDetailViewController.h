@@ -7,6 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "appointmentModel.h"
 @interface RemindDetailViewController : UIViewController
+
+
+@property(strong,nonatomic) appointmentModel *model;
 
 @end

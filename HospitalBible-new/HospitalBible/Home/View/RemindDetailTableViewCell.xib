@@ -15,7 +15,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="240"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="239.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="239"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="subscribe_big_laolin_icon" translatesAutoresizingMaskIntoConstraints="NO" id="0U9-YU-KFC">
@@ -122,6 +122,13 @@
                     <constraint firstItem="71k-VA-baK" firstAttribute="leading" secondItem="5UJ-Lj-iuJ" secondAttribute="leading" id="ziX-hg-mw0"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="lable1" destination="WRP-1u-PyI" id="Hfb-9Z-FhE"/>
+                <outlet property="lable2" destination="rH2-5r-35w" id="mux-iS-1ab"/>
+                <outlet property="lable3" destination="2oQ-JD-TTn" id="BXI-XD-ela"/>
+                <outlet property="lable4" destination="wPo-aj-ziU" id="VT1-zJ-s1F"/>
+                <outlet property="lable5" destination="w75-Tu-tvr" id="1GA-ha-MhK"/>
+            </connections>
             <point key="canvasLocation" x="34" y="53"/>
         </tableViewCell>
     </objects>
