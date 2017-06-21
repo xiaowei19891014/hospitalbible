@@ -17,6 +17,7 @@
 @interface QuestionBankViewController ()<UICollectionViewDelegate,UICollectionViewDataSource>
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) NSArray *placeImageArr;
+@property (nonatomic) BOOL isFinished;
 
 @end
 
@@ -44,10 +45,20 @@
         [HomeViewModel requestDiseasequestionListWithClassId:@"0" successHandler:^(id result) {
             [self hideLoadingHUD];
             self.dataSources = result;
-            [self.collectionView reloadData];
+            [self loadCollectedData];
         } errorHandler:^(NSError *error) {
             [self hideLoadingHUD];
         }];
+    }else{
+        [self loadCollectedData];
+    }
+}
+
+- (void)loadCollectedData
+{
+    if (self.isCateGory) {
+        
+        
     }else{
         [self.collectionView reloadData];
     }
@@ -73,6 +84,12 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
+    if (self.isCateGory) {
+        if (self.isFinished) {
+            return self.dataSources.count;
+        }
+        return 0;
+    }
     return self.dataSources.count;
 }
 
@@ -80,7 +97,7 @@
 {
     DiseaseQuestionClass *model = self.dataSources[indexPath.row];
     QuestionBankCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"QuestionBankCell" forIndexPath:indexPath];
-    cell.titleLabel.text = model.pdescribe;
+    cell.titleLabel.text = model.pname;
     if (indexPath.row < self.placeImageArr.count) {
         [cell.imagePicView sd_setImageWithURL:[NSURL URLWithString:model.imgurl] placeholderImage:self.placeImageArr[indexPath.item]];
     }

@@ -11,5 +11,6 @@
 @interface QuestionBankViewController : BaseViewController
 
 @property(nonatomic,strong) NSMutableArray *dataSources;
+@property(nonatomic)BOOL isCateGory;
 
 @end

@@ -36,17 +36,20 @@
     if (arr.count != 3) {  return; }
     
     NSDictionary *dic1 = arr[0];
-    _questionOne.BtnTitle = dic1[@"pdescribe"];
+//    _questionOne.BtnTitle = dic1[@"pdescribe"];
+    _questionOne.BtnTitle = dic1[@"pname"];
     _questionOne.imgurl = dic1[@"imgurl"];
     [_questionOne refrestTheUI];
     
     NSDictionary *dic2 = arr[1];
-    _questionTwo.BtnTitle = dic2[@"pdescribe"];
+//    _questionTwo.BtnTitle = dic2[@"pdescribe"];
+    _questionTwo.BtnTitle = dic2[@"pname"];
     _questionTwo.imgurl = dic2[@"imgurl"];
     [_questionTwo refrestTheUI];
 
     NSDictionary *dic3 = arr[2];
-    _questionThree.BtnTitle = dic3[@"pdescribe"];
+//    _questionThree.BtnTitle = dic3[@"pdescribe"];
+    _questionTwo.BtnTitle = dic3[@"pname"];
     _questionThree.imgurl = dic3[@"imgurl"];
     [_questionThree refrestTheUI];
 

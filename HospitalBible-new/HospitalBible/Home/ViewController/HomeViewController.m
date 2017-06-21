@@ -17,6 +17,7 @@
 #import "FeedbackViewController.h"
 #import "HomeViewModel.h"
 #import "DiseaseQuestionModel.h"
+#import "QuestionBankViewController.h"
 
 @interface HomeViewController () <SDCycleScrollViewDelegate, UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) UITableView *tableview;
@@ -140,8 +141,10 @@
         if (!cell) {
             cell = [[[NSBundle mainBundle] loadNibNamed:@"CateGoryCell" owner:self options:nil] lastObject];
             [cell.cateGoryButton bk_addEventHandler:^(id  _Nonnull sender) {
-                
-                
+                QuestionBankViewController *vc = [[QuestionBankViewController alloc]init];
+                vc.dataSources = self.viewModel.listArr;
+                vc.isCateGory = YES;
+                [self.navigationController pushViewController:vc animated:YES];
             } forControlEvents:(UIControlEventTouchUpInside)];
             
             [cell.feedbackButton bk_addEventHandler:^(id  _Nonnull sender) {
