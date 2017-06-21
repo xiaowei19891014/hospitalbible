@@ -19,6 +19,32 @@
 }
 
 
+static BOOL isHas = NO;
+- (void)checkData:(void(^)(DiseaseQuestionClass *))checkModel
+             byId:(NSString *)Id
+{
+    DiseaseQuestionClass *temp;
+    isHas = NO;
+    if (self.listArr) {
+        [self.listArr enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            DiseaseQuestionClass *t = (DiseaseQuestionClass *)obj;
+            if ([t.id integerValue] == [Id integerValue]) {
+                isHas = YES;
+                if (checkModel) {
+                    checkModel(t);
+                }
+                * stop = YES;
+            }
+        }];
+    }
+    
+    if (isHas==NO) {
+        if (checkModel) {
+            checkModel(temp);
+        }
+    }
+}
+
 + (void)requestAdvertisementListSuccessHandler:(SuccessCallBack)successHandler
           errorHandler:(ErrorCallBack)errorHandler
 {
