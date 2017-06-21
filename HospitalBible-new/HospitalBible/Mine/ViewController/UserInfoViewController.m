@@ -14,13 +14,16 @@
 #import "UserInfoViewModel.h"
 #import "UserInfoShareClass.h"
 #import "UserTableViewCell.h"
-
+#import "NSString+EAddition.h"
 @interface UserInfoViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) UITableView *tableview;
 @property (nonatomic, strong) NSArray *dataSources;
 @property (nonatomic, strong) NSArray *infoArr;
 
 @property(nonatomic,assign) BOOL isCanEdit;//是否可以编辑
+@property(nonatomic,strong)NSString* personSex; //性别
+
+
 @end
 
 @implementation UserInfoViewController
@@ -89,6 +92,25 @@
     [self showLoadingHUD];
     NSDictionary *params = @{
                              @"userId":[UserInfoShareClass sharedManager].userId,
+                             @"nickname":NOTNIL(name),
+                             @"email":NOTNIL(email),
+                             @"address":NOTNIL(address),
+                             @"regdate":@"",
+                             @"idtype":@"1",
+                             @"idcard":NOTNIL(idNum),
+                             @"imgurl":@"",
+                             @"height":NOTNIL(heigh),
+                             @"qQNum":@"",
+                             @"weChat":@"",
+                             @"weight":NOTNIL(width),
+                             @"sex":NOTNIL(_personSex),
+                             @"birthDay": [NSString isValidID:idNum]? [idNum substringWithRange:NSMakeRange(6, 8)] : @"",
+                             @"IDCard":NOTNIL(idNum),
+                             @"phoneNum":NOTNIL(phoneNUm),
+                             @"age":NOTNIL(age),
+                             
+//                             @"id":NOTNIL(),
+
                              
                              };
     [[ERHNetWorkTool sharedManager] requestDataWithUrl:USER_USER_UPDATE params:params success:^(NSDictionary *responseObject) {
@@ -144,7 +166,25 @@
     {
         UserInfoSexCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UserInfoSexCell"];
         
+        _personSex = _infoArr[indexPath.row];
+        if ([_personSex isEqualToString:@"M"]) {
+            cell.manBtn.selected =YES;
+            cell.womanBtn.selected = NO;
+        }else{
+            cell.manBtn.selected = NO;
+            cell.womanBtn.selected = YES;
+        }
         
+        [cell setSelectSexBlock:^(NSInteger tag ) {
+            if (tag ==0) {
+                if (tag ==0 ) {
+                    _personSex = @"M";
+                }else{
+                    
+                    _personSex = @"F";
+                }
+            }
+        }];
         return cell;
 
     }
