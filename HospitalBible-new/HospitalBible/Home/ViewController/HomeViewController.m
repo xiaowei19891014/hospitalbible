@@ -155,7 +155,7 @@
             
             [cell.contactUsButton bk_addEventHandler:^(id  _Nonnull sender) {
                 UIWebView * callWebview = [[UIWebView alloc]init];
-                [callWebview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"tel:10010"]]];
+                [callWebview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"tel:18189128409"]]];
                 [[UIApplication sharedApplication].keyWindow addSubview:callWebview];
                 
             } forControlEvents:(UIControlEventTouchUpInside)];
@@ -185,6 +185,7 @@
                     if (model) {
                         SickCallViewController *vc = [[SickCallViewController alloc] init];
                         vc.model = model;
+                        vc.hiddenRightBtn = YES;
                         [self.navigationController pushViewController:vc animated:YES];
                     }else{
                         [weakSelf showLoadingHUD];
@@ -196,6 +197,7 @@
                             [weakSelf.viewModel checkData:^(DiseaseQuestionClass *temp) {
                                 SickCallViewController *vc = [[SickCallViewController alloc] init];
                                 vc.model = temp;
+                                vc.hiddenRightBtn = YES;
                                 [self.navigationController pushViewController:vc animated:YES];
                             } byId:dict[@"id"]];
                         } errorHandler:^(NSError *error) {

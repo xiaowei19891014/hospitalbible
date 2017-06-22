@@ -157,6 +157,8 @@
 //设置界面
 - (void)configView
 {
+    
+    
     //标题
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 33 * KWidth_Scale, SCREEN_WIDTH, 25 * KWidth_Scale)];
     titleLabel.textAlignment = NSTextAlignmentCenter;
@@ -191,8 +193,8 @@
     [self.backImageView addSubview:label];
 
     //返回按钮
-    UIButton *backBtn = [[UIButton alloc] initWithFrame:CGRectMake(15 * KWidth_Scale, 34 * KWidth_Scale, 30, 20)];
-    [backBtn setImage:[UIImage imageNamed:@"skin_1_search_home_icon_goback"] forState:UIControlStateNormal];
+    UIButton *backBtn = [[UIButton alloc] initWithFrame:CGRectMake(15 * KWidth_Scale, 34 * KWidth_Scale, 45, 45)];
+    [backBtn setImage:[UIImage imageNamed:@"nav_btn_goback"] forState:UIControlStateNormal];
     [backBtn addTarget:self action:@selector(backAction) forControlEvents:UIControlEventTouchUpInside];
     [self.backImageView addSubview:backBtn];
 }

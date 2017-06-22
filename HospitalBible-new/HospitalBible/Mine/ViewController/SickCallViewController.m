@@ -61,7 +61,9 @@
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.navigationItem.title = @"就诊人列表";
     [self initTableView];
-    [self configRightItemWithType:@"添加就诊人"];
+    if (!self.hiddenRightBtn) {
+        [self configRightItemWithType:@"添加就诊人"];
+    }
     [self startRequestData];
     
 }
@@ -123,7 +125,10 @@
     cell.sex.text = [model.sex isEqualToString:@"M"] ?@"性别：男":@"性别：女";
     cell.name.text = model.pname;
     cell.number.text = model.idcard;
-        cell.accessoryType =UITableViewCellAccessoryNone;// UITableViewCellAccessoryDisclosureIndicator;
+    if (self.hiddenRightBtn) {
+        cell.image.hidden = YES;
+    }
+    cell.accessoryType =UITableViewCellAccessoryNone;// UITableViewCellAccessoryDisclosureIndicator;
         return cell;
     
 }
@@ -146,6 +151,9 @@
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (self.hiddenRightBtn) {
+        return NO;
+    }
     return YES;
 }
 

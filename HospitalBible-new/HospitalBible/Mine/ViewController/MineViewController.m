@@ -260,28 +260,24 @@
                 return;
 
                 
-            }else if (indexPath.row == 4)//就诊患者管理
+            }else if (indexPath.row == 3)//就诊患者管理
             {
                 SickCallViewController*vc= [[SickCallViewController alloc] init];
                 
                 [self.navigationController pushViewController:vc animated:YES];
                 return;
 
-            }else if (indexPath.row == 3)//就诊卡绑定
-            {
-                
-                
-            }else if (indexPath.row == 5)//就诊卡绑定
+            }else if (indexPath.row == 4)//就诊卡绑定
             {
                 AboutAppViewController* vc= [[AboutAppViewController alloc] init];
                 
                 [self.navigationController pushViewController:vc animated:YES];
                 return;
-            }else if(indexPath.row == 6){
+            }else if(indexPath.row == 5){
                 
                 UIWebView * callWebview = [[UIWebView alloc]init];
                 
-                [callWebview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"tel:10010"]]];
+                [callWebview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"tel:18189128409"]]];
                 
                 [[UIApplication sharedApplication].keyWindow addSubview:callWebview];
                 
