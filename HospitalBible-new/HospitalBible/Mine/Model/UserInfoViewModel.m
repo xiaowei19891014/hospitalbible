@@ -21,7 +21,7 @@
             if (!detailModel.id) {
                 return ;
             }
-            NSArray *arr = @[detailModel.imgurl,NOTNIL(detailModel.nickname) ,detailModel.idtype,detailModel.idcard,detailModel.sex,detailModel.cellphone,NOTNIL( detailModel.age),detailModel.address,detailModel.height,detailModel.weight,detailModel.birthDay,detailModel.email,@"",@"",@"",detailModel.id];
+            NSArray *arr = @[detailModel.imgurl,NOTNIL(detailModel.nickname) ,detailModel.idtype,detailModel.idcard,detailModel.sex,detailModel.cellphone,NOTNIL( detailModel.age),detailModel.address,detailModel.height,detailModel.weight, NOTNIL( detailModel.birthDay),detailModel.email,@"",@"",@"",detailModel.id];
             successHandler(arr);
         }
     } failure:^(NSError *error) {

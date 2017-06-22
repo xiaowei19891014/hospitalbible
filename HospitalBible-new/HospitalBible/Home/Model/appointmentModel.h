@@ -23,6 +23,9 @@
 @property(copy,nonatomic)NSString* resultid;
 @property(copy,nonatomic)NSString* departmentid;
 @property(copy,nonatomic)NSString* address;
-
+@property(copy,nonatomic)NSString* hospitalName;
+@property(copy,nonatomic)NSString* doctorName;
+@property(copy,nonatomic)NSString* departmentName;
+@property(copy,nonatomic)NSString* patientName;
 
 @end

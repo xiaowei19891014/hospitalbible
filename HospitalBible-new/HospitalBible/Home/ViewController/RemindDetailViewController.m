@@ -90,10 +90,10 @@
 {
     RemindDetailTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"RemindDetailTableViewCell"];
 
-    cell.lable1.text = _model.hospitalid;
+    cell.lable1.text = _model.hospitalName;
     cell.lable2.text = _model.address;
-    cell.lable3.text = _model.departmentid;
-    cell.lable4.text = _model.doctorid;
+    cell.lable3.text = _model.departmentName;
+    cell.lable4.text = _model.doctorName;
     cell.lable5.text = _model.appointdate;
     
     

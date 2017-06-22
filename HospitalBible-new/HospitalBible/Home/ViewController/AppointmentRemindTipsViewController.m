@@ -29,11 +29,13 @@
     self.title = @"预约提醒";
     // Do any additional setup after loading the view.
     [self initTableView];
+    [self hideLoadingHUD];
     [HomeViewModel requestPatientListWithUserId:@"1" successHandler:^(id result) {
+        [self hideLoadingHUD];
         self.dataSources = result;
         [self.tableview reloadData];
     } errorHandler:^(NSError *error) {
-        
+        [self hideLoadingHUD];
     }];
     
     [self creatSelectView];
@@ -125,9 +127,9 @@
 {
     appointmentModel *model = self.dataSources[indexPath.row];
     AppointmentRemindTipsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"AppointmentRemindTipsTableViewCell"];
-    cell.nameLabel.text = model.patientid;
+    cell.nameLabel.text = model.patientName;
     cell.dateLabel.text = model.appointdate;
-    cell.hospitalLabel.text = model.hospitalid;
+    cell.hospitalLabel.text = model.hospitalName;
     cell.addressLabel.text = model.address;
     
     return cell;
@@ -135,8 +137,9 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
+    appointmentModel *model = self.dataSources[indexPath.row];
     RemindDetailViewController *vc = [[RemindDetailViewController alloc] init];
-    
+    vc.model = model;
     [self.navigationController pushViewController:vc animated:YES];
 }
 - (NSMutableArray *)dataSources
