@@ -185,6 +185,7 @@
                     if (model) {
                         SickCallViewController *vc = [[SickCallViewController alloc] init];
                         vc.model = model;
+                        vc.hiddenRightBtn = YES;
                         [self.navigationController pushViewController:vc animated:YES];
                     }else{
                         [weakSelf showLoadingHUD];
@@ -196,6 +197,7 @@
                             [weakSelf.viewModel checkData:^(DiseaseQuestionClass *temp) {
                                 SickCallViewController *vc = [[SickCallViewController alloc] init];
                                 vc.model = temp;
+                                vc.hiddenRightBtn = YES;
                                 [self.navigationController pushViewController:vc animated:YES];
                             } byId:dict[@"id"]];
                         } errorHandler:^(NSError *error) {

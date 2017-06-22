@@ -111,7 +111,7 @@
     tableview.rowHeight = 100;
     self.tableview = tableview;
     
-    self.tableview.tableHeaderView = self.headView;
+//    self.tableview.tableHeaderView = self.headView;
     self.tableview.tableFooterView = [[UIView alloc]initWithFrame:CGRectZero];
 }
 

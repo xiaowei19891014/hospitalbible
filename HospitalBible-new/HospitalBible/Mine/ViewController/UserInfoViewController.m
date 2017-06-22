@@ -33,11 +33,13 @@
     [super viewDidLoad];
     self.title = @"个人信息";
     self.dataSources = getUserInfpTitleList();
+    [self showLoadingHUD];
     [UserInfoViewModel requestUserInfoWithUserId:[UserInfoShareClass sharedManager].userId successHandler:^(id result) {
+        [self hideLoadingHUD];
         _infoArr =(NSArray*)result;
         [_tableview reloadData];
     } errorHandler:^(NSError *error) {
-    
+        [self hideLoadingHUD];
     }];
     self.automaticallyAdjustsScrollViewInsets = NO;
     [self initTableView];

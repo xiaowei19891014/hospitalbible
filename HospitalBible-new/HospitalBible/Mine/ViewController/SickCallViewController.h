@@ -12,4 +12,6 @@
 
 @property (nonatomic,strong)DiseaseQuestionClass *model;
 
+@property(assign,nonatomic) BOOL hiddenRightBtn ;
+
 @end
