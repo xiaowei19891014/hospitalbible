@@ -109,7 +109,7 @@
                              @"phoneNum":NOTNIL(phoneNUm),
                              @"age":NOTNIL(age),
                              
-//                             @"id":NOTNIL(),
+                             @"id": NOTNIL(_infoArr.lastObject),
 
                              
                              };
