@@ -24,6 +24,9 @@
 //题库答案提交
 #define DISEASEQUEASETION_SAVE [NSString stringWithFormat:@"%@%@",kURL,@"/api/chr/result/save"]
 
+//是否收藏
+#define DISEASEQUEASETION_COLLECTION_LIST [NSString stringWithFormat:@"%@%@",kURL,@"/api/chr/collection/diseasequestionlist"]
+
 //题库历史记录
 #define DISEASEQUEASETION_HISTORY_LIST [NSString stringWithFormat:@"%@%@",kURL,@"/api/chr/result/list"]
 

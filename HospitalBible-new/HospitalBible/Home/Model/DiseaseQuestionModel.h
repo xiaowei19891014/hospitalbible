@@ -34,5 +34,7 @@
 @property(nonatomic,copy) NSString *pname;
 @property(nonatomic,copy) NSString *pdescribe;
 @property(nonatomic,copy) NSString *imgurl;
+@property(nonatomic,copy) NSString *arrangemax;
+@property(nonatomic,copy) NSString *arrangemin;
 @property(nonatomic,strong)NSMutableArray *diseasequestionArr;
 @end

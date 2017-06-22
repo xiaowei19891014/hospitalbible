@@ -17,6 +17,7 @@
 @interface QuestionBankViewController ()<UICollectionViewDelegate,UICollectionViewDataSource>
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) NSArray *placeImageArr;
+@property (nonatomic, strong) NSArray *collectionArr;
 @property (nonatomic) BOOL isFinished;
 
 @end
@@ -57,8 +58,26 @@
 - (void)loadCollectedData
 {
     if (self.isCateGory) {
+//        /api/chr/collection/diseasequestionlist
+//        {"items": [{"id": "1"},{"id": "3"}]}
+        NSMutableArray *arr = [NSMutableArray arrayWithCapacity:0];
+        [self.dataSources enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            DiseaseQuestionClass *model = (DiseaseQuestionClass *)obj;
+            NSDictionary *dict = @{@"id":model.id};
+            [arr addObject:dict];
+        }];
         
-        
+        [self showLoadingHUD];
+        NSDictionary *dict = @{@"userId":[UserInfoShareClass sharedManager].userId,@"items":arr};
+        [[ERHNetWorkTool sharedManager] requestDataWithUrl:DISEASEQUEASETION_COLLECTION_LIST params:dict success:^(NSDictionary *responseObject) {
+            [self hideLoadingHUD];
+            self.isFinished = YES;
+            self.collectionArr = responseObject[@"collectionflag"];
+            [self.collectionView reloadData];
+        } failure:^(NSError *error) {
+            [self hideLoadingHUD];
+            [self showErrorMessage:@"数据请求失败！"];
+        }];
     }else{
         [self.collectionView reloadData];
     }
@@ -96,6 +115,7 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     DiseaseQuestionClass *model = self.dataSources[indexPath.row];
+    
     QuestionBankCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"QuestionBankCell" forIndexPath:indexPath];
     cell.titleLabel.text = model.pname;
     if (indexPath.row < self.placeImageArr.count) {
@@ -109,11 +129,25 @@
         
     } forControlEvents:(UIControlEventTouchUpInside)];
     
-    [cell.historyRecordButton bk_addEventHandler:^(id  _Nonnull sender) {
-        HistoryDetailViewController *historyVC = [[HistoryDetailViewController alloc] init];
-        historyVC.model = model;
-        [self.navigationController pushViewController:historyVC animated:NO];
+    if (self.isCateGory) {
+        NSDictionary *dict = self.collectionArr[indexPath.row];
+        NSString *title = [dict[@"flag"] isEqualToString:@"true"] ? @"已收藏" : @"收藏";
+        [cell.historyRecordButton setTitle:title forState:UIControlStateNormal];
+    }
     
+    [cell.historyRecordButton bk_addEventHandler:^(id  _Nonnull sender) {
+        if (self.isCateGory) {
+            UIButton *btn = (UIButton *)sender;
+            if ([btn.currentTitle isEqualToString:@"收藏"]) {
+                [self updateCollectedState:model cell:cell indexP:indexPath.row isDelete:NO];
+            }else{
+                [self updateCollectedState:model cell:cell indexP:indexPath.row isDelete:YES];
+            }
+        }else{
+            HistoryDetailViewController *historyVC = [[HistoryDetailViewController alloc] init];
+            historyVC.model = model;
+            [self.navigationController pushViewController:historyVC animated:NO];
+        }
     } forControlEvents:(UIControlEventTouchUpInside)];
     return cell;
 }
@@ -123,4 +157,40 @@
     }
     return _dataSources;
 }
+
+- (void)updateCollectedState:(DiseaseQuestionClass *)model cell:(QuestionBankCell *)cell indexP:(NSInteger)index isDelete:(BOOL)isDelete
+{
+    //            //收藏微课堂
+    //#define COLLECTION_DISCOVER  [NSString stringWithFormat:@"%@%@",kURL,@"/api/chr/collection/discover"]
+    //            //取消微课堂
+    //#define COLLECTION_DELETE  [NSString stringWithFormat:@"%@%@",kURL,@"/api/chr/collection/delete"]
+    //            {
+    //                TableID : 5;
+    //                userId : 13299052676;
+    //                type : 0
+    //            }
+    
+    NSDictionary *dict = @{@"TableID":model.id,
+                           @"userId":[UserInfoShareClass sharedManager].userId,
+                           @"type":@"1"};
+    [self showLoadingHUD];
+    if (isDelete) {
+         [[ERHNetWorkTool sharedManager] requestDataWithUrl:COLLECTION_DELETE params:dict success:^(NSDictionary *responseObject) {
+             [self hideLoadingHUD];
+//             [self showErrorMessage:@"取消收藏成功"];
+             [cell.historyRecordButton setTitle:@"收藏" forState:UIControlStateNormal];
+         } failure:^(NSError *error) {
+             [self hideLoadingHUD];
+         }];
+    }else{
+         [[ERHNetWorkTool sharedManager] requestDataWithUrl:COLLECTION_DISCOVER params:dict success:^(NSDictionary *responseObject) {
+             [self hideLoadingHUD];
+//             [self showErrorMessage:@"收藏成功！"];
+             [cell.historyRecordButton setTitle:@"已收藏" forState:UIControlStateNormal];
+         } failure:^(NSError *error) {
+             [self hideLoadingHUD];
+         }];
+    }
+}
+
 @end
