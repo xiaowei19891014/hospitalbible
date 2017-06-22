@@ -10,8 +10,8 @@
 #import "TitleImageModel.h"
 NSMutableArray* getUserCenterTitleAndImageList(){
     
-    NSArray *titles = @[@"我的预约",@"我的收藏",@"我的信息",@"就诊卡绑定",@"就诊患者管理",@"关于APP",@"客服电话"];
-    NSArray *images = @[@"my_subscribe_icon",@"my_xinyin_icon",@"my_xinxi_icon",@"my_banding_icon",@"my_huanzhe_icon",@"my_help_icon",@"my_shar_icon",@"my_yijian_icon",@"my_huancun_icon",@"my_app_icon",@"my_genxin_icon",@"my_phone_icon"];
+    NSArray *titles = @[@"我的预约",@"我的收藏",@"我的信息",@"就诊患者管理",@"关于APP",@"客服电话"];
+    NSArray *images = @[@"my_subscribe_icon",@"my_xinyin_icon",@"my_xinxi_icon",@"my_huanzhe_icon",@"my_huancun_icon",@"my_app_icon",@"my_phone_icon"];
     NSMutableArray *models = [NSMutableArray array];
     for (int i = 0; i<titles.count; i++) {
         TitleImageModel *model = [[TitleImageModel alloc] init];
