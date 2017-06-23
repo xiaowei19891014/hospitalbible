@@ -9,8 +9,8 @@
 #ifndef RequestsURL_h
 #define RequestsURL_h
 
-//#define kURL    @"http://120.77.215.208:8081"
-#define kURL    @"http://192.168.1.104:8080"
+#define kURL    @"http://120.77.215.208:8081"
+//#define kURL    @"http://192.168.1.104:8080"
 /*************PUBLIC MEDIA QUERY*************/
 //1.1广告
 #define ADVERTISEMENT_LIST [NSString stringWithFormat:@"%@%@",kURL,@"/api/chr/advertisement/list"]

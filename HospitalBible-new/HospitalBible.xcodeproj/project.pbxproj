@@ -399,6 +399,7 @@
 		90BABB7D1EFD4ED600CD14A5 /* HistoryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryTableViewCell.h; sourceTree = "<group>"; };
 		90BABB7E1EFD4ED600CD14A5 /* HistoryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryTableViewCell.m; sourceTree = "<group>"; };
 		90BABB7F1EFD4ED600CD14A5 /* HistoryTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HistoryTableViewCell.xib; sourceTree = "<group>"; };
+		90BABB821EFD549F00CD14A5 /* HospitalBible.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HospitalBible.entitlements; sourceTree = "<group>"; };
 		90CAF48F1EF7FF7C0031D8D1 /* SwipeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwipeView.h; sourceTree = "<group>"; };
 		90CAF4901EF7FF7C0031D8D1 /* SwipeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SwipeView.m; sourceTree = "<group>"; };
 		90CAF4921EF803120031D8D1 /* LGQuestionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGQuestionView.h; sourceTree = "<group>"; };
@@ -1099,6 +1100,7 @@
 		9B05E85A1EC749AD00F8070B /* HospitalBible */ = {
 			isa = PBXGroup;
 			children = (
+				90BABB821EFD549F00CD14A5 /* HospitalBible.entitlements */,
 				9B05EA291EC750B700F8070B /* Main */,
 				9B05EA0C1EC750B700F8070B /* Home */,
 				9B05EA331EC750B700F8070B /* MircroClass */,
@@ -2100,6 +2102,11 @@
 					9B05E8571EC749AD00F8070B = {
 						CreatedOnToolsVersion = 8.0;
 						ProvisioningStyle = Manual;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -2522,6 +2529,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = HospitalBible/HospitalBible.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: BANK OF CHINA LIMITED";
 				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2547,6 +2555,7 @@
 					"$(PROJECT_DIR)/HospitalBible/Lib/UMSocial/SocialLibraries/WeChat",
 					"$(PROJECT_DIR)/HospitalBible/Lib/UMSocial/UMSocialSDKPlugin",
 				);
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LIBTOOLFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bocop.yironghui;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2559,6 +2568,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = HospitalBible/HospitalBible.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: BANK OF CHINA LIMITED";
 				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
