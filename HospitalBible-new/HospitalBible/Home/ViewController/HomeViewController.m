@@ -208,8 +208,32 @@
                     }
                 } byId:dict[@"id"]];
             }else{
-                HistoryDetailViewController *vc = [[HistoryDetailViewController alloc] init];
-                [self.navigationController pushViewController:vc animated:YES];
+                if (self.asthmaArr.count != 3) {  return; }
+                NSDictionary *dict = self.asthmaArr[index-1];
+                [self.viewModel checkData:^(DiseaseQuestionClass *model) {
+                    if (model) {
+                        HistoryDetailViewController *vc = [[HistoryDetailViewController alloc] init];
+                        vc.model = model;
+                        [self.navigationController pushViewController:vc animated:YES];
+                    }else{
+                        [weakSelf showLoadingHUD];
+                        [HomeViewModel requestDiseasequestionListWithClassId:@"0" successHandler:^(id result) {
+                            NSLog(@"%@",result);
+                            [weakSelf hideLoadingHUD];
+                            self.viewModel.listArr = result;
+                            
+                            [weakSelf.viewModel checkData:^(DiseaseQuestionClass *temp) {
+                                HistoryDetailViewController *vc = [[HistoryDetailViewController alloc] init];
+                                vc.model = model;
+                                [self.navigationController pushViewController:vc animated:YES];
+                            } byId:dict[@"id"]];
+                        } errorHandler:^(NSError *error) {
+                            [weakSelf hideLoadingHUD];
+                            [weakSelf showErrorMessage:@"请求失败，请重新尝试"];
+                            NSLog(@"%@",error);
+                        }];
+                    }
+                } byId:dict[@"id"]];
             }
         }];
         return cell;

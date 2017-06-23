@@ -10,6 +10,8 @@
 #import "ERHErrorRequestView.h"
 #import "QuestionsCollectionViewController.h"
 #import "MircroClassCollectionViewController.h"
+#import "QuestionBankViewController.h"
+
 @interface MyCollectionViewController ()
 
 @end
@@ -48,7 +50,9 @@
 
 - (UIViewController *)pageController:(WMPageController *)pageController viewControllerAtIndex:(NSInteger)index {
     if (index == 0) {
-        return [[QuestionsCollectionViewController alloc] init];
+        QuestionBankViewController *vc = [[QuestionBankViewController alloc] init];
+        vc.isCateGory = YES;
+        return vc;
     }
     return [[MircroClassCollectionViewController alloc] init];
 }

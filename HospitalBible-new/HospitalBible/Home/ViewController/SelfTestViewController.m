@@ -17,6 +17,7 @@
 #import "HomeViewModel.h"
 #import "SwipeView.h"
 #import "LGQuestionView.h"
+#import "NSDate+gyh.h"
 
 @interface SelfTestViewController ()<SwipeViewDataSource, SwipeViewDelegate>
 @property(nonatomic,assign) NSInteger time;
@@ -27,6 +28,7 @@
 @property(nonatomic,strong) NSArray *dataArray;
 @property(nonatomic,strong) NSMutableArray *ansArr;
 @property(nonatomic,strong) NSMutableArray *scoreArr;
+@property(nonatomic,strong) NSDate *startDate;
 
 @end
 
@@ -67,6 +69,8 @@
     self.swipeView.dataSource = self;
     self.swipeView.delegate = self;
     [self.view addSubview:self.swipeView];
+    
+    self.startDate = [NSDate date];
 }
 
 - (void)setModel:(DiseaseQuestionClass *)model
@@ -197,16 +201,39 @@ static NSInteger finished;
 {
 
 //    {"userid":2,"classid":1,"patientid":1,"result":"1","point":60,"flag":"false"}
+    NSDateComponents *endDate = [self.startDate deltaWithNow];
+    NSInteger hour = endDate.hour;
+    NSInteger Minute = endDate.minute;
+    NSInteger senond = endDate.second;
+    
+    NSString *hourTime = [NSString stringWithFormat:@"%ld",hour];
+    NSString *MinuteTime = [NSString stringWithFormat:@"%ld",Minute];
+    NSString *senondTime = [NSString stringWithFormat:@"%ld",senond];
+    
+    if (hourTime.length == 1) {
+        hourTime = [NSString stringWithFormat:@"0%@",hourTime];
+    }
+    
+    if (MinuteTime.length == 1) {
+        MinuteTime = [NSString stringWithFormat:@"0%@",MinuteTime];
+    }
+    
+    if (senondTime.length == 1) {
+        senondTime = [NSString stringWithFormat:@"0%@",senondTime];
+    }
+    
+    NSString *date = [NSString stringWithFormat:@"%@:%@:%@",hourTime,MinuteTime,senondTime];
+    
     NSDictionary *dict = @{@"userId":[UserInfoShareClass sharedManager].userId,
                            @"classid":self.model.id,
                            @"patientid":self.userId,
                            @"result":result,
                            @"point":[NSString stringWithFormat:@"%ld",score],
-                           @"flag":flag ? @"true":@"false"};
+                           @"flag":flag ? @"true":@"false",
+                           @"date":date};
     [self showLoadingHUD];
     [[ERHNetWorkTool sharedManager] requestDataWithUrl:DISEASEQUEASETION_SAVE params:dict success:^(NSDictionary *responseObject) {
         [self hideLoadingHUD];
-        [self.navigationController popViewControllerAnimated:YES];
     } failure:^(NSError *error) {
         [self hideLoadingHUD];
     }];

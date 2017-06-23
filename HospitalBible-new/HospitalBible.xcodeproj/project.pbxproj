@@ -64,6 +64,8 @@
 		6596CC041EF8A59900B6219E /* LGAlertViewExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 6596CBFE1EF8A59900B6219E /* LGAlertViewExtension.m */; };
 		6596CC061EF8A6B500B6219E /* AppointmentRemindTipsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6596CC051EF8A6B500B6219E /* AppointmentRemindTipsViewController.xib */; };
 		6596CC191EFAA0B600B6219E /* appointmentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6596CC181EFAA0B600B6219E /* appointmentModel.m */; };
+		90BABB801EFD4ED600CD14A5 /* HistoryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 90BABB7E1EFD4ED600CD14A5 /* HistoryTableViewCell.m */; };
+		90BABB811EFD4ED600CD14A5 /* HistoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90BABB7F1EFD4ED600CD14A5 /* HistoryTableViewCell.xib */; };
 		90CAF4911EF7FF7C0031D8D1 /* SwipeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 90CAF4901EF7FF7C0031D8D1 /* SwipeView.m */; };
 		90CAF4941EF803120031D8D1 /* LGQuestionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 90CAF4931EF803120031D8D1 /* LGQuestionView.m */; };
 		930BAEDF1ED716CD0026AFFC /* AddSickViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 930BAEDE1ED716CD0026AFFC /* AddSickViewModel.m */; };
@@ -394,6 +396,9 @@
 		6596CC051EF8A6B500B6219E /* AppointmentRemindTipsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AppointmentRemindTipsViewController.xib; sourceTree = "<group>"; };
 		6596CC171EFAA0B600B6219E /* appointmentModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = appointmentModel.h; sourceTree = "<group>"; };
 		6596CC181EFAA0B600B6219E /* appointmentModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = appointmentModel.m; sourceTree = "<group>"; };
+		90BABB7D1EFD4ED600CD14A5 /* HistoryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryTableViewCell.h; sourceTree = "<group>"; };
+		90BABB7E1EFD4ED600CD14A5 /* HistoryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryTableViewCell.m; sourceTree = "<group>"; };
+		90BABB7F1EFD4ED600CD14A5 /* HistoryTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HistoryTableViewCell.xib; sourceTree = "<group>"; };
 		90CAF48F1EF7FF7C0031D8D1 /* SwipeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwipeView.h; sourceTree = "<group>"; };
 		90CAF4901EF7FF7C0031D8D1 /* SwipeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SwipeView.m; sourceTree = "<group>"; };
 		90CAF4921EF803120031D8D1 /* LGQuestionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGQuestionView.h; sourceTree = "<group>"; };
@@ -1246,6 +1251,9 @@
 				936A82051ED485E500484D94 /* RemindDetailTableViewCell.xib */,
 				90CAF4921EF803120031D8D1 /* LGQuestionView.h */,
 				90CAF4931EF803120031D8D1 /* LGQuestionView.m */,
+				90BABB7D1EFD4ED600CD14A5 /* HistoryTableViewCell.h */,
+				90BABB7E1EFD4ED600CD14A5 /* HistoryTableViewCell.m */,
+				90BABB7F1EFD4ED600CD14A5 /* HistoryTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2152,6 +2160,7 @@
 				9B05EABF1EC7F42C00F8070B /* CateGoryCell.xib in Resources */,
 				9B05EAC61EC7FB1700F8070B /* AppointmentReminderCell.xib in Resources */,
 				9B05EBE21ECC717300F8070B /* SubmitTaskView.xib in Resources */,
+				90BABB811EFD4ED600CD14A5 /* HistoryTableViewCell.xib in Resources */,
 				6596CB701EF5343500B6219E /* MJRefresh.bundle in Resources */,
 				6596CB841EF67A8E00B6219E /* AddSickViewController.xib in Resources */,
 				9B05EAFF1EC8720500F8070B /* UMSocialSDKResources.bundle in Resources */,
@@ -2290,6 +2299,7 @@
 				9B13BC631EE3DCAC004C285E /* ERHNetWorkTool.m in Sources */,
 				655039861EF4ED0C00D22A4B /* IQNSArray+Sort.m in Sources */,
 				9B05EBB71ECC6E8C00F8070B /* UIControl+BlocksKit.m in Sources */,
+				90BABB801EFD4ED600CD14A5 /* HistoryTableViewCell.m in Sources */,
 				93B9DE9D1EE3F5EF005FE2E2 /* MJPropertyType.m in Sources */,
 				9B05EB251EC8958100F8070B /* LGAlertView.m in Sources */,
 				9D45A1EE1EF0D99D00306FFF /* UIStoryboard+KZ.m in Sources */,

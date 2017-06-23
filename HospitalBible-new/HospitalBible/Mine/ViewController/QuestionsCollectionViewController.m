@@ -25,10 +25,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initCollectionView];
-//    [ERHErrorRequestView addErrorView:self title:@"题库暂时没有收藏" image:[UIImage imageNamed:@"tishi_big_banner"] frame:CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT-64) touch:^{
-//        
-//    }];
 
+    
 }
 
 -(void)initCollectionView{

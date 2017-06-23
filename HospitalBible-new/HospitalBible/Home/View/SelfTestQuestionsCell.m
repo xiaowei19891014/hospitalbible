@@ -46,12 +46,12 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     DiseaseQuestionChoiceModel *choice = _mdel.choiceList[indexPath.row];
     ChooseAnswersCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ChooseAnswersCell" forIndexPath:indexPath];
-    cell.optionLabel.text = choice.fContext;
-    [cell setChooseAnswerUpperCaseWithIndex:indexPath.row];
-    
-    [cell.selectResultButton bk_addEventHandler:^(UIButton *sender) {
-        //[self refreshSelectResultStateWithSelectSender:sender selectIndexPath:indexPath];
-    } forControlEvents:(UIControlEventTouchUpInside)];
+//    cell.optionLabel.text = choice.fContext;
+//    [cell setChooseAnswerUpperCaseWithIndex:indexPath.row];
+//    
+//    [cell.selectResultButton bk_addEventHandler:^(UIButton *sender) {
+//        //[self refreshSelectResultStateWithSelectSender:sender selectIndexPath:indexPath];
+//    } forControlEvents:(UIControlEventTouchUpInside)];
     return cell;
 }
 

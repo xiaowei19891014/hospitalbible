@@ -9,7 +9,13 @@
 #import <UIKit/UIKit.h>
 
 @interface ChooseAnswersCell : UITableViewCell
-@property (weak, nonatomic) IBOutlet UILabel *optionLabel;
-@property (weak, nonatomic) IBOutlet UIButton *selectResultButton;
--(void)setChooseAnswerUpperCaseWithIndex:(NSInteger)index;
+@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
+@property (weak, nonatomic) IBOutlet UILabel *timeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
+@property (nonatomic) NSInteger index;
+
+@property (nonatomic,strong)NSDictionary *dict;
+
+
 @end

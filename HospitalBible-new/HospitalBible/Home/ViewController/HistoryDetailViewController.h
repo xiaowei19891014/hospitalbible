@@ -6,10 +6,10 @@
 //  Copyright © 2017年 break. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "BaseViewController.h"
 #import "DiseaseQuestionModel.h"
 
-@interface HistoryDetailViewController : UIViewController
+@interface HistoryDetailViewController :BaseViewController
 
 @property (nonatomic,strong)DiseaseQuestionClass *model;
 
