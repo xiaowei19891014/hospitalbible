@@ -37,12 +37,13 @@
     [self setupChildViewController:new title:@"首页" imageName:@"index_home_icon" selectedImage:@"index_home_icon"];
 
     
-    NSArray *titleArray = [NSArray arrayWithObjects:@"热点普及",@"营养知识",@"儿童健康",@"女性健康",@"美容生活", nil];
-    NSArray *classArray = [NSArray arrayWithObjects:[MircoClassBaseViewController class],
+//    热点知识  女性健康 医药介绍
+    NSArray *titleArray = [NSArray arrayWithObjects:@"热点知识",@"女性健康",@"医药介绍", nil];
+    NSArray *classArray = [NSArray arrayWithObjects:    [MircoClassBaseViewController class],
                            [MircoClassBaseViewController class],
                            [MircoClassBaseViewController class],
-                           [MircoClassBaseViewController class],
-                           [MircoClassBaseViewController class],
+//                           [MircoClassBaseViewController class],
+//                           [MircoClassBaseViewController class],
                            nil];
     MircoClassViewController *photo = [[MircoClassViewController alloc] initWithViewControllerClasses:classArray
                                                                                        andTheirTitles:titleArray];

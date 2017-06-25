@@ -31,6 +31,7 @@
     self.dateLable.text = _model.date;
     
 //    [self.mWebView loadHTMLString:_model.content baseURL:nil];
+
     
     self.collectImgView.userInteractionEnabled = YES;
     [self.collectImgView setViewActionWithBlock:^{
@@ -80,6 +81,7 @@
             _isConllect = YES;
             [self showErrorMessage:@"收藏成功"];
             _collectImgView.image = [UIImage imageNamed:@"yisoucang_icon"];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"cancleOrAddCollection" object:nil];
         }
         [self hideLoadingHUD];
     } failure:^(NSError *error) {
@@ -102,7 +104,7 @@
             _isConllect = NO;
             [self showErrorMessage:@"取消收藏成功"];
             _collectImgView.image = [UIImage imageNamed:@"soucang_icon"];
-
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"cancleOrAddCollection" object:nil];
         }
         [self hideLoadingHUD];
     } failure:^(NSError *error) {

@@ -9,8 +9,8 @@
 #ifndef RequestsURL_h
 #define RequestsURL_h
 
-#define kURL    @"http://120.77.215.208:8081"
-//#define kURL    @"http://192.168.1.104:8080"
+//#define kURL    @"http://120.77.215.208:8081"
+#define kURL    @"http://192.168.1.102:8080"
 /*************PUBLIC MEDIA QUERY*************/
 //1.1广告
 #define ADVERTISEMENT_LIST [NSString stringWithFormat:@"%@%@",kURL,@"/api/chr/advertisement/list"]
@@ -65,6 +65,9 @@
 #define COLLECTION_DISCOVER  [NSString stringWithFormat:@"%@%@",kURL,@"/api/chr/collection/discover"]
 //取消微课堂
 #define COLLECTION_DELETE  [NSString stringWithFormat:@"%@%@",kURL,@"/api/chr/collection/delete"]
+
+///api/chr/collection/diseasequestion
+#define COLLECTION_DISCOVERLIST  [NSString stringWithFormat:@"%@%@",kURL,@"/api/chr/collection/diseasequestion"]
 
 
 //我的收藏-题库

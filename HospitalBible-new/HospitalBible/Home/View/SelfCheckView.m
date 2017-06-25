@@ -52,7 +52,7 @@
     UIButton *selfCheckButton = [UIButton buttonWithType:(UIButtonTypeCustom)];
     selfCheckButton.backgroundColor = [UIColor colorWithHexString:@"F9F9F9"];
     selfCheckButton.frame = CGRectMake(0, height-30, 40, 30);
-    selfCheckButton.titleLabel.font = [UIFont systemFontOfSize:12];
+    selfCheckButton.titleLabel.font = [UIFont systemFontOfSize:11];
     [selfCheckButton setTitleColor:[UIColor colorWithHexString:@"179590"] forState:(UIControlStateNormal)];
     [selfCheckButton setTitle:@"自检" forState:UIControlStateNormal];
     [selfCheckButton addTarget:self action:@selector(tapAction:) forControlEvents:UIControlEventTouchUpInside];
@@ -60,7 +60,7 @@
     UIButton *historyButton = [UIButton buttonWithType:(UIButtonTypeCustom)];
     [historyButton setTitleColor:[UIColor colorWithHexString:@"179590"] forState:(UIControlStateNormal)];
     historyButton.frame = CGRectMake(40, height-30, width-40, 30);
-    historyButton.titleLabel.font = [UIFont systemFontOfSize:12];
+    historyButton.titleLabel.font = [UIFont systemFontOfSize:11];
     historyButton.backgroundColor = [UIColor colorWithHexString:@"F9F9F9"];
     [historyButton setTitle:@"历史记录" forState:UIControlStateNormal];
     [historyButton addTarget:self action:@selector(tapAction:) forControlEvents:UIControlEventTouchUpInside];

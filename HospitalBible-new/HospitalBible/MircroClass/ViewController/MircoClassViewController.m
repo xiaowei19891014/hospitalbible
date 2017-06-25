@@ -31,9 +31,9 @@
         
         _viewControlleArray = [NSMutableArray array];
         int i = 0;
-        while (i <=4) {
+        while (i <titles.count) {
             MircoClassBaseViewController *mVC = [[MircoClassBaseViewController alloc] init];
-            [mVC setDisclsidStr:[NSString stringWithFormat:@"%zd",i]];
+            [mVC setDisclsidStr:[NSString stringWithFormat:@"%zd",i+1]];
             [_viewControlleArray addObject:mVC];
             i++;
         }
