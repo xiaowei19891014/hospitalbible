@@ -26,7 +26,7 @@
     _listModel = listModel;
     _titleLabel.text = listModel.title;
     _dateLabel.text = listModel.date;
-    _contentLabel.text = listModel.content;
+    _contentLabel.text = listModel.bdescription;
     NSString *urlStr = listModel.picture;
     
     [_imagePic sd_setImageWithURL:[NSURL URLWithString:urlStr] placeholderImage:nil];
