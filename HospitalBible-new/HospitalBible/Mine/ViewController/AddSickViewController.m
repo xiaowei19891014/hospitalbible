@@ -168,7 +168,7 @@
                 cell.textfield.text = _model.idcard;
             }
             if (indexPath.row == 3) {
-                cell.textfield.text = _model.pCardId;
+                cell.textfield.text = _model.cartevital;
             }
             if (indexPath.row == 5) {
                 cell.textfield.text = _model.phoneNum;
@@ -265,7 +265,7 @@
                              @"phoneNum":NOTNIL(str2),
 
                              @"age":NOTNIL(str3),
-                             @"pCardId":NOTNIL(str7)
+                             @"cartevital":NOTNIL(str7)
                              };
     [[ERHNetWorkTool sharedManager] requestDataWithUrl:PATIENT_SAVE params:params success:^(NSDictionary *responseObject) {
         if (self.addSuccessBlock) {
