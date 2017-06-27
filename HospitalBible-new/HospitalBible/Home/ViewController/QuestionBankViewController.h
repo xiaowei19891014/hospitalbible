@@ -12,5 +12,6 @@
 
 @property(nonatomic,strong) NSMutableArray *dataSources;
 @property(nonatomic)BOOL isCateGory;
+@property(nonatomic)BOOL isStore;
 
 @end

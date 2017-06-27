@@ -30,7 +30,7 @@
     // Do any additional setup after loading the view.
     [self initTableView];
     [self hideLoadingHUD];
-    [HomeViewModel requestPatientListWithUserId:@"1" successHandler:^(id result) {
+    [HomeViewModel requestPatientListWithUserId:NOTNIL([UserInfoShareClass sharedManager].userId) successHandler:^(id result) {
         [self hideLoadingHUD];
         self.dataSources = result;
         [self.tableview reloadData];
@@ -73,6 +73,8 @@
         
     }];
     
+    
+    __block typeof(self) weakSelf = self;
     [self.selectImageView setViewActionWithBlock:^{
         
         if ([_startLable.text hasPrefix:@"请选择"]) {
@@ -92,9 +94,12 @@
 
                                  };
         [[ERHNetWorkTool sharedManager] requestDataWithUrl:APPOPINTMENT_SEARCH params:params success:^(NSDictionary *responseObject) {
-
+            if (responseObject) {
+               weakSelf.dataSources = [appointmentModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
+                [weakSelf.tableview reloadData];
+            }
         } failure:^(NSError *error) {
-            
+
         }];
 
         

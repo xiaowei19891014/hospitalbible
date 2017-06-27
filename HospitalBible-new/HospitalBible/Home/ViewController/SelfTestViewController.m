@@ -154,7 +154,7 @@
 }
 
 
-static NSInteger finished;
+static int finished;
 - (void)checkResult
 {
     finished = -1;
@@ -180,19 +180,17 @@ static NSInteger finished;
 //        {"userid":2,"classid":1,"patientid":1,"result":"1","point":60，flag:true}
 //        DISEASEQUEASETION_SAVE
 //        计算一下本次答题总分值，弹出框提示：“您本次测试结果为60分，您当前病情严重程度为：严重，病情已经进入控制警戒线，建议您及时就医。系统将自动为您预约最近的医院，是否预约？”  / 如果大于60则：“您本次测试结果为80分，您当前病情稳定”只有一个确定按钮，点击是按钮上送预约 ，预约字段为true，点击否(确定)预约字段为false， 预约详情因为数据库设计不合理目前无法实现，暂时只上送
-        if (sum < [self.model.arrangemin integerValue]) {
-            [self updateScore:sum flag:YES result:result];
-        }else if (sum > [self.model.arrangemax integerValue]){
-            [self updateScore:sum flag:NO result:result];
-        }else{
-            [LGAlertViewExtension showAlertTitle:[NSString stringWithFormat:@"您本次测试结果为%ld分，您当前病情严重程度为：严重，病情已经进入控制警戒线，建议您及时就医。系统将自动为您预约最近的医院，是否预约？",sum] cancelTitle:@"否" cancelHandler:^{
+        if (sum <= [self.model.arrangemax integerValue]) {
+            [LGAlertViewExtension showAlertTitle:[NSString stringWithFormat:@"您本次测试结果为%ld分，您当前病情严重程度为：严重，病情已经进入控制警戒线，建议您及时就医。系统将自动为您预约最近的医院，是否预约？",(long)sum] cancelTitle:@"否" cancelHandler:^{
                 [self updateScore:sum flag:NO result:result];
             } destructiveTitle:@"是" destructiveHandler:^{
                 [self updateScore:sum flag:YES result:result];
             }];
+        }else{
+            [self updateScore:sum flag:NO result:result];
         }
     }else{
-        [LGAlertViewExtension showAlertTitle:[NSString stringWithFormat:@"请选择第%ld题答案",finished+1] cancelTitle:@"取消" cancelHandler:nil destructiveTitle:@"确定" destructiveHandler:^{
+        [LGAlertViewExtension showAlertTitle:[NSString stringWithFormat:@"请选择第%d题答案",finished+1] cancelTitle:@"取消" cancelHandler:nil destructiveTitle:@"确定" destructiveHandler:^{
         }];
     }
 }
@@ -206,9 +204,9 @@ static NSInteger finished;
     NSInteger Minute = endDate.minute;
     NSInteger senond = endDate.second;
     
-    NSString *hourTime = [NSString stringWithFormat:@"%ld",hour];
-    NSString *MinuteTime = [NSString stringWithFormat:@"%ld",Minute];
-    NSString *senondTime = [NSString stringWithFormat:@"%ld",senond];
+    NSString *hourTime = [NSString stringWithFormat:@"%ld",(long)hour];
+    NSString *MinuteTime = [NSString stringWithFormat:@"%ld",(long)Minute];
+    NSString *senondTime = [NSString stringWithFormat:@"%ld",(long)senond];
     
     if (hourTime.length == 1) {
         hourTime = [NSString stringWithFormat:@"0%@",hourTime];

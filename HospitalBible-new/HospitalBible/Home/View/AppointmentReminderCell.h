@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "appointmentModel.h"
 
 @interface AppointmentReminderCell : UITableViewCell
+
+@property (nonatomic,strong)appointmentModel *model;
 
 @end

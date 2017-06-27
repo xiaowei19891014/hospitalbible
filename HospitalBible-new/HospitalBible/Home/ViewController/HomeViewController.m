@@ -20,6 +20,7 @@
 #import "QuestionBankViewController.h"
 #import "HistoryDetailViewController.h"
 #import "SickCallViewController.h"
+#import "appointmentModel.h"
 
 @interface HomeViewController () <SDCycleScrollViewDelegate, UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) UITableView *tableview;
@@ -28,6 +29,7 @@
 
 @property (nonatomic, strong) NSMutableArray *asthmaArr; // 哮喘病数组
 @property (nonatomic, strong) HomeViewModel *viewModel;
+@property (nonatomic,strong)  AppointmentReminderCell *cell;
 
 @end
 
@@ -75,6 +77,15 @@
         NSLog(@"%@",result);
     } errorHandler:^(NSError *error) {
         NSLog(@"%@",error);
+    }];
+    
+    [HomeViewModel requestPatientListWithUserId:NOTNIL([UserInfoShareClass sharedManager].userId) successHandler:^(id result) {
+        if ([result count]) {
+            appointmentModel *model = [(NSArray *)result firstObject];
+            self.cell.model = model;
+        }
+    } errorHandler:^(NSError *error) {
+    
     }];
 }
 
@@ -164,6 +175,7 @@
     }
     else if (indexPath.row == 1) {
         AppointmentReminderCell *cell = [tableView dequeueReusableCellWithIdentifier:@"AppointmentReminderCell" forIndexPath:indexPath];
+        self.cell = cell;
         return cell;
     }
     else if (indexPath.row == 2) {
@@ -262,8 +274,8 @@
 {
     NSLog(@"---点击了第%ld张图片", (long)index);
 
-    QuestionBankViewController *vc = [[QuestionBankViewController alloc] init];
-    [self.navigationController pushViewController:vc animated:YES];
+//    QuestionBankViewController *vc = [[QuestionBankViewController alloc] init];
+//    [self.navigationController pushViewController:vc animated:YES];
 }
 
 

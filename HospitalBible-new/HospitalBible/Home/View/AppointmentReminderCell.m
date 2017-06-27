@@ -28,6 +28,12 @@
     self.appointLabel.layer.borderColor = [UIColor colorWithHexString:@"00A49F"].CGColor;
 }
 
+- (void)setModel:(appointmentModel *)model
+{
+    _model = model;
+    self.appointLabel.text = model.content;
+}
+
 -(void)setSelected:(BOOL)selected animated:(BOOL)animated{
 }
 -(void)setHighlighted:(BOOL)highlighted animated:(BOOL)animated{
