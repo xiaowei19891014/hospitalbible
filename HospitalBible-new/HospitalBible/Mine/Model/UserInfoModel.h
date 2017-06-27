@@ -8,8 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
+
 @interface UserInfoModel : NSObject
 @property(nonatomic,strong) NSString *id;
+@property(nonatomic,strong) NSString *userId;
 @property(nonatomic,strong) NSString *cellphone;
 @property(nonatomic,strong) NSString *imgurl;
 @property(nonatomic,strong) NSString *sex;

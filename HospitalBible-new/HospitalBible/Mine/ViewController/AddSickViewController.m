@@ -244,13 +244,32 @@
         return;
     }
     
+    
+//    {"pname": "哥哥12",
+//        "email": "eeee",
+//        "address": "四川省成都市武侯区武科西四路中华锦绣二期",
+//        "regdate": "2017-02-13 ",
+//        "idtype": "122",
+//        "IDCard": "6410316556456",
+//        "imgurl": "/2017-05-24/thumb_59250d86ce8aa.jpg",
+//        "height": "115.3",
+//        "qQNum":"111",
+//        "weChat":"110",
+//        "weight": "175.36",
+//        "sex": "M",
+//        "birthday": "1920-04-21",
+//        "userId": "15000410210",
+//        "pdescribe": "我有病了",
+//        "cartevital": "258478444",
+//        "phoneNum":"13809155658"
+//    }
     NSDictionary *params = @{
                              @"pname":NOTNIL(str),
                              @"email":@"",
                              @"address":NOTNIL(str6),
                              @"regdate":@"",
                              @"idtype":@"0",
-                             @"idcard":NOTNIL(str1),
+                             @"IDCard":NOTNIL(str1),
                              @"imgurl":@"",
                              @"height":NOTNIL(str4),
                              @"qQNum":@"",
@@ -260,10 +279,7 @@
                              @"birthday": [NSString isValidID:str1]? [str1 substringWithRange:NSMakeRange(6, 8)] : @"",
                              @"userId":[UserInfoShareClass sharedManager].userId,
                              @"pdescribe":NOTNIL(self.myTextView.text),
-                             @"cartevital":@"",
-                             @"IDCard":NOTNIL(str1),
                              @"phoneNum":NOTNIL(str2),
-
                              @"age":NOTNIL(str3),
                              @"cartevital":NOTNIL(str7)
                              };
