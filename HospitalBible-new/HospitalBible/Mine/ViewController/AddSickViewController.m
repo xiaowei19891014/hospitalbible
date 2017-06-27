@@ -146,8 +146,6 @@
         }
         cell.accessoryType =UITableViewCellAccessoryNone;
         return cell;
-
-        
     }
     else {
         AddSickTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"AddSickTableViewCell"];

@@ -23,6 +23,7 @@
 
 @property(nonatomic,assign) BOOL isCanEdit;//是否可以编辑
 @property(nonatomic,strong)NSString* personSex; //性别
+@property(nonatomic,strong)UIBarButtonItem *rightItem;
 
 
 @end
@@ -51,6 +52,26 @@
     }];
 }
 
+- (void)configRightItemWithType:(NSString *) buttonType
+{
+    UIButton *rightButton =[UIButton buttonWithType:UIButtonTypeSystem];
+    [rightButton setFrame:CGRectMake(0.0, 0.0, 50, 30)];
+    rightButton.tag=521;
+    if ([buttonType isEqualToString:@"编辑"] || [buttonType isEqualToString:@"保存"] || [buttonType isEqualToString:@"添加就诊人"]) {
+        rightButton.titleLabel.font = [UIFont systemFontOfSize:15];
+        if ([buttonType isEqualToString:@"添加就诊人"]) {
+            [rightButton setFrame:CGRectMake(0.0, 0.0, 80, 30)];
+        }
+        [rightButton setTitle:buttonType forState:UIControlStateNormal];
+    }else{
+        [rightButton setImage:[UIImage imageNamed:buttonType] forState:UIControlStateNormal];
+    }
+    rightButton.adjustsImageWhenHighlighted = NO;
+    [rightButton addTarget:self action:@selector(rightAction:) forControlEvents:UIControlEventTouchUpInside];
+    rightButton.titleEdgeInsets = UIEdgeInsetsMake(0, 0, 0, -15);
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:rightButton];
+}
+
 -(void)rightAction:(UIButton *)sender{
 
     if ([sender.titleLabel.text isEqualToString:@"编辑"]) {
@@ -61,13 +82,14 @@
         [sender setTitle:@"编辑" forState:UIControlStateNormal];
         _isCanEdit = NO;
 
+        
         [self saveinfo];
     }
-    [self.tableview reloadData];
 }
 
 -(void)saveinfo{
 
+    
     UserTableViewCell *cell1 = [self.tableview cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]];
     NSString *name = cell1.myTextField.text;
 
@@ -123,12 +145,10 @@
     [[ERHNetWorkTool sharedManager] requestDataWithUrl:USER_USER_UPDATE params:params success:^(NSDictionary *responseObject) {
         [self hideLoadingHUD];
         [self requestData];
+
     } failure:^(NSError *error) {
         [self hideLoadingHUD];
     }];
-
-
-    
 }
 
 - (void)initTableView

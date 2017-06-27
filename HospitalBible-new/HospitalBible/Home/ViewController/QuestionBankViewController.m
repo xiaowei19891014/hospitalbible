@@ -17,13 +17,21 @@
 @interface QuestionBankViewController ()<UICollectionViewDelegate,UICollectionViewDataSource>
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) NSArray *placeImageArr;
-@property (nonatomic, strong) NSArray *collectionArr;
+@property (nonatomic, strong) NSMutableArray *collectionArr;
 @property (nonatomic) BOOL isFinished;
 
 @end
 
 @implementation QuestionBankViewController
 
+
+- (NSMutableArray *)collectionArr
+{
+    if (!_collectionArr) {
+        _collectionArr = [NSMutableArray arrayWithCapacity:0];
+    }
+    return _collectionArr;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -72,7 +80,25 @@
         [[ERHNetWorkTool sharedManager] requestDataWithUrl:DISEASEQUEASETION_COLLECTION_LIST params:dict success:^(NSDictionary *responseObject) {
             [self hideLoadingHUD];
             self.isFinished = YES;
-            self.collectionArr = responseObject[@"collectionflag"];
+            if (self.isStore) {
+                NSArray *arr = responseObject[@"collectionflag"];
+                NSMutableArray *tempArr = [NSMutableArray arrayWithCapacity:0];
+                [arr enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                    if ([obj[@"flag"] isEqualToString:@"false"]) {
+                        [tempArr addObject:@(idx)];
+                    }else{
+                        [self.collectionArr addObject:obj];
+                    }
+                }];
+                
+                for (NSInteger i = tempArr.count-1; i>=0; i--) {
+                    NSInteger index = [tempArr[i] integerValue];
+                    [self.dataSources removeObjectAtIndex:index];
+                }
+                
+            }else{
+                self.collectionArr = responseObject[@"collectionflag"];
+            }
             [self.collectionView reloadData];
         } failure:^(NSError *error) {
             [self hideLoadingHUD];

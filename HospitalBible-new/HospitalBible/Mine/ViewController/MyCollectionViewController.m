@@ -52,6 +52,7 @@
     if (index == 0) {
         QuestionBankViewController *vc = [[QuestionBankViewController alloc] init];
         vc.isCateGory = YES;
+        vc.isStore = YES;
         return vc;
     }
     return [[MircroClassCollectionViewController alloc] init];

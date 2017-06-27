@@ -13,7 +13,7 @@
 //#define kURL    @"http://192.168.1.102:8080"
 /*************PUBLIC MEDIA QUERY*************/
 //1.1广告
-#define ADVERTISEMENT_LIST [NSString stringWithFormat:@"%@%@",kURL,@"/api/chr/advertisement/list"]
+#define ADVERTISEMENT_LIST [NSString stringWithFormat:@"%@%@",kURL,@"/api/chr/advertisement/list"]titleArray
 //1.2
 // /api/chr/diseasequestion/three
 #define DISEASEQUEASETION_THREE [NSString stringWithFormat:@"%@%@",kURL,@"/api/chr/adthree"]
