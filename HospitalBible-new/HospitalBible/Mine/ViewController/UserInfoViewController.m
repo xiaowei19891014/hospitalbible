@@ -15,7 +15,8 @@
 #import "UserInfoShareClass.h"
 #import "UserTableViewCell.h"
 #import "NSString+EAddition.h"
-@interface UserInfoViewController ()<UITableViewDelegate, UITableViewDataSource>
+#import "UIView+Action.h"
+@interface UserInfoViewController ()<UITableViewDelegate, UITableViewDataSource,UITextFieldDelegate>
 @property (nonatomic, strong) UITableView *tableview;
 @property (nonatomic, strong) NSArray *dataSources;
 @property (nonatomic, strong) NSArray *infoArr;
@@ -33,6 +34,13 @@
     [super viewDidLoad];
     self.title = @"个人信息";
     self.dataSources = getUserInfpTitleList();
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    [self initTableView];
+    [self configRightItemWithType:@"编辑"];
+    [self requestData];
+}
+
+-(void)requestData{
     [self showLoadingHUD];
     [UserInfoViewModel requestUserInfoWithUserId:[UserInfoShareClass sharedManager].userId successHandler:^(id result) {
         [self hideLoadingHUD];
@@ -41,9 +49,6 @@
     } errorHandler:^(NSError *error) {
         [self hideLoadingHUD];
     }];
-    self.automaticallyAdjustsScrollViewInsets = NO;
-    [self initTableView];
-    [self configRightItemWithType:@"编辑"];
 }
 
 -(void)rightAction:(UIButton *)sender{
@@ -117,6 +122,7 @@
                              };
     [[ERHNetWorkTool sharedManager] requestDataWithUrl:USER_USER_UPDATE params:params success:^(NSDictionary *responseObject) {
         [self hideLoadingHUD];
+        [self requestData];
     } failure:^(NSError *error) {
         [self hideLoadingHUD];
     }];
@@ -196,10 +202,14 @@
     cell.myTextField.text = _infoArr[indexPath.row];
         if (_isCanEdit) {
             cell.myTextField.enabled = YES;
+            if (indexPath.row ==  10) {
+                cell.myTextField.enabled = NO;
+            }
         }else{
             cell.myTextField.enabled = NO;
-
+            
         }
+        
     return cell;
     }
 }
@@ -207,6 +217,13 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
+    if (_isCanEdit) {
+        if (indexPath.row == 10) {
+            [self selectDate];
+        }
+
+    }
+    
 //    UserLoginViewController *vc = [[UserLoginViewController alloc] init];
 //    [self.navigationController pushViewController:vc animated:YES];
 }
@@ -217,4 +234,32 @@
     }
     return _dataSources;
 }
+
+-(void)selectDate{
+
+    NSDate *date = [NSDate date];
+    NSDateFormatter *formatters = [[NSDateFormatter alloc] init];
+    [formatters setDateFormat:@"yyyy-MM-dd"];
+    NSString *nowDate= [formatters stringFromDate:date];
+    
+    [LGAlertViewExtension showDateSelectInViewController:self indexDate:nowDate andMax:date andMin:nil type:kDatePickerTypeFull clickOk:^(NSString *selectDateStr){
+        NSLog(@"%@",selectDateStr);
+        UserTableViewCell *cell10 = [self.tableview cellForRowAtIndexPath:[NSIndexPath indexPathForRow:10 inSection:0]];
+         cell10.myTextField.text = selectDateStr;
+
+    }];
+    
+}
+
+
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
+    
+    //写你要实现的：页面跳转的相关代码
+    
+    return NO;
+    
+}
+
+
 @end
