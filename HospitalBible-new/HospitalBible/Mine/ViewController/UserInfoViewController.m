@@ -18,7 +18,7 @@
 @interface UserInfoViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) UITableView *tableview;
 @property (nonatomic, strong) NSArray *dataSources;
-@property (nonatomic, strong) NSArray *infoArr;
+@property (nonatomic, strong) NSMutableArray *infoArr;
 
 @property(nonatomic,assign) BOOL isCanEdit;//是否可以编辑
 @property(nonatomic,strong)NSString* personSex; //性别
@@ -29,6 +29,14 @@
 
 @implementation UserInfoViewController
 
+- (NSMutableArray *)infoArr
+{
+    if (!_infoArr) {
+        _infoArr = [NSMutableArray arrayWithCapacity:0  ];
+    }
+    return _infoArr;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -37,7 +45,8 @@
     [self showLoadingHUD];
     [UserInfoViewModel requestUserInfoWithUserId:[UserInfoShareClass sharedManager].userId successHandler:^(id result) {
         [self hideLoadingHUD];
-        _infoArr =(NSArray*)result;
+        [_infoArr removeAllObjects];
+        [self.infoArr addObjectsFromArray:result];
         [_tableview reloadData];
     } errorHandler:^(NSError *error) {
         [self hideLoadingHUD];
@@ -80,6 +89,8 @@
         
         [self saveinfo];
     }
+    
+    [self.tableview reloadData];
 }
 
 -(void)saveinfo{
@@ -105,14 +116,14 @@
 
     UserTableViewCell *cell9 = [self.tableview cellForRowAtIndexPath:[NSIndexPath indexPathForRow:9 inSection:0]];
     NSString *width = cell9.myTextField.text;
-    
-    UserTableViewCell *cell10 = [self.tableview cellForRowAtIndexPath:[NSIndexPath indexPathForRow:10 inSection:0]];
-    NSString *birthDay = cell10.myTextField.text;
 
-    UserTableViewCell *cell11 = [self.tableview cellForRowAtIndexPath:[NSIndexPath indexPathForRow:11 inSection:0]];
+
+    UserTableViewCell *cell11 = [self.tableview cellForRowAtIndexPath:[NSIndexPath indexPathForRow:10 inSection:0]];
     NSString *email = cell11.myTextField.text;
 
 
+//    NSArray *arr = @[detailModel.imgurl,NOTNIL(detailModel.nickname) ,detailModel.idtype,detailModel.idcard,detailModel.sex,detailModel.cellphone,NOTNIL( detailModel.age),detailModel.address,detailModel.height,detailModel.weight, NOTNIL( detailModel.birthDay),detailModel.email,@"",@"",@"",detailModel.id];
+    
     [self showLoadingHUD];
     NSDictionary *params = @{
                              @"userId":[UserInfoShareClass sharedManager].userId,
@@ -132,14 +143,11 @@
                              @"IDCard":NOTNIL(idNum),
                              @"phoneNum":NOTNIL(phoneNUm),
                              @"age":NOTNIL(age),
-                             
                              @"id": NOTNIL(_infoArr.lastObject),
-
-                             
                              };
     [[ERHNetWorkTool sharedManager] requestDataWithUrl:USER_USER_UPDATE params:params success:^(NSDictionary *responseObject) {
         [self hideLoadingHUD];
-//        [self.tableview reloadData];
+        [self.navigationController popViewControllerAnimated:YES];
     } failure:^(NSError *error) {
         [self hideLoadingHUD];
     }];

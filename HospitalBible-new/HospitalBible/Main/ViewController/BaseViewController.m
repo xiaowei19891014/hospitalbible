@@ -29,10 +29,11 @@
     UIButton *rightButton =[UIButton buttonWithType:UIButtonTypeSystem];
     [rightButton setFrame:CGRectMake(0.0, 0.0, 50, 30)];
     rightButton.tag=521;
-    if ([buttonType isEqualToString:@"编辑"] || [buttonType isEqualToString:@"保存"] || [buttonType isEqualToString:@"添加就诊人"]) {
+    if ([buttonType isEqualToString:@"编辑"] || [buttonType isEqualToString:@"保存"] || [buttonType isEqualToString:@"添加患者"]) {
         rightButton.titleLabel.font = [UIFont systemFontOfSize:15];
-        if ([buttonType isEqualToString:@"添加就诊人"]) {
+        if ([buttonType isEqualToString:@"添加患者"]) {
             [rightButton setFrame:CGRectMake(0.0, 0.0, 80, 30)];
+            rightButton.titleEdgeInsets = UIEdgeInsetsMake(0, 0, 0, -15);
         }
         [rightButton setTitle:buttonType forState:UIControlStateNormal];
     }else{

@@ -183,14 +183,13 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-
-    static NSString *ID = @"setting1";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:ID];
-    }
+    UITableViewCell *cell;
     if (indexPath.section == 0) {
-        
+        static NSString *ID = @"setting1";
+        cell = [tableView dequeueReusableCellWithIdentifier:ID];
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:ID];
+        }
         TitleImageModel *model = self.dataSources[indexPath.row];
         cell.textLabel.text = model.title;
         cell.imageView.image = [UIImage imageNamed:model.imageName];
@@ -202,7 +201,13 @@
         }
         
     }else{
-        cell.textLabel.text = @"退出登录";
+        cell = [[UITableViewCell alloc] init];
+        UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 44)];
+        label.text = @"退出登录";
+        label.textColor = [UIColor blackColor];
+        label.font = [UIFont systemFontOfSize:17];
+        label.textAlignment = NSTextAlignmentCenter;
+        [cell addSubview:label];
     }
 
     

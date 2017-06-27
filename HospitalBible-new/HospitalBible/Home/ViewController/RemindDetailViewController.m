@@ -61,12 +61,11 @@
     [super viewDidLoad];
 
     self.title = @"预约详情";
-    
     [self initTableView];
 }
 - (void)initTableView
 {
-    UITableView *tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - 64)];
+    UITableView *tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
     tableview.delegate = self;
     tableview.dataSource = self;
     [tableview registerNib:[UINib nibWithNibName:@"RemindDetailTableViewCell" bundle:nil] forCellReuseIdentifier:@"RemindDetailTableViewCell"];

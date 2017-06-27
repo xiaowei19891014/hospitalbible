@@ -232,8 +232,12 @@ static int finished;
     [self showLoadingHUD];
     [[ERHNetWorkTool sharedManager] requestDataWithUrl:DISEASEQUEASETION_SAVE params:dict success:^(NSDictionary *responseObject) {
         [self hideLoadingHUD];
+        [self.navigationController popToRootViewControllerAnimated:YES];
     } failure:^(NSError *error) {
         [self hideLoadingHUD];
+        if (!error) {
+            [self.navigationController popToRootViewControllerAnimated:YES];
+        }
     }];
 }
 

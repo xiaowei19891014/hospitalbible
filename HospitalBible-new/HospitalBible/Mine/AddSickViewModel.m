@@ -11,8 +11,8 @@
 @implementation AddSickViewModel
 NSMutableArray* getAddSickTitleAndIndexList(){
     
-    NSArray *titles = @[@"姓名",@"证件类型",@"证件号",@"性别",@"联系电话",@"年龄",@"身高",@"体重",@"地址"];
-    NSArray *placeholders = @[@"",@"",@"",@"",@"",@"",@"",@"",@""];
+    NSArray *titles = @[@"姓名",@"证件类型",@"证件号",@"就诊卡号",@"性别",@"联系电话",@"年龄",@"身高",@"体重",@"地址"];
+    NSArray *placeholders = @[@"",@"",@"",@"",@"",@"",@"",@"",@"",@""];
     NSMutableArray *models = [NSMutableArray array];
     for (int i = 0; i<titles.count; i++) {
         AddSickModel *model = [[AddSickModel alloc] init];

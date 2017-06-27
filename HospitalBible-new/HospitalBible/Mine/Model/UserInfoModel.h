@@ -30,6 +30,7 @@
 @property(nonatomic,strong) NSString *pdescribe;
 @property(nonatomic,strong) NSString *birthday;
 @property(nonatomic,strong) NSString *age;
+@property(nonatomic,strong) NSString *pCardId;
 
 
 //患者信息扩充

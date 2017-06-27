@@ -59,10 +59,10 @@
     [super viewDidLoad];
     _dataSources = [[NSMutableArray alloc]init];
     self.automaticallyAdjustsScrollViewInsets = NO;
-    self.navigationItem.title = @"就诊人列表";
+    self.navigationItem.title = @"患者列表";
     [self initTableView];
     if (!self.hiddenRightBtn) {
-        [self configRightItemWithType:@"添加就诊人"];
+        [self configRightItemWithType:@"添加患者"];
     }
     [self startRequestData];
     

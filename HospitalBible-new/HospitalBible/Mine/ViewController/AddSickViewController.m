@@ -70,7 +70,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.navigationItem.title = @"添加就诊人";
+    self.navigationItem.title = @"添加患者";
     _dataSources = getAddSickTitleAndIndexList();
     [self initTableView];
     self.automaticallyAdjustsScrollViewInsets = NO;
@@ -95,7 +95,6 @@
     [self.view addSubview:tableview];
     self.tableview = tableview;
     
-    [_tableview registerNib:[UINib nibWithNibName:@"AddSickTableViewCell" bundle:nil] forCellReuseIdentifier:@"AddSickTableViewCell"];
     
     [_tableview registerNib:[UINib nibWithNibName:@"UserInfoDocumentTypeCell" bundle:nil] forCellReuseIdentifier:@"UserInfoDocumentTypeCell"];
     
@@ -122,7 +121,7 @@
         cell.accessoryType =UITableViewCellAccessoryNone;
         return cell;
 
-    }else if(indexPath.row==3)
+    }else if(indexPath.row==4)
     {
         UserInfoSexCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UserInfoSexCell"];
         [cell setSelectSexBlock:^(NSInteger tag) {
@@ -148,13 +147,13 @@
         return cell;
     }
     else {
-        AddSickTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"AddSickTableViewCell"];
+        AddSickTableViewCell *cell = [[[NSBundle mainBundle] loadNibNamed:@"AddSickTableViewCell" owner:self options:nil] firstObject];
         cell.accessoryType =UITableViewCellAccessoryNone;
         cell.model = _dataSources[indexPath.row];
         
-        if (indexPath.row == 4) {
+        if (indexPath.row == 5) {
             cell.textfield.keyboardType = UIKeyboardTypePhonePad;
-        }else if (indexPath.row == 5 || indexPath.row == 6 || indexPath.row == 7) {
+        }else if (indexPath.row == 6 || indexPath.row == 7 || indexPath.row == 8) {
             cell.textfield.keyboardType = UIKeyboardTypeDecimalPad;
         }else{
             cell.textfield.keyboardType = UIKeyboardTypeDefault;
@@ -168,19 +167,22 @@
             if (indexPath.row == 2) {
                 cell.textfield.text = _model.idcard;
             }
-            if (indexPath.row == 4) {
-                cell.textfield.text = _model.phoneNum;
+            if (indexPath.row == 3) {
+                cell.textfield.text = _model.pCardId;
             }
             if (indexPath.row == 5) {
-                cell.textfield.text = _model.age;
+                cell.textfield.text = _model.phoneNum;
             }
             if (indexPath.row == 6) {
-                cell.textfield.text = _model.height;
+                cell.textfield.text = _model.age;
             }
             if (indexPath.row == 7) {
-                cell.textfield.text = _model.weight;
+                cell.textfield.text = _model.height;
             }
             if (indexPath.row == 8) {
+                cell.textfield.text = _model.weight;
+            }
+            if (indexPath.row == 9) {
                 cell.textfield.text = _model.address;
             }
 
@@ -212,24 +214,34 @@
     AddSickTableViewCell *cell1 = [self.tableview cellForRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:0]];
     NSString *str1 = cell1.textfield.text;
     
-    AddSickTableViewCell *cell2 = [self.tableview cellForRowAtIndexPath:[NSIndexPath indexPathForRow:4 inSection:0]];
+    AddSickTableViewCell *cell7 = [self.tableview cellForRowAtIndexPath:[NSIndexPath indexPathForRow:3 inSection:0]];
+    NSString *str7 = cell7.textfield.text;
+    
+    AddSickTableViewCell *cell2 = [self.tableview cellForRowAtIndexPath:[NSIndexPath indexPathForRow:5 inSection:0]];
     NSString *str2 = cell2.textfield.text;
-    AddSickTableViewCell *cell3 = [self.tableview cellForRowAtIndexPath:[NSIndexPath indexPathForRow:5 inSection:0]];
+    AddSickTableViewCell *cell3 = [self.tableview cellForRowAtIndexPath:[NSIndexPath indexPathForRow:6 inSection:0]];
     NSString *str3 = cell3.textfield.text;
-    AddSickTableViewCell *cell4 = [self.tableview cellForRowAtIndexPath:[NSIndexPath indexPathForRow:6 inSection:0]];
+    AddSickTableViewCell *cell4 = [self.tableview cellForRowAtIndexPath:[NSIndexPath indexPathForRow:7 inSection:0]];
     NSString *str4 = cell4.textfield.text;
     
-    AddSickTableViewCell *cell5 = [self.tableview cellForRowAtIndexPath:[NSIndexPath indexPathForRow:7 inSection:0]];
+    AddSickTableViewCell *cell5 = [self.tableview cellForRowAtIndexPath:[NSIndexPath indexPathForRow:8 inSection:0]];
     NSString *str5 = cell5.textfield.text;
-    AddSickTableViewCell *cell6 = [self.tableview cellForRowAtIndexPath:[NSIndexPath indexPathForRow:8 inSection:0]];
+    AddSickTableViewCell *cell6 = [self.tableview cellForRowAtIndexPath:[NSIndexPath indexPathForRow:9 inSection:0]];
     NSString *str6 = cell6.textfield.text;
 
     if (_personSex.length == 0) {
         [self showErrorMessage:@"请选择性别"];
+        return;
     }
     if(str.length == 0)
     {
         [self showErrorMessage:@"请输入姓名"];
+        return;
+    }
+    
+    if (str7.length == 0) {
+        [self showErrorMessage:@"请输入就诊卡号"];
+        return;
     }
     
     NSDictionary *params = @{
@@ -253,7 +265,7 @@
                              @"phoneNum":NOTNIL(str2),
 
                              @"age":NOTNIL(str3),
-
+                             @"pCardId":NOTNIL(str7)
                              };
     [[ERHNetWorkTool sharedManager] requestDataWithUrl:PATIENT_SAVE params:params success:^(NSDictionary *responseObject) {
         if (self.addSuccessBlock) {
