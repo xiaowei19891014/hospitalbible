@@ -16,9 +16,14 @@
 @interface AddSickFootView : UIView
 @property (nonatomic, copy) void (^addSickNextBlock)();
 @property (nonatomic, strong) UIButton *tradeSuccessBtn;
+
+
 @end
 
 @implementation AddSickFootView
+
+
+
 - (instancetype)initWithFrame:(CGRect)frame;
 {
     if (self = [super initWithFrame:frame]) {
@@ -61,11 +66,20 @@
 @property (nonatomic, strong) UITableView *tableview;
 @property (nonatomic, strong) NSMutableArray *dataSources;
 @property(nonatomic,strong)NSString* personSex; //性别
+@property (nonatomic,strong) NSMutableDictionary *mutabDict;
 
 
 @end
 
 @implementation AddSickViewController
+
+- (NSMutableDictionary *)mutabDict
+{
+    if (!_mutabDict) {
+        _mutabDict = [[NSMutableDictionary alloc] init];
+    }
+    return _mutabDict;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -147,9 +161,46 @@
         return cell;
     }
     else {
-        AddSickTableViewCell *cell = [[[NSBundle mainBundle] loadNibNamed:@"AddSickTableViewCell" owner:self options:nil] firstObject];
-        cell.accessoryType =UITableViewCellAccessoryNone;
-        cell.model = _dataSources[indexPath.row];
+        
+        NSString *str = [NSString stringWithFormat:@"%ld",(long)indexPath.row];
+        AddSickTableViewCell *cell;
+        if (self.mutabDict[str]) {
+            cell = self.mutabDict[str];
+        }else{
+            cell = [[[NSBundle mainBundle] loadNibNamed:@"AddSickTableViewCell" owner:self options:nil] firstObject];
+            cell.accessoryType =UITableViewCellAccessoryNone;
+            cell.model = _dataSources[indexPath.row];
+            
+            if (_model) {
+                cell.textfield.enabled = NO;
+                if (indexPath.row == 0) {
+                    cell.textfield.text = _model.pname;
+                }
+                if (indexPath.row == 2) {
+                    cell.textfield.text = _model.idcard;
+                }
+                if (indexPath.row == 3) {
+                    cell.textfield.text = _model.cartevital;
+                }
+                if (indexPath.row == 5) {
+                    cell.textfield.text = _model.phoneNum;
+                }
+                if (indexPath.row == 6) {
+                    cell.textfield.text = _model.age;
+                }
+                if (indexPath.row == 7) {
+                    cell.textfield.text = _model.height;
+                }
+                if (indexPath.row == 8) {
+                    cell.textfield.text = _model.weight;
+                }
+                if (indexPath.row == 9) {
+                    cell.textfield.text = _model.address;
+                }
+            }
+            
+            self.mutabDict[str] =cell;
+        }
         
         if (indexPath.row == 5) {
             cell.textfield.keyboardType = UIKeyboardTypePhonePad;
@@ -157,35 +208,6 @@
             cell.textfield.keyboardType = UIKeyboardTypeDecimalPad;
         }else{
             cell.textfield.keyboardType = UIKeyboardTypeDefault;
-        }
-        
-        if (_model) {
-            cell.textfield.enabled = NO;
-            if (indexPath.row == 0) {
-                cell.textfield.text = _model.pname;
-            }
-            if (indexPath.row == 2) {
-                cell.textfield.text = _model.idcard;
-            }
-            if (indexPath.row == 3) {
-                cell.textfield.text = _model.cartevital;
-            }
-            if (indexPath.row == 5) {
-                cell.textfield.text = _model.phoneNum;
-            }
-            if (indexPath.row == 6) {
-                cell.textfield.text = _model.age;
-            }
-            if (indexPath.row == 7) {
-                cell.textfield.text = _model.height;
-            }
-            if (indexPath.row == 8) {
-                cell.textfield.text = _model.weight;
-            }
-            if (indexPath.row == 9) {
-                cell.textfield.text = _model.address;
-            }
-
         }
         
         return cell;
@@ -209,15 +231,20 @@
 
 - (IBAction)saveAction:(id)sender {
     [self.view endEditing:YES];
-    AddSickTableViewCell *cell = [self.tableview cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+    
+//    AddSickTableViewCell *cell = [self.tableview cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+    AddSickTableViewCell *cell = self.mutabDict[@"0"];
     NSString *str = cell.textfield.text;
-    AddSickTableViewCell *cell1 = [self.tableview cellForRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:0]];
+//    AddSickTableViewCell *cell1 = [self.tableview cellForRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:0]];
+    AddSickTableViewCell *cell1 = self.mutabDict[@"2"];
     NSString *str1 = cell1.textfield.text;
     
-    AddSickTableViewCell *cell7 = [self.tableview cellForRowAtIndexPath:[NSIndexPath indexPathForRow:3 inSection:0]];
+//    AddSickTableViewCell *cell7 = [self.tableview cellForRowAtIndexPath:[NSIndexPath indexPathForRow:3 inSection:0]];
+    AddSickTableViewCell *cell7 = self.mutabDict[@"3"];
     NSString *str7 = cell7.textfield.text;
     
-    AddSickTableViewCell *cell2 = [self.tableview cellForRowAtIndexPath:[NSIndexPath indexPathForRow:5 inSection:0]];
+//    AddSickTableViewCell *cell2 = [self.tableview cellForRowAtIndexPath:[NSIndexPath indexPathForRow:5 inSection:0]];
+    AddSickTableViewCell *cell2 = self.mutabDict[@"5"];
     NSString *str2 = cell2.textfield.text;
     AddSickTableViewCell *cell3 = [self.tableview cellForRowAtIndexPath:[NSIndexPath indexPathForRow:6 inSection:0]];
     NSString *str3 = cell3.textfield.text;
