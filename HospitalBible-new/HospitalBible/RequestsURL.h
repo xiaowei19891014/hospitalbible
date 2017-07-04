@@ -78,6 +78,10 @@
 #define USER_USER_UPDATE  [NSString stringWithFormat:@"%@%@",kURL,@"/api/chr/user/user/update"]
 //添加患者
 #define PATIENT_SAVE  [NSString stringWithFormat:@"%@%@",kURL,@"/api/chr/patient/save"]
+
+//更新患者
+#define PATIENT_UPDATE  [NSString stringWithFormat:@"%@%@",kURL,@"/api/chr/patient/update"]
+
 //患者删除
 #define PATIENT_DELETE  [NSString stringWithFormat:@"%@%@",kURL,@"/api/chr/patient/delete"]
 //退出登录

@@ -18,6 +18,7 @@
 @property(copy,nonatomic) void(^addSuccessBlock) (void);
 
 @property (strong, nonatomic)  UserInfoModel *model;
+@property (nonatomic)BOOL canEdit;
 
 
 @end

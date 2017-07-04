@@ -146,6 +146,9 @@
     }
     AddSickViewController* vc= [[AddSickViewController alloc] init];
     vc.model = tempModel;
+    [vc setAddSuccessBlock:^{
+        [self startRequestData];
+    }];
     [self.navigationController pushViewController:vc animated:YES];
 }
 

@@ -115,11 +115,28 @@
     [_tableview registerNib:[UINib nibWithNibName:@"UserInfoSexCell" bundle:nil] forCellReuseIdentifier:@"UserInfoSexCell"];
 
     if (_model) {
-        _saveBtn.hidden = YES;
-        _myTextView.editable = NO;
         _myTextView.text = _model.pdescribe;
         self.title = @"个人信息";
+        if (self.canEdit) {
+            _saveBtn.hidden = NO;
+            _myTextView.editable = YES;
+        }else{
+            _saveBtn.hidden = YES;
+            _myTextView.editable = NO;
+              self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"编辑" style:UIBarButtonItemStylePlain target:self action:@selector(canEditAction)];
+        }
     }
+}
+
+- (void)canEditAction
+{
+    AddSickViewController *vc = [[AddSickViewController alloc] initWithNibName:@"AddSickViewController" bundle:nil];
+    vc.model = self.model;
+    vc.canEdit = YES;
+    if (self.addSuccessBlock) {
+        vc.addSuccessBlock = self.addSuccessBlock;
+    }
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 
@@ -152,8 +169,10 @@
             
             if ([_model.sex isEqualToString:@"M"]) {
                 cell.manBtn.selected =YES;
+                _personSex = @"M";
             }else{
                 cell.womanBtn.selected =YES;
+                _personSex = @"F";
             }
             
         }
@@ -172,7 +191,9 @@
             cell.model = _dataSources[indexPath.row];
             
             if (_model) {
-                cell.textfield.enabled = NO;
+                
+                cell.textfield.enabled = self.canEdit;
+            
                 if (indexPath.row == 0) {
                     cell.textfield.text = _model.pname;
                 }
@@ -310,13 +331,53 @@
                              @"age":NOTNIL(str3),
                              @"cartevital":NOTNIL(str7)
                              };
-    [[ERHNetWorkTool sharedManager] requestDataWithUrl:PATIENT_SAVE params:params success:^(NSDictionary *responseObject) {
-        if (self.addSuccessBlock) {
-            self.addSuccessBlock();
-        }
-        [self showErrorMessage:@"添加成功"];
-        [self.navigationController popViewControllerAnimated:YES];
-    } failure:^(NSError *error) {
-    }];
+    
+//    {
+//        "pname": "广告达人",
+//        "email": "eeee",
+//        "address": "四川省成都市武侯区武科西四路中华锦绣二期",
+//        "regdate": "2017-02-13 ",
+//        "idtype": "122",
+//        "idcard": "6410316556456",
+//     @"IDCard":NOTNIL(str1),
+//        "imgurl": "/2017-05-24/thumb_59250d86ce8aa.jpg",
+//        "height": "115.3",
+//        "qQNum": "111",
+//        "weChat": "110",
+//        "weight": "175.36",
+//        "sex": "M",
+//        "birthday": "1920-04-21",
+//        "userId": "13299052676",
+//        "pdescribe": "我有病了",
+//        "cartevital": "258478444",
+//        "phoneNum": "1380915658",
+//        "age": "28",
+//        "patientId": "34"
+//    }
+    
+    if (!self.canEdit) {
+        [[ERHNetWorkTool sharedManager] requestDataWithUrl:PATIENT_SAVE params:params success:^(NSDictionary *responseObject) {
+            if (self.addSuccessBlock) {
+                self.addSuccessBlock();
+            }
+            [self showErrorMessage:@"添加成功"];
+            [self.navigationController popViewControllerAnimated:YES];
+        } failure:^(NSError *error) {
+        }];
+    }else{
+        NSMutableDictionary *dict = [[NSMutableDictionary alloc] initWithDictionary:params];
+        dict[@"patientId"] = self.model.patientId;
+        [[ERHNetWorkTool sharedManager] requestDataWithUrl:PATIENT_UPDATE params:dict success:^(NSDictionary *responseObject) {
+            if (self.addSuccessBlock) {
+                self.addSuccessBlock();
+            }
+            
+            NSArray *vcArr = self.navigationController.viewControllers;
+            UIViewController *vc = vcArr[vcArr.count-1-2];
+            [self.navigationController popToViewController:vc animated:NO];
+            [self showErrorMessage:@"添加成功"];
+        } failure:^(NSError *error) {
+        }];
+    }
 }
 @end
