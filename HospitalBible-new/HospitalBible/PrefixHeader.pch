@@ -29,6 +29,7 @@
 #import "DiseaseQuestionModel.h"
 #import "LGAlertViewExtension.h"
 #import "UIImageView+WebCache.h"
+#import "DateFormat.h"
 
 typedef void(^SuccessCallBack)(id result);
 typedef void(^ErrorCallBack)(NSError *error);

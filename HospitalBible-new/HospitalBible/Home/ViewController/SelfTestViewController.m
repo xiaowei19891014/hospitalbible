@@ -232,11 +232,16 @@ static int finished;
     [self showLoadingHUD];
     [[ERHNetWorkTool sharedManager] requestDataWithUrl:DISEASEQUEASETION_SAVE params:dict success:^(NSDictionary *responseObject) {
         [self hideLoadingHUD];
-        [self.navigationController popToRootViewControllerAnimated:YES];
+        [EUnit showToastWithTitle:@"预约成功！"];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self.navigationController popToRootViewControllerAnimated:YES];
+        });
     } failure:^(NSError *error) {
         [self hideLoadingHUD];
         if (!error) {
-            [self.navigationController popToRootViewControllerAnimated:YES];
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                 [self.navigationController popToRootViewControllerAnimated:YES];
+            });
         }
     }];
 }

@@ -31,7 +31,10 @@
 - (void)setModel:(appointmentModel *)model
 {
     _model = model;
-    self.appointLabel.text = model.content;
+//    appointdate : 2017-07-07 23:16:15;
+//    #define DATEFORMAT24        @"yyyy-MM-dd HH:mm:ss"
+    NSString *str = [[[DateFormat share] convertString:model.appointdate fromType:DATEFORMAT24 toType:DATEFORMAT2] substringFromIndex:5];
+    self.appointLabel.text = [NSString stringWithFormat:@"您%@有预约,请点击查看",str];
 }
 
 -(void)setSelected:(BOOL)selected animated:(BOOL)animated{

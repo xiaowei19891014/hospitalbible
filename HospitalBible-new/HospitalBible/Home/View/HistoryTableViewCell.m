@@ -24,11 +24,11 @@
 - (void)setIndexNumber:(NSInteger)indexNumber
 {
     _indexNumber = indexNumber;
-    if (indexNumber%2) {
-        self.backgroundColor = [UIColor lightGrayColor];
-    }else{
-        self.backgroundColor = [UIColor whiteColor];
-    }
+//    if (indexNumber%2) {
+//        self.backgroundColor = [UIColor lightGrayColor];
+//    }else{
+//        self.backgroundColor = [UIColor whiteColor];
+//    }
 }
 
 - (void)setDict:(NSDictionary *)dict

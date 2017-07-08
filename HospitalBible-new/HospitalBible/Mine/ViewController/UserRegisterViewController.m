@@ -114,6 +114,11 @@
 }
 
 - (IBAction)validateAction:(UIButton *)sender {
+    
+    if (_phone.length != 11 ) {
+        [EUnit showToastWithTitle:@"请输入手机号"];
+        return;
+    }
     [sender setEnabled:NO];
     [self sendValid];
 }
