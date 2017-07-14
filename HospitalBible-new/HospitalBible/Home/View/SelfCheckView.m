@@ -37,6 +37,9 @@
     self.imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,60,45)];
     self.imageView.image = [UIImage imageNamed:@"feibu_icon"];
     self.imageView.center = CGPointMake(width/2.0, 35);
+    self.imageView.userInteractionEnabled = YES;
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap)];
+    [self.imageView addGestureRecognizer:tap];
     
     self.label = [[UILabel alloc]initWithFrame:CGRectMake(0,65, width, 30)];
     _label.textColor = [UIColor colorWithHexString:@"000000"];
@@ -81,6 +84,14 @@
     self.layer.cornerRadius = 5;
     self.layer.masksToBounds = YES;
 }
+
+- (void)tap
+{
+    if (self.clicked) {
+        self.clicked(YES,self.index);
+    }
+}
+
 
 - (void)tapAction:(UIButton *)btn
 {

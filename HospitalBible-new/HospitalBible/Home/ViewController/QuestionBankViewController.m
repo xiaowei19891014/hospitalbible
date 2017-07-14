@@ -13,6 +13,7 @@
 #import "HistoryDetailViewController.h"
 #import "HomeViewModel.h"
 #import "SickCallViewController.h"
+#import "UIView+Action.h"
 
 @interface QuestionBankViewController ()<UICollectionViewDelegate,UICollectionViewDataSource>
 @property (nonatomic, strong) UICollectionView *collectionView;
@@ -147,6 +148,14 @@
     if (indexPath.row < self.placeImageArr.count) {
         [cell.imagePicView sd_setImageWithURL:[NSURL URLWithString:model.imgurl] placeholderImage:self.placeImageArr[indexPath.item]];
     }
+    
+    cell.imagePicView.userInteractionEnabled = YES;
+    [cell.imagePicView setViewActionWithBlock:^{
+        SickCallViewController *vc = [[SickCallViewController alloc] init];
+        vc.model = model;
+        [self.navigationController pushViewController:vc animated:YES];
+    }];
+    
     [cell.selfTestButton bk_addEventHandler:^(id  _Nonnull sender) {
         
         SickCallViewController *vc = [[SickCallViewController alloc] init];
